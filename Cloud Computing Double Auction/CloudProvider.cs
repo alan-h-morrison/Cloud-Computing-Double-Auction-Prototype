@@ -14,10 +14,25 @@ namespace Cloud_Computing_Double_Auction
 
         }
 
-        public override void Setup()
+        public override void Act(Message message)
         {
-            Console.WriteLine($"{Name} says hello");
-            Stop();
+            Console.WriteLine($"\t{message.Format()}");
+            message.Parse(out string action, out string parameters);
+
+            switch (action)
+            {
+                case "start":
+                    HandleStart(message.Sender);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void HandleStart(string sender)
+        {
+            Console.WriteLine($"{Name} begin bid formation");
         }
     }
 }

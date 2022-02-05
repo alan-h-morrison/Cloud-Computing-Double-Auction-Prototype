@@ -11,13 +11,13 @@ namespace Cloud_Computing_Double_Auction
     {
         public CloudAuctioneer()
         {
-
+            
         }
+        
 
         public override void Setup()
         {
-            Console.WriteLine($"auctioneer says hello");
-            Stop();
+            Broadcast("start");
         }
     }
 }
