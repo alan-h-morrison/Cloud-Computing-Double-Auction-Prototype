@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ActressMas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,12 +22,30 @@ namespace Cloud_Computing_Double_Auction
     public partial class MainWindow : Window
     {
         public MainWindow()
-        {
+        { 
             InitializeComponent();
         }
 
         private void BtnAuction_Click(object sender, RoutedEventArgs e)
         {
+            var env = new EnvironmentMas();
+
+            for (int i = 1; i <= AuctionSettings.providers; i++)
+            {
+                var providerAgent = new CloudProvider();
+                env.Add(providerAgent, $"provider{i:D2}");
+            }
+
+            for (int i = 1; i <= AuctionSettings.users; i++)
+            {
+                var userAgent = new CloudUser();
+                env.Add(userAgent, $"user{i:D2}");
+            }
+
+            var auctioneerAgent = new CloudAuctioneer();
+            env.Add(auctioneerAgent, "auctioneer");
+
+            env.Start();
 
         }
 
