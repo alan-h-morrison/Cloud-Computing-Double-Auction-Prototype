@@ -23,5 +23,32 @@ namespace Cloud_Computing_Double_Auction
         {
             InitializeComponent();
         }
+
+        public static int numProviders = 10;
+        public static int numUsers = 10;
+
+
+        private static int counter = 0;
+        private static readonly object lockObject = new object();
+
+
+        public static void Increment()
+        {
+            lock (lockObject)
+            {
+                counter++;
+            }
+        }
+
+        public static int messageCounter
+        {
+            get
+            {
+                lock (lockObject)
+                {
+                    return counter;
+                }
+            }
+        }
     }
 }

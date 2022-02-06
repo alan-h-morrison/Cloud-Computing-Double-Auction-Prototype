@@ -7,33 +7,60 @@ using System.Threading.Tasks;
 
 namespace Cloud_Computing_Double_Auction
 {
+    public enum UserPosition { Positive, Neutral, Negative }
     public class CloudUser : Agent
     {
-        public CloudUser()
-        {
+        private Random rand = new Random();
 
+        private int demand;
+        private int bidPrice;
+
+        private UserPosition position;
+        private string stringPosition;
+
+        public CloudUser(UserPosition userPosition)
+        {
+            position = userPosition;
+            stringPosition = position.ToString();
+        }
+
+        public override void Setup()
+        {
+            Send("environment", $"user {stringPosition}");
         }
 
         public override void Act(Message message)
         {
-            Console.WriteLine($"\t{message.Format()}");
-            message.Parse(out string action, out string parameters);
-
-            switch (action)
+            try
             {
-                case "start":
-                    HandleStart(message.Sender);
-                    break;
+                Console.WriteLine($"\t{message.Format()}");
+                message.Parse(out string action, out string parameters);
 
-                default:
-                    break;
+                switch (action)
+                {
+                    case "inform":
+                        HandleInform(parameters);
+                        break;
+
+                    default:
+                        break;
+                }
             }
-
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }          
         }
 
-        private void HandleStart(string sender)
+        private void HandleInform(string info)
         {
-            Console.WriteLine($"{Name} begin bid formation");
+            string[] values = info.Split(' ');
+
+            demand = Int32.Parse(values[0]);
+            bidPrice = Int32.Parse(values[1]);
+
+            Send("auctioneer", $"bid user {demand} {bidPrice}");
+            Stop();
         }
     }
 }

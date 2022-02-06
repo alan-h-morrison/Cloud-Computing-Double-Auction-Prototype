@@ -40,7 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ActressMas">
-      <HintPath>..\..\ActressMas-master\ActressMAS v3.0\ActressMas Dll\ActressMas.dll</HintPath>
+      <HintPath>..\..\..\ActressMas-master\ActressMAS v3.0\ActressMas Dll\ActressMas.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -63,9 +63,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CloudAuctioneer.cs" />
+    <Compile Include="CloudEnvironment.cs" />
     <Compile Include="CloudProvider.cs" />
     <Compile Include="CloudUser.cs" />
-    <Compile Include="Settings.cs" />
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>

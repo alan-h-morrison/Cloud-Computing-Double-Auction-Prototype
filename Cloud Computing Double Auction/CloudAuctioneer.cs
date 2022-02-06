@@ -13,11 +13,26 @@ namespace Cloud_Computing_Double_Auction
         {
             
         }
-        
 
-        public override void Setup()
+        public override void Act(Message message)
         {
-            Broadcast("start");
+            Console.WriteLine($"\t{message.Format()}");
+            message.Parse(out string action, out string parameters);
+
+            switch (action)
+            {
+                case "bid":
+                    HandleBid(parameters);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        public void HandleBid(string info)
+        {
+            
         }
     }
 }
