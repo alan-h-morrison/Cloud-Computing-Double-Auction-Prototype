@@ -52,7 +52,7 @@ namespace Cloud_Computing_Double_Auction
             supply = Int32.Parse(values[0]);
             bidPrice = Int32.Parse(values[1]);
 
-            Send("auctioneer", $"bid seller {supply} {bidPrice}");
+            Send("auctioneer", $"bid provider {supply} {bidPrice}");
             Stop();
 
         }

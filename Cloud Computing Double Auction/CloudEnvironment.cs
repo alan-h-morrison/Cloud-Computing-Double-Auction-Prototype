@@ -10,10 +10,11 @@ namespace Cloud_Computing_Double_Auction
     public class CloudEnvironment : Agent
     {
         private Random rand = new Random();
+        int turnsToWait;
 
         public CloudEnvironment()
         {
-
+            turnsToWait = 10;
         }
 
         public override void Act(Message message)
@@ -50,5 +51,14 @@ namespace Cloud_Computing_Double_Auction
                     break;
             }
         }
+
+        public override void ActDefault()
+        {
+            if (--turnsToWait <= 0)
+            {
+                Stop();
+            }
+        }
+
     }
 }

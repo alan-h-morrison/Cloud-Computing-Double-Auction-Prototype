@@ -12,21 +12,24 @@ namespace Cloud_Computing_Double_Auction
         private List<Bid> userBids;
         private List<Bid> providerBids;
 
+        int turnsToWait;
+
         public CloudAuctioneer()
         {
             userBids = new List<Bid>();
             providerBids = new List<Bid>();
+            turnsToWait = 10;
         }
 
         public override void Act(Message message)
         {
             Console.WriteLine($"\t{message.Format()}");
-            message.Parse(out string action, out string parameters);
+            message.Parse(out string action, out List<string> parameters);
 
             switch (action)
             {
                 case "bid":
-                    HandleBid(parameters);
+                    HandleBid(message.Sender, parameters);
                     break;
 
                 default:
@@ -34,9 +37,49 @@ namespace Cloud_Computing_Double_Auction
             }
         }
 
-        public void HandleBid(string info)
+        public override void ActDefault()
         {
+            if (--turnsToWait <= 0)
+            {
+                HandleAllocation();
+            }
+        }
+
+        public void HandleBid(string sender, List<string> info)
+        {
+            var bid = new Bid(sender, Convert.ToInt32(info[1]), Convert.ToInt32(info[2]));
+
+            if (info[0] == "user")
+            {
+                userBids.Add(bid);
+            }
+
+            if (info[0] == "provider")
+            {
+                providerBids.Add(bid);
+            }
+        }
+
+        public void HandleAllocation()
+        {
+            WinnerDetermination();
+        }
+
+        public void WinnerDetermination()
+        {
+            // sort seller bidding list by asceding value and the reversing the list to sort by descending value
+            providerBids.Sort((s1, s2) => s1.BidPrice.CompareTo(s2.BidPrice));
+
+            // sort buyer bidding list by descending value and the reversing the list to sort by descending value
+            userBids.Sort((s1, s2) => s1.BidPrice.CompareTo(s2.BidPrice));
+            userBids.Reverse();
+
             
+        }
+
+        public void PricingDetermination()
+        {
+
         }
     }
 }
