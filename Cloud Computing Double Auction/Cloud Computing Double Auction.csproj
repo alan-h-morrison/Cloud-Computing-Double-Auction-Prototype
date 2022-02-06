@@ -62,6 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Bid.cs" />
     <Compile Include="CloudAuctioneer.cs" />
     <Compile Include="CloudEnvironment.cs" />
     <Compile Include="CloudProvider.cs" />

@@ -9,9 +9,13 @@ namespace Cloud_Computing_Double_Auction
 {
     public class CloudAuctioneer : Agent
     {
+        private List<Bid> userBids;
+        private List<Bid> providerBids;
+
         public CloudAuctioneer()
         {
-            
+            userBids = new List<Bid>();
+            providerBids = new List<Bid>();
         }
 
         public override void Act(Message message)
