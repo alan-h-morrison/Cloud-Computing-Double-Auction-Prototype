@@ -12,6 +12,9 @@ namespace Cloud_Computing_Double_Auction
         private List<Bid> userBids;
         private List<Bid> providerBids;
 
+        private int numUsers;
+        private int numProviders;
+
         int turnsToWait;
 
         public CloudAuctioneer()
@@ -74,7 +77,19 @@ namespace Cloud_Computing_Double_Auction
             userBids.Sort((s1, s2) => s1.BidPrice.CompareTo(s2.BidPrice));
             userBids.Reverse();
 
-            
+            numUsers = userBids.Count;
+            numProviders = providerBids.Count;
+
+            if (numUsers > 0 && numProviders > 0)
+            {
+                for (int i = numUsers - 1; i >= 0; i--)
+                {
+                    for (int j = numProviders - 1; j >= 0; j--)
+                    {
+
+                    }
+                }
+            }
         }
 
         public void PricingDetermination()
