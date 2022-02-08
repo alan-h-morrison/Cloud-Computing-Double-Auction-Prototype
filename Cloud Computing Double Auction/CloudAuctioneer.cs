@@ -73,7 +73,9 @@ namespace Cloud_Computing_Double_Auction
             winUserBids.RemoveAt(winUserBids.Count - 1);
             winProviderBids.RemoveAt(winProviderBids.Count - 1);
 
-            Console.WriteLine($"[{Name}]: Removed Least Profitable:- \n\tNo. of winning users = {winUserBids.Count} \n\tNo. of winning providers = {winProviderBids.Count}");
+            Console.WriteLine($"[{Name}]: Removed Least Profitable User/Provider:- \n\t\tNo. of winning users = {winUserBids.Count} \n\t\tNo. of winning providers = {winProviderBids.Count}");
+
+            PricingDetermination();
 
             Stop();
         }
@@ -111,12 +113,12 @@ namespace Cloud_Computing_Double_Auction
 
                             if (FirstConditionBidPrice(i, j) && FirstConditionQuantity(providerQuantity))
                             {
-                                Console.WriteLine($"[{Name}]: First Condition:- \n\tNo. of winning users = {i + 1} \n\tNo. of winning providers = {j + 1}");
+                                Console.WriteLine($"[{Name}]: First Condition:- \n\t\tNo. of winning users = {i + 1} \n\t\tNo. of winning providers = {j + 1}");
                                 return;
                             }
                             else if (SecondConditionBidPrice(i, j) && SecondConditionQuantity(userQuantity))
                             {
-                                Console.WriteLine($"[{Name}]: Second Condition:- \n\tNo. of winning users = {i + 1} \n\tNo. of winning providers = {j + 1}");
+                                Console.WriteLine($"[{Name}]: Second Condition:- \n\t\tNo. of winning users = {i + 1} \n\t\tNo. of winning providers = {j + 1}");
                                 return;
                             }
                         }
@@ -133,35 +135,21 @@ namespace Cloud_Computing_Double_Auction
 
         private void PricingDetermination()
         {
-
-        }
-
-        private bool SecondConditionBidPrice(int i, int j)
-        {
-            if(providerBids[j + 1].BidPrice >= userBids[i].BidPrice && userBids[i].BidPrice >= providerBids[j].BidPrice)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private bool SecondConditionQuantity(int userQuantity)
-        {
             int totalProviderQuantity = winProviderBids.Sum(provider => provider.BidAmount);
             int totalUserQuantity = winUserBids.Sum(user => user.BidAmount);
 
-            int previousUserQuantity = totalUserQuantity - userQuantity;
-
-            if (previousUserQuantity <= totalProviderQuantity && totalProviderQuantity <= totalUserQuantity)
+            if(totalUserQuantity > totalProviderQuantity)
             {
-                return true;
+                Console.WriteLine($"[{Name}]: Overdemand has occured:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
+
+            }
+            else if (totalUserQuantity < totalProviderQuantity)
+            {
+                Console.WriteLine($"[{Name}]: Oversupply has occured:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
             }
             else
             {
-                return false;
+                Console.WriteLine($"[{Name}]: Neither Overdemand or Oversupply has occured");
             }
         }
 
@@ -186,6 +174,36 @@ namespace Cloud_Computing_Double_Auction
             int previousProviderQuantity = totalProviderQuantity - providerQuantity;
 
             if (previousProviderQuantity <= totalUserQuantity && totalUserQuantity <= totalProviderQuantity)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        private bool SecondConditionBidPrice(int i, int j)
+        {
+            if (providerBids[j + 1].BidPrice >= userBids[i].BidPrice && userBids[i].BidPrice >= providerBids[j].BidPrice)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool SecondConditionQuantity(int userQuantity)
+        {
+            int totalProviderQuantity = winProviderBids.Sum(provider => provider.BidAmount);
+            int totalUserQuantity = winUserBids.Sum(user => user.BidAmount);
+
+            int previousUserQuantity = totalUserQuantity - userQuantity;
+
+            if (previousUserQuantity <= totalProviderQuantity && totalProviderQuantity <= totalUserQuantity)
             {
                 return true;
             }
