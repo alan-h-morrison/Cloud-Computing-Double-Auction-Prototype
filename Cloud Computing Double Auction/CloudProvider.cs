@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Cloud_Computing_Double_Auction
 {
     public enum ProviderPosition { Positive, Neutral, Negative }
+
     public class CloudProvider : Agent
     {
         private Random rand = new Random();

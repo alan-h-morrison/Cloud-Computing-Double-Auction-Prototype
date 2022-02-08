@@ -12,6 +12,9 @@ namespace Cloud_Computing_Double_Auction
         private List<Bid> userBids;
         private List<Bid> providerBids;
 
+        private List<Bid> winUserBids;
+        private List<Bid> winProviderBids;
+
         private int numUsers;
         private int numProviders;
 
@@ -21,7 +24,7 @@ namespace Cloud_Computing_Double_Auction
         {
             userBids = new List<Bid>();
             providerBids = new List<Bid>();
-            turnsToWait = 10;
+            turnsToWait = 5;
         }
 
         public override void Act(Message message)
@@ -70,26 +73,41 @@ namespace Cloud_Computing_Double_Auction
 
         public void WinnerDetermination()
         {
-            // sort seller bidding list by asceding value and the reversing the list to sort by descending value
-            providerBids.Sort((s1, s2) => s1.BidPrice.CompareTo(s2.BidPrice));
+            winUserBids = new List<Bid>();
+            winProviderBids = new List<Bid>();
 
-            // sort buyer bidding list by descending value and the reversing the list to sort by descending value
-            userBids.Sort((s1, s2) => s1.BidPrice.CompareTo(s2.BidPrice));
-            userBids.Reverse();
-
-            numUsers = userBids.Count;
-            numProviders = providerBids.Count;
-
-            if (numUsers > 0 && numProviders > 0)
+            try
             {
-                for (int i = numUsers - 1; i >= 0; i--)
-                {
-                    for (int j = numProviders - 1; j >= 0; j--)
-                    {
+                // sort provider bid list by ascending value and the reversing the list to sort by descending value
+                providerBids.Sort((s1, s2) => s1.BidPrice.CompareTo(s2.BidPrice));
 
+                // sort buyer bidding list by descending value and the reversing the list to sort by descending value
+                userBids.Sort((s1, s2) => s1.BidPrice.CompareTo(s2.BidPrice));
+                userBids.Reverse();
+
+                numUsers = userBids.Count;
+                numProviders = providerBids.Count;
+
+                if (numUsers > 0 && numProviders > 0)
+                {
+                    for (int i = 0; i < numUsers; i++)
+                    {
+                        winUserBids.Add(userBids[i]);
+                        for (int j = 0; j < numProviders - 1; j++)
+                        {
+                            winProviderBids.Add(providerBids[i]);
+                        }
+                        winProviderBids.Clear();
                     }
                 }
+
+                Stop();
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            
         }
 
         public void PricingDetermination()
@@ -98,6 +116,3 @@ namespace Cloud_Computing_Double_Auction
         }
     }
 }
-        
-    
-
