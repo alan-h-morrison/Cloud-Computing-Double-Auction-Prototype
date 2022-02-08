@@ -97,14 +97,18 @@ namespace Cloud_Computing_Double_Auction
                         {
                             winProviderBids.Add(providerBids[j]);
 
+                            int userQuantity = userBids[i].BidAmount;
                             int providerQuantity = providerBids[j].BidAmount;
 
-                            
 
-                            if(FirstConditionBidPrice(i,j) && FirstConditionQuantity(providerQuantity))
+
+                            if (FirstConditionBidPrice(i, j) && FirstConditionQuantity(providerQuantity))
                             {
                                 Console.WriteLine($"First Condition:- \n\tNo. of winning users = {i + 1} \n\tNo. of winning providers = {j + 1}");
-                                Stop();
+                            }
+                            else if (SecondConditionBidPrice(i, j) && SecondConditionQuantity(userQuantity))
+                            {
+                                Console.WriteLine($"Second Condition:- \n\tNo. of winning users = {i + 1} \n\tNo. of winning providers = {j + 1}");
                             }
                         }
                         winProviderBids.Clear();
@@ -115,7 +119,41 @@ namespace Cloud_Computing_Double_Auction
             {
                 Console.WriteLine(ex);
             }
-            
+
+        }
+
+        private void PricingDetermination()
+        {
+
+        }
+
+        private bool SecondConditionBidPrice(int i, int j)
+        {
+            if(providerBids[j + 1].BidPrice >= userBids[i].BidPrice && userBids[i].BidPrice >= providerBids[j].BidPrice)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool SecondConditionQuantity(int userQuantity)
+        {
+            int totalProviderQuantity = winProviderBids.Sum(provider => provider.BidAmount);
+            int totalUserQuantity = winUserBids.Sum(user => user.BidAmount);
+
+            int previousUserQuantity = totalUserQuantity - userQuantity;
+
+            if (previousUserQuantity <= totalProviderQuantity && totalProviderQuantity <= totalUserQuantity)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private bool FirstConditionBidPrice(int i, int j)
@@ -146,11 +184,6 @@ namespace Cloud_Computing_Double_Auction
             {
                 return false;
             }
-        }
-
-        public void PricingDetermination()
-        {
-
         }
     }
 }
