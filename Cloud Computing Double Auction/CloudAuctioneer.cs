@@ -69,6 +69,13 @@ namespace Cloud_Computing_Double_Auction
         public void HandleAllocation()
         {
             WinnerDetermination();
+
+            winUserBids.RemoveAt(winUserBids.Count - 1);
+            winProviderBids.RemoveAt(winProviderBids.Count - 1);
+
+            Console.WriteLine($"[{Name}]: Removed Least Profitable:- \n\tNo. of winning users = {winUserBids.Count} \n\tNo. of winning providers = {winProviderBids.Count}");
+
+            Stop();
         }
 
         public void WinnerDetermination()
@@ -104,11 +111,13 @@ namespace Cloud_Computing_Double_Auction
 
                             if (FirstConditionBidPrice(i, j) && FirstConditionQuantity(providerQuantity))
                             {
-                                Console.WriteLine($"First Condition:- \n\tNo. of winning users = {i + 1} \n\tNo. of winning providers = {j + 1}");
+                                Console.WriteLine($"[{Name}]: First Condition:- \n\tNo. of winning users = {i + 1} \n\tNo. of winning providers = {j + 1}");
+                                return;
                             }
                             else if (SecondConditionBidPrice(i, j) && SecondConditionQuantity(userQuantity))
                             {
-                                Console.WriteLine($"Second Condition:- \n\tNo. of winning users = {i + 1} \n\tNo. of winning providers = {j + 1}");
+                                Console.WriteLine($"[{Name}]: Second Condition:- \n\tNo. of winning users = {i + 1} \n\tNo. of winning providers = {j + 1}");
+                                return;
                             }
                         }
                         winProviderBids.Clear();
