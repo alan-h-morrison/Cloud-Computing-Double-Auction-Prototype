@@ -95,20 +95,21 @@ namespace Cloud_Computing_Double_Auction
                         winUserBids.Add(userBids[i]);
                         for (int j = 0; j < numProviders - 1; j++)
                         {
-                            winProviderBids.Add(providerBids[i]);
+                            winProviderBids.Add(providerBids[j]);
+
+                            int providerQuantity = providerBids[j].BidAmount;
 
                             
 
-                            if(FirstConditionBidPrice(i,j))
+                            if(FirstConditionBidPrice(i,j) && FirstConditionQuantity(providerQuantity))
                             {
                                 Console.WriteLine($"First Condition:- \n\tNo. of winning users = {i + 1} \n\tNo. of winning providers = {j + 1}");
+                                Stop();
                             }
                         }
                         winProviderBids.Clear();
                     }
                 }
-
-                Stop();
             }
             catch (Exception ex)
             {
@@ -129,19 +130,23 @@ namespace Cloud_Computing_Double_Auction
             }
         }
 
-        /*
-        private bool FirstConditionQuantity(int i, int j)
+        
+        private bool FirstConditionQuantity(int providerQuantity)
         {
-            if()
-            {
+            int totalProviderQuantity = winProviderBids.Sum(provider => provider.BidAmount);
+            int totalUserQuantity = winUserBids.Sum(user => user.BidAmount);
 
+            int previousProviderQuantity = totalProviderQuantity - providerQuantity;
+
+            if (previousProviderQuantity <= totalUserQuantity && totalUserQuantity <= totalProviderQuantity)
+            {
+                return true;
             }
             else
             {
-
+                return false;
             }
         }
-        */
 
         public void PricingDetermination()
         {
