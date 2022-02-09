@@ -9,13 +9,13 @@ namespace Cloud_Computing_Double_Auction
     class Bid
     {
         public string Bidder { get; set; }
-        public int BidAmount { get; set; }
+        public int BidQuantity { get; set; }
         public int BidPrice { get; set; }
 
-        public Bid(string bidder, int amount, int price)
+        public Bid(string bidder, int quantity, int price)
         {
             Bidder = bidder;
-            BidAmount = amount;
+            BidQuantity = quantity;
             BidPrice = price;
         }
     }

@@ -27,7 +27,7 @@ namespace Cloud_Computing_Double_Auction
             {
                 case "user":
                     string userID = message.Sender;
-                    int demand = rand.Next(5, 5);
+                    int demand = rand.Next(1, 15);
                     int userBid = rand.Next(10, 50);
 
                     string userContent = $"inform {demand} {userBid}";
@@ -38,7 +38,7 @@ namespace Cloud_Computing_Double_Auction
 
                 case "provider":
                     string providerID = message.Sender;
-                    int supply = rand.Next(5, 5);
+                    int supply = rand.Next(1, 15);
                     int providerBid = rand.Next(10, 50);
 
                     string providerContent = $"inform {supply} {providerBid}";

@@ -42,6 +42,9 @@ namespace Cloud_Computing_Double_Auction
                         HandleInform(parameters);
                         break;
 
+                    case "send":   
+                        break;
+
                     default:
                         break;
                 }

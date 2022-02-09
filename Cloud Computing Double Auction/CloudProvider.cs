@@ -41,6 +41,9 @@ namespace Cloud_Computing_Double_Auction
                     HandleInform(parameters);
                     break;
 
+                case "receive":
+                    break;
+
                 default:
                     break;
             }
@@ -55,7 +58,6 @@ namespace Cloud_Computing_Double_Auction
 
             Send("auctioneer", $"bid provider {supply} {bidPrice}");
             Stop();
-
         }
     }
 }
