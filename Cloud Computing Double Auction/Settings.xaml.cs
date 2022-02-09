@@ -24,6 +24,13 @@ namespace Cloud_Computing_Double_Auction
             InitializeComponent();
         }
 
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainMenu = new MainWindow();
+            mainMenu.Show();
+            this.Close();
+        }
+
         public static int numProviders = 10;
         public static int numUsers = 10;
 
