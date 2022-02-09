@@ -22,11 +22,23 @@ namespace Cloud_Computing_Double_Auction
         {
             position = userPosition;
             stringPosition = position.ToString();
+
+            demand = 0;
+            bidPrice = 0;
+        }
+
+        public CloudUser(UserPosition userPosition, int demandQuantity, int pricePerUnit)
+        {
+            position = userPosition;
+            stringPosition = position.ToString();
+
+            demand = demandQuantity;
+            bidPrice = pricePerUnit;
         }
 
         public override void Setup()
         {
-            Send("environment", $"user {stringPosition}");
+            Send("environment", $"user {stringPosition} {demand} {bidPrice}");
         }
 
         public override void Act(Message message)

@@ -9,7 +9,7 @@ namespace Cloud_Computing_Double_Auction
 {
     public class CloudEnvironment : Agent
     {
-        private Random rand = new Random();
+        public Random rand = new Random();
         int turnsToWait;
 
         public CloudEnvironment()
@@ -26,14 +26,7 @@ namespace Cloud_Computing_Double_Auction
             switch (action)
             {
                 case "user":
-                    string userID = message.Sender;
-                    int demand = rand.Next(1, 15);
-                    int userBid = rand.Next(10, 50);
-
-                    string userContent = $"inform {demand} {userBid}";
-
-                    Send(userID, userContent);
-
+                    HandleUser(message.Sender, parameters);
                     break;
 
                 case "provider":
@@ -60,5 +53,24 @@ namespace Cloud_Computing_Double_Auction
             }
         }
 
-    }
+        private void HandleUser(string user, string info)
+        {
+            string[] values = info.Split(' ');
+
+            string userID = user;
+
+            int demand = Convert.ToInt32(values[1]);
+            int userPrice = Convert.ToInt32(values[2]);
+
+            if(demand == 0 && userPrice == 0)
+            {
+                demand = rand.Next(1, 15);
+                userPrice = rand.Next(10, 50);
+            }
+
+            string userContent = $"inform {demand} {userPrice}";
+
+            Send(userID, userContent);
+        }
+    } 
 }
