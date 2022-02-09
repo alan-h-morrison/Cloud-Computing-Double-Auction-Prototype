@@ -139,6 +139,8 @@ namespace Cloud_Computing_Double_Auction
             double originalQuantity = 0;
             double newQuantity = 0;
 
+            int indivDiff = 0;
+
             if (totalUserQuantity > totalProviderQuantity)
             {
                 Console.WriteLine($"\n[{Name}]: Overdemand Has Occured:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
@@ -146,14 +148,26 @@ namespace Cloud_Computing_Double_Auction
                 
                 foreach (var user in winUserBids)
                 {
-                        originalQuantity = user.BidQuantity;
+                    if(totalDiff == 0)
+                    {
+                        break;
+                    }
 
-                        newQuantity = Convert.ToDouble(user.BidQuantity) - ((totalUserQuantity - totalProviderQuantity) * (Convert.ToDouble(user.BidQuantity) / totalUserQuantity));
-                        newQuantity = Math.Round(newQuantity, 0);
+                    originalQuantity = user.BidQuantity;
 
-                        user.BidQuantity = Convert.ToInt32(newQuantity);
+                    newQuantity = Convert.ToDouble(user.BidQuantity) - ((totalUserQuantity - totalProviderQuantity) * (Convert.ToDouble(user.BidQuantity) / totalUserQuantity));
+                    newQuantity = Math.Round(newQuantity, 0);
 
-                        totalDiff = totalDiff - (originalQuantity - newQuantity);
+                    indivDiff = Convert.ToInt32(originalQuantity - newQuantity);
+
+                    if (indivDiff > totalDiff)
+                    {
+                        newQuantity = newQuantity + (indivDiff - totalDiff);
+                    }
+
+                    user.BidQuantity = Convert.ToInt32(newQuantity);
+
+                    totalDiff = totalDiff - (originalQuantity - newQuantity);
                 }
                 Console.WriteLine($"\n[{Name}]: Reallocated Quantities:- \n\t\tAllocation Difference = {totalDiff}");
                 return;
@@ -163,17 +177,27 @@ namespace Cloud_Computing_Double_Auction
                 Console.WriteLine($"\n[{Name}]: Oversupply Has Occured:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
                 totalDiff = totalProviderQuantity - totalUserQuantity;
 
-
                 foreach (var provider in winProviderBids)
                 {
-                        originalQuantity = provider.BidQuantity;
+                    if (totalDiff == 0)
+                    {
+                        break;
+                    }
+                    originalQuantity = provider.BidQuantity;
 
-                        newQuantity = Convert.ToDouble(provider.BidQuantity) - ((totalProviderQuantity - totalUserQuantity) * (Convert.ToDouble(provider.BidQuantity) / totalProviderQuantity));
-                        newQuantity = Math.Round(newQuantity, 0);
+                    newQuantity = Convert.ToDouble(provider.BidQuantity) - ((totalProviderQuantity - totalUserQuantity) * (Convert.ToDouble(provider.BidQuantity) / totalProviderQuantity));
+                    newQuantity = Math.Round(newQuantity, 0);
 
-                        provider.BidQuantity = Convert.ToInt32(newQuantity);
+                    indivDiff = Convert.ToInt32(originalQuantity - newQuantity);
 
-                        totalDiff = totalDiff - (originalQuantity - newQuantity);
+                    if (indivDiff > totalDiff)
+                    {
+                        newQuantity = newQuantity + (indivDiff - totalDiff);
+                    }
+
+                    provider.BidQuantity = Convert.ToInt32(newQuantity);
+
+                    totalDiff = totalDiff - (indivDiff);
                 }
                 Console.WriteLine($"\n[{Name}]: Reallocated Quantities:- \n\t\tAllocation Difference = {totalDiff}");
                 return;
@@ -244,54 +268,3 @@ namespace Cloud_Computing_Double_Auction
         }
     }
 }
-
-/*
- *                 for (int i = winUserBids.Count - 1; i > 0; i--)
-                {
-                    for(int j = winProviderBids.Count - 1; j > 0; j--)
-                    {
-                        if (winProviderBids[j].BidQuantity == 0)
-                        {
-                            winProviderBids.Remove(winProviderBids[j]);
-                            break;
-                        }
-
-                        if (winUserBids[i].BidQuantity == 0)
-                        {
-                            winUserBids.Remove(winUserBids[i]);
-                            break;
-                        }
-
-                        int userQuantity = winUserBids[i].BidQuantity;
-                        int providerQuantity = winProviderBids[j].BidQuantity;
-                        int tradedQuantity = 0;
-
-                        if (userQuantity > providerQuantity)
-                        {
-                            tradedQuantity = userQuantity - providerQuantity;
-
-                            Send(winProviderBids[j].Bidder, $"receive {winUserBids[i].Bidder} {tradedQuantity}");
-                            Send(winUserBids[i].Bidder, $"send {winProviderBids[j].Bidder} {tradedQuantity}");
-                        }
-                        else if (userQuantity < providerQuantity)
-                        {
-                            tradedQuantity = providerQuantity - userQuantity;
-
-                            Send(winProviderBids[j].Bidder, $"receive {winUserBids[i].Bidder} {tradedQuantity}");
-                            Send(winUserBids[i].Bidder, $"send {winProviderBids[j].Bidder} {tradedQuantity}");
-                        }
-                        else if (userQuantity == providerQuantity)
-                        {
-                            tradedQuantity = userQuantity;
-
-                            Send(winProviderBids[j].Bidder, $"receive {winUserBids[i].Bidder} {winUserBids[i].BidQuantity}");
-                            Send(winUserBids[i].Bidder, $"send {winProviderBids[j].Bidder} {winProviderBids[j].BidQuantity}");
-
-                        }
-
-                        winProviderBids[j].BidQuantity = winProviderBids[j].BidQuantity - tradedQuantity;
-                        winUserBids[i].BidQuantity = winUserBids[i].BidQuantity - tradedQuantity;
-                    }
-                }
-
-    */
