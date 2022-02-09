@@ -70,12 +70,12 @@ namespace Cloud_Computing_Double_Auction
         {
             WinnerDetermination();
 
-            winUserBids.RemoveAt(winUserBids.Count - 1);
-            winProviderBids.RemoveAt(winProviderBids.Count - 1);
+            //winUserBids.RemoveAt(winUserBids.Count - 1);
+            //winProviderBids.RemoveAt(winProviderBids.Count - 1);
 
             Console.WriteLine($"\n[{Name}]: Removed Least Profitable User/Provider:- \n\t\tNo. of winning users = {winUserBids.Count} \n\t\tNo. of winning providers = {winProviderBids.Count}");
 
-            AdjustQuantity();
+            AdjustQuantities();
 
             Stop();
         }
@@ -131,7 +131,7 @@ namespace Cloud_Computing_Double_Auction
 
         }
 
-        private void AdjustQuantity()
+        private void AdjustQuantities()
         {
             double totalProviderQuantity = Convert.ToDouble(winProviderBids.Sum(provider => provider.BidQuantity));
             double totalUserQuantity = Convert.ToDouble(winUserBids.Sum(user => user.BidQuantity));
@@ -139,7 +139,7 @@ namespace Cloud_Computing_Double_Auction
             double originalQuantity = 0;
             double newQuantity = 0;
 
-            int indivDiff = 0;
+            double indivDiff = 0;
 
             if (totalUserQuantity > totalProviderQuantity)
             {
@@ -158,7 +158,7 @@ namespace Cloud_Computing_Double_Auction
                     newQuantity = Convert.ToDouble(user.BidQuantity) - ((totalUserQuantity - totalProviderQuantity) * (Convert.ToDouble(user.BidQuantity) / totalUserQuantity));
                     newQuantity = Math.Round(newQuantity, 0);
 
-                    indivDiff = Convert.ToInt32(originalQuantity - newQuantity);
+                    indivDiff = originalQuantity - newQuantity;
 
                     if (indivDiff > totalDiff)
                     {
@@ -188,11 +188,12 @@ namespace Cloud_Computing_Double_Auction
                     newQuantity = Convert.ToDouble(provider.BidQuantity) - ((totalProviderQuantity - totalUserQuantity) * (Convert.ToDouble(provider.BidQuantity) / totalProviderQuantity));
                     newQuantity = Math.Round(newQuantity, 0);
 
-                    indivDiff = Convert.ToInt32(originalQuantity - newQuantity);
+                    indivDiff = originalQuantity - newQuantity;
 
                     if (indivDiff > totalDiff)
                     {
                         newQuantity = newQuantity + (indivDiff - totalDiff);
+                        indivDiff = totalDiff;
                     }
 
                     provider.BidQuantity = Convert.ToInt32(newQuantity);
@@ -200,6 +201,12 @@ namespace Cloud_Computing_Double_Auction
                     totalDiff = totalDiff - (indivDiff);
                 }
                 Console.WriteLine($"\n[{Name}]: Reallocated Quantities:- \n\t\tAllocation Difference = {totalDiff}");
+
+                if(totalDiff > 0)
+                {
+                    return;
+                }
+
                 return;
             }
             Console.WriteLine($"\n[{Name}]: No Difference Between Demand and Supply:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
@@ -209,7 +216,14 @@ namespace Cloud_Computing_Double_Auction
 
         private bool FirstConditionBidPrice(int i, int j)
         {
-            if ((userBids[i].BidPrice >= providerBids[j].BidPrice) && (providerBids[j].BidPrice >= userBids[i + 1].BidPrice))
+            int nextUserPrice = 0;
+
+            if (!(i + 1 > userBids.Count - 1))
+            {
+                nextUserPrice = providerBids[i + 1].BidPrice;
+            }
+
+            if ((userBids[i].BidPrice >= providerBids[j].BidPrice) && (providerBids[j].BidPrice >= nextUserPrice))
             {
                 return true;
             }
@@ -240,7 +254,14 @@ namespace Cloud_Computing_Double_Auction
 
         private bool SecondConditionBidPrice(int i, int j)
         {
-            if (providerBids[j + 1].BidPrice >= userBids[i].BidPrice && userBids[i].BidPrice >= providerBids[j].BidPrice)
+            int nextProviderPrice = 0;
+
+            if (!(j + 1 > providerBids.Count - 1))
+            {
+                nextProviderPrice = providerBids[j + 1].BidPrice;
+            }
+
+            if (nextProviderPrice >= userBids[i].BidPrice && userBids[i].BidPrice >= providerBids[j].BidPrice)
             {
                 return true;
             }

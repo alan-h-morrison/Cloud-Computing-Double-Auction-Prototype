@@ -24,7 +24,7 @@ namespace Cloud_Computing_Double_Auction
             InitializeComponent();
         }
 
-        public static int numProviders = 10;
+        public static int numProviders = 100;
         public static int numUsers = 10;
 
 
