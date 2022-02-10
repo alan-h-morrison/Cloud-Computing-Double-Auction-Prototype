@@ -23,11 +23,24 @@ namespace Cloud_Computing_Double_Auction
         {
             position = providerPosition;
             stringPosition = position.ToString();
+
+            supply = 0;
+            bidPrice = 0;
+        }
+
+
+        public CloudProvider(ProviderPosition providerPosition, int supplyQuantity, int pricePerUnit)
+        {
+            position = providerPosition;
+            stringPosition = position.ToString();
+
+            supply = supplyQuantity;
+            bidPrice = pricePerUnit;
         }
 
         public override void Setup()
         {
-            Send("environment", $"provider {stringPosition}");
+            Send("environment", $"provider {stringPosition} {supply} {bidPrice}");
         }
 
         public override void Act(Message message)

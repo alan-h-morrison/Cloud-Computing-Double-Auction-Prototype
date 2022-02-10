@@ -70,8 +70,8 @@ namespace Cloud_Computing_Double_Auction
         {
             WinnerDetermination();
 
-            //winUserBids.RemoveAt(winUserBids.Count - 1);
-            //winProviderBids.RemoveAt(winProviderBids.Count - 1);
+            winUserBids.RemoveAt(winUserBids.Count - 1);
+            winProviderBids.RemoveAt(winProviderBids.Count - 1);
 
             Console.WriteLine($"\n[{Name}]: Removed Least Profitable User/Provider:- \n\t\tNo. of winning users = {winUserBids.Count} \n\t\tNo. of winning providers = {winProviderBids.Count}");
 
@@ -218,9 +218,9 @@ namespace Cloud_Computing_Double_Auction
         {
             int nextUserPrice = 0;
 
-            if (!(i + 1 > userBids.Count - 1))
+            if (!(i + 1 == userBids.Count - 1))
             {
-                nextUserPrice = providerBids[i + 1].BidPrice;
+                nextUserPrice = userBids[i + 1].BidPrice;
             }
 
             if ((userBids[i].BidPrice >= providerBids[j].BidPrice) && (providerBids[j].BidPrice >= nextUserPrice))

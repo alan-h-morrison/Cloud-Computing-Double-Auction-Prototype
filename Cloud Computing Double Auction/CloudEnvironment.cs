@@ -30,14 +30,7 @@ namespace Cloud_Computing_Double_Auction
                     break;
 
                 case "provider":
-                    string providerID = message.Sender;
-                    int supply = rand.Next(5, 15);
-                    int providerBid = rand.Next(10, 50);
-
-                    string providerContent = $"inform {supply} {providerBid}";
-
-                    Send(providerID, providerContent);
-
+                    HandleProvider(message.Sender, parameters);
                     break;
 
                 default:
@@ -72,5 +65,26 @@ namespace Cloud_Computing_Double_Auction
 
             Send(userID, userContent);
         }
+
+        private void HandleProvider(string provider, string info)
+        {
+            string[] values = info.Split(' ');
+
+            string providerID = provider;
+
+            int supply = Convert.ToInt32(values[1]);
+            int userPrice = Convert.ToInt32(values[2]);
+
+            if (supply == 0 && userPrice == 0)
+            {
+                supply = rand.Next(5, 15);
+                userPrice = rand.Next(10, 50);
+            }
+
+            string providerContent = $"inform {supply} {userPrice}";
+
+            Send(providerID, providerContent);
+        }
+
     } 
 }
