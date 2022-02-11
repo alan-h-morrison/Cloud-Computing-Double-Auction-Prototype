@@ -154,6 +154,7 @@ namespace Cloud_Computing_Double_Auction
             int totalUserQuantity = winUserBids.Sum(user => user.BidQuantity);
             int totalDiff = Math.Abs(totalUserQuantity - totalProviderQuantity);
             int counter = 0;
+            int infiniteCounter = 0;
 
             Random rand = new Random();
             List<int> listNumbers = new List<int>();
@@ -169,6 +170,8 @@ namespace Cloud_Computing_Double_Auction
 
                 while (counter != totalDiff)
                 {
+                    infiniteCounter++;
+
                     int randomUser = rand.Next(0, possibleUsers.Count);
                     listNumbers.Add(possibleUsers[randomUser]);
                     possibleUsers.RemoveAt(randomUser);
@@ -177,6 +180,12 @@ namespace Cloud_Computing_Double_Auction
                     {
                         winUserBids[randomUser].BidQuantity = winUserBids[randomUser].BidQuantity - 1;
                         counter++;
+                        infiniteCounter = 0;
+                    }
+
+                    if(infiniteCounter == winUserBids.Count)
+                    {
+                        Console.WriteLine("widepeepohappy");
                     }
 
                     if (listNumbers.Count == winUserBids.Count)
@@ -197,6 +206,8 @@ namespace Cloud_Computing_Double_Auction
 
                 while (counter < totalDiff)
                 {
+                    infiniteCounter++;
+
                     int randomProvider = rand.Next(0, possibleProviders.Count);
                     listNumbers.Add(possibleProviders[randomProvider]);
                     possibleProviders.RemoveAt(randomProvider);
@@ -205,6 +216,11 @@ namespace Cloud_Computing_Double_Auction
                     {
                         winProviderBids[randomProvider].BidQuantity = winProviderBids[randomProvider].BidQuantity - 1;
                         counter++;
+                    }
+
+                    if (infiniteCounter == winUserBids.Count)
+                    {
+                        Console.WriteLine("widepeepohappy");
                     }
 
                     if (listNumbers.Count == winProviderBids.Count)
