@@ -57,7 +57,7 @@ namespace Cloud_Computing_Double_Auction
 
             if(demand == 0 && userPrice == 0)
             {
-                demand = rand.Next(5, 15);
+                demand = rand.Next(1, 2);
                 userPrice = rand.Next(10, 50);
             }
 
@@ -77,7 +77,7 @@ namespace Cloud_Computing_Double_Auction
 
             if (supply == 0 && userPrice == 0)
             {
-                supply = rand.Next(5, 15);
+                supply = rand.Next(1, 2);
                 userPrice = rand.Next(10, 50);
             }
 

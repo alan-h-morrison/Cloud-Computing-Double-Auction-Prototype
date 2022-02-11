@@ -68,16 +68,32 @@ namespace Cloud_Computing_Double_Auction
 
         public void HandleAllocation()
         {
-            WinnerDetermination();
+            try
+            {
+                WinnerDetermination();
 
-            winUserBids.RemoveAt(winUserBids.Count - 1);
-            winProviderBids.RemoveAt(winProviderBids.Count - 1);
+                winUserBids.RemoveAt(winUserBids.Count - 1);
+                winProviderBids.RemoveAt(winProviderBids.Count - 1);
 
-            Console.WriteLine($"\n[{Name}]: Removed Least Profitable User/Provider:- \n\t\tNo. of winning users = {winUserBids.Count} \n\t\tNo. of winning providers = {winProviderBids.Count}");
+                Console.WriteLine($"\n[{Name}]: Removed Least Profitable User/Provider:- \n\t\tNo. of winning users = {winUserBids.Count} \n\t\tNo. of winning providers = {winProviderBids.Count}");
 
-            AdjustQuantities();
+                AltAdjustQuantities();
+                //AdjustQuantities();
 
-            Stop();
+                int totalProviderQuantity = winProviderBids.Sum(provider => provider.BidQuantity);
+                int totalUserQuantity = winUserBids.Sum(user => user.BidQuantity);
+                int totalDiff = 0;
+
+                totalDiff = Math.Abs(totalUserQuantity - totalProviderQuantity);
+                Console.WriteLine($"\n[{Name}]: Allocation Difference = {totalDiff}");
+
+                Stop();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                Stop();
+            }          
         }
 
         public void WinnerDetermination()
@@ -85,128 +101,110 @@ namespace Cloud_Computing_Double_Auction
             winUserBids = new List<Bid>();
             winProviderBids = new List<Bid>();
 
-            try
+            // sort provider bid list by ascending value and the reversing the list to sort by descending value
+            providerBids.Sort((s1, s2) => s1.BidPrice.CompareTo(s2.BidPrice));
+
+            // sort buyer bidding list by descending value and the reversing the list to sort by descending value
+            userBids.Sort((s1, s2) => s1.BidPrice.CompareTo(s2.BidPrice));
+            userBids.Reverse();
+
+            numUsers = userBids.Count;
+            numProviders = providerBids.Count;
+
+            if (numUsers > 0 && numProviders > 0)
             {
-                // sort provider bid list by ascending value and the reversing the list to sort by descending value
-                providerBids.Sort((s1, s2) => s1.BidPrice.CompareTo(s2.BidPrice));
-
-                // sort buyer bidding list by descending value and the reversing the list to sort by descending value
-                userBids.Sort((s1, s2) => s1.BidPrice.CompareTo(s2.BidPrice));
-                userBids.Reverse();
-
-                numUsers = userBids.Count;
-                numProviders = providerBids.Count;
-
-                if (numUsers > 0 && numProviders > 0)
+                for (int i = 0; i < numUsers; i++)
                 {
-                    for (int i = 0; i < numUsers; i++)
+                    winUserBids.Add(userBids[i]);
+                    for (int j = 0; j < numProviders - 1; j++)
                     {
-                        winUserBids.Add(userBids[i]);
-                        for (int j = 0; j < numProviders - 1; j++)
+                        winProviderBids.Add(providerBids[j]);
+                    
+                        int userQuantity = userBids[i].BidQuantity;
+                        int providerQuantity = providerBids[j].BidQuantity;
+
+                        if (FirstConditionBidPrice(i, j) && FirstConditionQuantity(providerQuantity))
                         {
-                            winProviderBids.Add(providerBids[j]);
-
-                            int userQuantity = userBids[i].BidQuantity;
-                            int providerQuantity = providerBids[j].BidQuantity;
-
-                            if (FirstConditionBidPrice(i, j) && FirstConditionQuantity(providerQuantity))
-                            {
-                                Console.WriteLine($"\n[{Name}]: First Condition:- \n\t\tNo. of winning users = {i + 1} \n\t\tNo. of winning providers = {j + 1}");
-                                return;
-                            }
-                            else if (SecondConditionBidPrice(i, j) && SecondConditionQuantity(userQuantity))
-                            {
-                                Console.WriteLine($"\n[{Name}]: Second Condition:- \n\t\tNo. of winning users = {i + 1} \n\t\tNo. of winning providers = {j + 1}");
-                                return;
-                            }
+                            Console.WriteLine($"\n[{Name}]: First Condition:- \n\t\tNo. of winning users = {i + 1} \n\t\tNo. of winning providers = {j + 1}");
+                            return;
                         }
-                        winProviderBids.Clear();
+                        else if (SecondConditionBidPrice(i, j) && SecondConditionQuantity(userQuantity))
+                        {
+                            Console.WriteLine($"\n[{Name}]: Second Condition:- \n\t\tNo. of winning users = {i + 1} \n\t\tNo. of winning providers = {j + 1}");
+                            return;
+                        }
                     }
+                    winProviderBids.Clear();
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-
         }
+        
 
-        private void AdjustQuantities()
+        private void AltAdjustQuantities()
         {
-            double totalProviderQuantity = Convert.ToDouble(winProviderBids.Sum(provider => provider.BidQuantity));
-            double totalUserQuantity = Convert.ToDouble(winUserBids.Sum(user => user.BidQuantity));
-            double totalDiff = 0;
-            double originalQuantity = 0;
-            double newQuantity = 0;
+            int totalProviderQuantity = winProviderBids.Sum(provider => provider.BidQuantity);
+            int totalUserQuantity = winUserBids.Sum(user => user.BidQuantity);
+            int totalDiff = Math.Abs(totalUserQuantity - totalProviderQuantity);
+            int counter = 0;
 
-            double indivDiff = 0;
+            Random rand = new Random();
+            List<int> listNumbers = new List<int>();
+
+            Console.WriteLine($"\n[{Name}]: Allocation Difference = {totalDiff}");
 
             if (totalUserQuantity > totalProviderQuantity)
             {
                 Console.WriteLine($"\n[{Name}]: Overdemand Has Occured:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
                 totalDiff = totalUserQuantity - totalProviderQuantity;
-                
-                foreach (var user in winUserBids)
+
+                List<int> possibleUsers = Enumerable.Range(0, winUserBids.Count).ToList();
+
+                while (counter != totalDiff)
                 {
-                    if(totalDiff == 0)
+                    int randomUser = rand.Next(0, possibleUsers.Count);
+                    listNumbers.Add(possibleUsers[randomUser]);
+                    possibleUsers.RemoveAt(randomUser);
+
+                    if (winUserBids[randomUser].BidQuantity > 1)
                     {
-                        break;
+                        winUserBids[randomUser].BidQuantity = winUserBids[randomUser].BidQuantity - 1;
+                        counter++;
                     }
 
-                    originalQuantity = user.BidQuantity;
-
-                    newQuantity = Convert.ToDouble(user.BidQuantity) - ((totalUserQuantity - totalProviderQuantity) * (Convert.ToDouble(user.BidQuantity) / totalUserQuantity));
-                    newQuantity = Math.Round(newQuantity, 0);
-
-                    indivDiff = originalQuantity - newQuantity;
-
-                    if (indivDiff > totalDiff)
+                    if (listNumbers.Count == winUserBids.Count)
                     {
-                        newQuantity = newQuantity + (indivDiff - totalDiff);
+                        possibleUsers = Enumerable.Range(0, winUserBids.Count).ToList();
+                        listNumbers.Clear();
                     }
-
-                    user.BidQuantity = Convert.ToInt32(newQuantity);
-
-                    totalDiff = totalDiff - (originalQuantity - newQuantity);
                 }
-                Console.WriteLine($"\n[{Name}]: Reallocated Quantities:- \n\t\tAllocation Difference = {totalDiff}");
                 return;
             }
             else if (totalUserQuantity < totalProviderQuantity)
             {
                 Console.WriteLine($"\n[{Name}]: Oversupply Has Occured:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
+
                 totalDiff = totalProviderQuantity - totalUserQuantity;
 
-                foreach (var provider in winProviderBids)
+                List<int> possibleProviders = Enumerable.Range(0, winProviderBids.Count).ToList();
+
+                while (counter < totalDiff)
                 {
-                    if (totalDiff == 0)
+                    int randomProvider = rand.Next(0, possibleProviders.Count);
+                    listNumbers.Add(possibleProviders[randomProvider]);
+                    possibleProviders.RemoveAt(randomProvider);
+
+                    if (winProviderBids[randomProvider].BidQuantity > 1)
                     {
-                        break;
-                    }
-                    originalQuantity = provider.BidQuantity;
-
-                    newQuantity = Convert.ToDouble(provider.BidQuantity) - ((totalProviderQuantity - totalUserQuantity) * (Convert.ToDouble(provider.BidQuantity) / totalProviderQuantity));
-                    newQuantity = Math.Round(newQuantity, 0);
-
-                    indivDiff = originalQuantity - newQuantity;
-
-                    if (indivDiff > totalDiff)
-                    {
-                        newQuantity = newQuantity + (indivDiff - totalDiff);
-                        indivDiff = totalDiff;
+                        winProviderBids[randomProvider].BidQuantity = winProviderBids[randomProvider].BidQuantity - 1;
+                        counter++;
                     }
 
-                    provider.BidQuantity = Convert.ToInt32(newQuantity);
-
-                    totalDiff = totalDiff - (indivDiff);
+                    if (listNumbers.Count == winProviderBids.Count)
+                    {
+                        possibleProviders = Enumerable.Range(0, winProviderBids.Count).ToList();
+                        listNumbers.Clear();
+                    }
                 }
-                Console.WriteLine($"\n[{Name}]: Reallocated Quantities:- \n\t\tAllocation Difference = {totalDiff}");
-
-                if(totalDiff > 0)
-                {
-                    return;
-                }
-
                 return;
             }
             Console.WriteLine($"\n[{Name}]: No Difference Between Demand and Supply:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
@@ -289,3 +287,99 @@ namespace Cloud_Computing_Double_Auction
         }
     }
 }
+
+/*
+        private void AdjustQuantities()
+        {
+            double totalProviderQuantity = Convert.ToDouble(winProviderBids.Sum(provider => provider.BidQuantity));
+            double totalUserQuantity = Convert.ToDouble(winUserBids.Sum(user => user.BidQuantity));
+            double totalDiff = 0;
+            double originalQuantity = 0;
+            double newQuantity = 0;
+
+            double indivDiff = 0;
+
+            totalDiff = Math.Abs(totalUserQuantity - totalProviderQuantity);
+            Console.WriteLine($"\n[{Name}]: No Reallocation:- \n\t\tAllocation Difference = {totalDiff}");
+
+            if (totalUserQuantity >= totalProviderQuantity)
+            {
+                Console.WriteLine($"\n[{Name}]: Overdemand Has Occured:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
+                totalDiff = totalUserQuantity - totalProviderQuantity;
+                
+                foreach (var user in winUserBids)
+                {
+                    Console.WriteLine($"[{user.Bidder}]: original quantity = {user.BidQuantity}");
+                    if(totalDiff == 0)
+                    {
+                        break;
+                    }
+
+                    originalQuantity = user.BidQuantity;
+
+                    newQuantity = Convert.ToDouble(user.BidQuantity) - ((totalUserQuantity - totalProviderQuantity) * (Convert.ToDouble(user.BidQuantity) / totalUserQuantity));
+                    newQuantity = Math.Round(newQuantity, 0);
+
+                    indivDiff = originalQuantity - newQuantity;
+
+                    if (indivDiff > totalDiff)
+                    {
+                        newQuantity = newQuantity + (indivDiff - totalDiff);
+                    }
+
+                    user.BidQuantity = Convert.ToInt32(newQuantity);
+
+                    totalDiff = totalDiff - (originalQuantity - newQuantity);
+
+                    Console.WriteLine($"[{user.Bidder}]: adjusted quantity = {user.BidQuantity}");
+                }
+                Console.WriteLine($"\n[{Name}]: Reallocated Quantities:- \n\t\tAllocation Difference = {totalDiff}");
+                return;
+            }
+            else if (totalUserQuantity <= totalProviderQuantity)
+            {
+                Console.WriteLine($"\n[{Name}]: Oversupply Has Occured:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
+                totalDiff = totalProviderQuantity - totalUserQuantity;
+
+                foreach (var provider in winProviderBids)
+                {
+                    Console.WriteLine($"[{provider.Bidder}]: original quantity = {provider.BidQuantity}");
+
+                    if (totalDiff == 0)
+                    {
+                        break;
+                    }
+                    originalQuantity = provider.BidQuantity;
+
+                    newQuantity = originalQuantity - ((totalProviderQuantity - totalUserQuantity) * (originalQuantity / totalProviderQuantity));
+                    newQuantity = Math.Round(newQuantity, 0);
+
+                    indivDiff = originalQuantity - newQuantity;
+
+                    if (indivDiff > totalDiff)
+                    {
+                        newQuantity = newQuantity + (indivDiff - totalDiff);
+                        indivDiff = totalDiff;
+                    }
+
+                    provider.BidQuantity = Convert.ToInt32(newQuantity);
+
+                    totalDiff = totalDiff - (indivDiff);
+
+                    Console.WriteLine($"[{provider.Bidder}]: adjusted quantity = {provider.BidQuantity}");
+
+                }
+                Console.WriteLine($"\n[{Name}]: Reallocated Quantities:- \n\t\tAllocation Difference = {totalDiff}");
+
+                if(totalDiff > 0)
+                {
+                    return;
+                }
+
+                return;
+            }
+            Console.WriteLine($"\n[{Name}]: No Difference Between Demand and Supply:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
+            Console.WriteLine($"\n[{Name}]: No Reallocation:- \n\t\tAllocation Difference = {totalDiff}");
+        }
+
+*/
