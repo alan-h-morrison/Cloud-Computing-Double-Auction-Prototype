@@ -72,8 +72,16 @@ namespace Cloud_Computing_Double_Auction
             {
                 WinnerDetermination();
 
-                winUserBids.RemoveAt(winUserBids.Count - 1);
-                winProviderBids.RemoveAt(winProviderBids.Count - 1);
+                if(winUserBids.Count == 0 || winProviderBids.Count == 0)
+                {
+                    Console.WriteLine("MISTAKE");
+                }
+
+                if(!(winUserBids.Count == 1 || winProviderBids.Count == 1))
+                {
+                    winUserBids.RemoveAt(winUserBids.Count - 1);
+                    winProviderBids.RemoveAt(winProviderBids.Count - 1);
+                }
 
                 Console.WriteLine($"\n[{Name}]: Removed Least Profitable User/Provider:- \n\t\tNo. of winning users = {winUserBids.Count} \n\t\tNo. of winning providers = {winProviderBids.Count}");
 
@@ -208,7 +216,7 @@ namespace Cloud_Computing_Double_Auction
                 return;
             }
             Console.WriteLine($"\n[{Name}]: No Difference Between Demand and Supply:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
-            Console.WriteLine($"\n[{Name}]: No Reallocation:- \n\t\tAllocation Difference = {totalDiff}");
+            Console.WriteLine($"\n[{Name}]: No Reallocation");
         }
 
 

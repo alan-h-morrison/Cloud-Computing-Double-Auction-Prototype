@@ -57,8 +57,8 @@ namespace Cloud_Computing_Double_Auction
 
             if(demand == 0 && userPrice == 0)
             {
-                demand = rand.Next(1, 2);
-                userPrice = rand.Next(10, 50);
+                demand = rand.Next(Settings.minDemand, Settings.maxDemand);
+                userPrice = rand.Next(Settings.minUserPrice, Settings.maxUserPrice);
             }
 
             string userContent = $"inform {demand} {userPrice}";
@@ -77,8 +77,8 @@ namespace Cloud_Computing_Double_Auction
 
             if (supply == 0 && userPrice == 0)
             {
-                supply = rand.Next(1, 2);
-                userPrice = rand.Next(10, 50);
+                supply = rand.Next(Settings.minSupply, Settings.maxSupply);
+                userPrice = rand.Next(Settings.minProviderPrice, Settings.maxProviderPrice);
             }
 
             string providerContent = $"inform {supply} {userPrice}";
