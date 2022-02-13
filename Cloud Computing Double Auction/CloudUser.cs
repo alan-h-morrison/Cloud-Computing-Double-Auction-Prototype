@@ -75,6 +75,8 @@ namespace Cloud_Computing_Double_Auction
             bidPrice = Int32.Parse(values[1]);
 
             Send("auctioneer", $"bid user {demand} {bidPrice}");
+
+            Stop();
         }
     }
 }
