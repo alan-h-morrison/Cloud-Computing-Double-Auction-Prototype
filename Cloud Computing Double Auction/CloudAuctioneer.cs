@@ -93,7 +93,7 @@ namespace Cloud_Computing_Double_Auction
                 int totalDiff = 0;
 
                 totalDiff = Math.Abs(totalUserQuantity - totalProviderQuantity);
-                Console.WriteLine($"\n[{Name}]: Allocation Difference = {totalDiff}");
+                Console.WriteLine($"\n[{Name}]: Reallocation Difference = {totalDiff}\n");
 
                 // makes sure all trading has occured
                 while((winProviderBids.Sum(provider => provider.BidQuantity) > 0) && (winUserBids.Sum(user => user.BidQuantity)) > 0)
@@ -235,9 +235,10 @@ namespace Cloud_Computing_Double_Auction
                         infiniteCounter = 0;
                     }
 
-                    if(infiniteCounter == winUserBids.Count)
+                    if (infiniteCounter == winUserBids.Count)
                     {
-                        Console.WriteLine("oops");
+                        winUserBids.RemoveAt(winProviderBids.Count - 1);
+                        counter++;
                     }
 
                     if (listNumbers.Count == winUserBids.Count)
@@ -267,12 +268,14 @@ namespace Cloud_Computing_Double_Auction
                     if (winProviderBids[randomProvider].BidQuantity > 1)
                     {
                         winProviderBids[randomProvider].BidQuantity = winProviderBids[randomProvider].BidQuantity - 1;
+                        infiniteCounter = 0;
                         counter++;
                     }
 
                     if (infiniteCounter == winUserBids.Count)
                     {
-                        Console.WriteLine("oops");
+                        winProviderBids.RemoveAt(winProviderBids.Count - 1);
+                        counter++;
                     }
 
                     if (listNumbers.Count == winProviderBids.Count)
