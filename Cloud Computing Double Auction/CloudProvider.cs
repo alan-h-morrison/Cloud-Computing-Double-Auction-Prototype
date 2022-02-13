@@ -54,7 +54,7 @@ namespace Cloud_Computing_Double_Auction
                     HandleInform(parameters);
                     break;
 
-                case "receive":
+                case "allocate":
                     break;
 
                 default:
@@ -70,7 +70,6 @@ namespace Cloud_Computing_Double_Auction
             bidPrice = Int32.Parse(values[1]);
 
             Send("auctioneer", $"bid provider {supply} {bidPrice}");
-            Stop();
         }
     }
 }

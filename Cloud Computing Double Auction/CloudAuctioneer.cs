@@ -95,6 +95,12 @@ namespace Cloud_Computing_Double_Auction
                 totalDiff = Math.Abs(totalUserQuantity - totalProviderQuantity);
                 Console.WriteLine($"\n[{Name}]: Allocation Difference = {totalDiff}");
 
+                // makes sure all trading has occured
+                while((winProviderBids.Sum(provider => provider.BidQuantity) > 0) && (winUserBids.Sum(user => user.BidQuantity)) > 0)
+                {
+                    PriceDetermination();
+                }
+
                 Stop();
             }
             catch (Exception ex)
@@ -147,6 +153,52 @@ namespace Cloud_Computing_Double_Auction
             }
         }
         
+        private void PriceDetermination()
+        {
+            for(int i = winUserBids.Count - 1; i > -1 ; i--)
+            {
+                for (int j = winProviderBids.Count - 1; j > - 1; j--)
+                {
+                    int providerQuantity = winProviderBids[j].BidQuantity;
+                    int userQuantity = winUserBids[i].BidQuantity;
+
+                    if (userQuantity == 0)
+                    {
+                        winUserBids.RemoveAt(i);
+                        break;
+                    }
+
+                    if (providerQuantity == 0)
+                    {
+                        winProviderBids.RemoveAt(j);
+                        break;
+                    }
+
+                    if (userQuantity > providerQuantity)
+                    {
+                        winUserBids[i].BidQuantity = userQuantity - providerQuantity;
+                        winProviderBids[j].BidQuantity = 0;
+
+                        Send(winProviderBids[j].Bidder, $"allocate {providerQuantity} {winUserBids[i].Bidder}");
+                    }
+                    else if (providerQuantity > userQuantity)
+                    {
+                        winProviderBids[j].BidQuantity = providerQuantity - userQuantity;
+                        winUserBids[i].BidQuantity = 0;
+
+                        Send(winProviderBids[j].Bidder, $"allocate {userQuantity} {winUserBids[i].Bidder}");
+
+                    }
+                    else
+                    {
+                        winUserBids[i].BidQuantity = 0;
+                        winProviderBids[j].BidQuantity = 0;
+
+                        Send(winProviderBids[j].Bidder, $"allocate {userQuantity} {winUserBids[i].Bidder}");
+                    }
+                }
+            }
+        }
 
         private void AltAdjustQuantities()
         {
@@ -185,7 +237,7 @@ namespace Cloud_Computing_Double_Auction
 
                     if(infiniteCounter == winUserBids.Count)
                     {
-                        Console.WriteLine("widepeepohappy");
+                        Console.WriteLine("oops");
                     }
 
                     if (listNumbers.Count == winUserBids.Count)
@@ -220,7 +272,7 @@ namespace Cloud_Computing_Double_Auction
 
                     if (infiniteCounter == winUserBids.Count)
                     {
-                        Console.WriteLine("widepeepohappy");
+                        Console.WriteLine("oops");
                     }
 
                     if (listNumbers.Count == winProviderBids.Count)
