@@ -23,8 +23,8 @@ namespace Cloud_Computing_Double_Auction
         public static int numProviders = 12;
         public static int numUsers = 12;
 
-        public static int minDemand = 1;
-        public static int maxDemand = 1;
+        public static int minDemand = 10;
+        public static int maxDemand = 10;
 
         public static int minSupply = 1;
         public static int maxSupply = 1;

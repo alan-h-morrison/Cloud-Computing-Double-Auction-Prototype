@@ -130,7 +130,7 @@ namespace Cloud_Computing_Double_Auction
                 for (int i = 0; i < numUsers; i++)
                 {
                     winUserBids.Add(userBids[i]);
-                    for (int j = 0; j < numProviders - 1; j++)
+                    for (int j = 0; j < numProviders; j++)
                     {
                         winProviderBids.Add(providerBids[j]);
                     

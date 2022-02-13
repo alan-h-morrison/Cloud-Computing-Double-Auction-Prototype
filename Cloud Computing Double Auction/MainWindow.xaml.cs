@@ -61,13 +61,13 @@ namespace Cloud_Computing_Double_Auction
         {
             var env = new EnvironmentMas();
 
-            for (int i = 0; i <= Settings.numProviders; i++)
+            for (int i = 0; i < Settings.numProviders; i++)
             {
                 var providerAgent = new CloudProvider(ProviderPosition.Positive);
                 env.Add(providerAgent, $"provider{i+1:D2}");
             }
 
-            for (int i = 0; i <= Settings.numUsers; i++)
+            for (int i = 0; i < Settings.numUsers; i++)
             {
                 var userAgent = new CloudUser(UserPosition.Positive);
                 env.Add(userAgent, $"user{i+1:D2}");
