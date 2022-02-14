@@ -22,5 +22,101 @@ namespace Cloud_Computing_Double_Auction.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        public int NumUsers {
+            get {
+                return ((int)(this["NumUsers"]));
+            }
+            set {
+                this["NumUsers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        public int NumProviders {
+            get {
+                return ((int)(this["NumProviders"]));
+            }
+            set {
+                this["NumProviders"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string UserQuantities {
+            get {
+                return ((string)(this["UserQuantities"]));
+            }
+            set {
+                this["UserQuantities"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string UserPrices {
+            get {
+                return ((string)(this["UserPrices"]));
+            }
+            set {
+                this["UserPrices"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ProviderQuantites {
+            get {
+                return ((string)(this["ProviderQuantites"]));
+            }
+            set {
+                this["ProviderQuantites"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ProviderPrices {
+            get {
+                return ((string)(this["ProviderPrices"]));
+            }
+            set {
+                this["ProviderPrices"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ManualUser {
+            get {
+                return ((bool)(this["ManualUser"]));
+            }
+            set {
+                this["ManualUser"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ManualProvider {
+            get {
+                return ((bool)(this["ManualProvider"]));
+            }
+            set {
+                this["ManualProvider"] = value;
+            }
+        }
     }
 }

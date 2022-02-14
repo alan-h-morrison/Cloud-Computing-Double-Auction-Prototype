@@ -20,14 +20,14 @@ namespace Cloud_Computing_Double_Auction
     /// </summary>
     public partial class Settings : Window
     {
-        public static int numProviders = 12;
-        public static int numUsers = 12;
+        public static int numProviders = 6;
+        public static int numUsers = 6;
 
-        public static int minDemand = 10;
-        public static int maxDemand = 10;
+        public static int minDemand = 5;
+        public static int maxDemand = 15;
 
-        public static int minSupply = 1;
-        public static int maxSupply = 1;
+        public static int minSupply = 5;
+        public static int maxSupply = 15;
 
         public static int minUserPrice = 10;
         public static int maxUserPrice = 50;
