@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cloud_Computing_Double_Auction
 {
-    class Bid
+    public class Bid
     {
         public string Bidder { get; set; }
         public int BidQuantity { get; set; }

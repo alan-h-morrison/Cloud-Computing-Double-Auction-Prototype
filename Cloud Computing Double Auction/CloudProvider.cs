@@ -57,19 +57,11 @@ namespace Cloud_Computing_Double_Auction
                     break;
 
                 case "allocate":
+                    HandleAllocateRequest(parameters);
                     break;
 
                 default:
                     break;
-            }
-        }
-
-        public override void ActDefault()
-        {
-            if (--tempCounter <= 0)
-            {
-                Console.WriteLine($"{Name} stopped");
-                Stop();
             }
         }
 
@@ -81,6 +73,19 @@ namespace Cloud_Computing_Double_Auction
             bidPrice = Int32.Parse(values[1]);
 
             Send("auctioneer", $"bid provider {supply} {bidPrice}");
+        }
+
+        private void HandleAllocateRequest(string info)
+        {
+            string[] values = info.Split(' ');
+
+            string bidder = values[0];
+            int amount = Convert.ToInt32(values[1]);
+            int pricePerUnit = Convert.ToInt32(values[2]);
+
+            int totalPrice = amount * pricePerUnit;
+
+            Send("auctioneer", $"give {bidder} {amount} {totalPrice}");
         }
     }
 }

@@ -18,19 +18,27 @@ namespace Cloud_Computing_Double_Auction
         private int numUsers;
         private int numProviders;
 
-        int turnsToWait;
+        private int userCounter;
+        private int providerCounter;
+
+        private int winningUsers;
+        private int winningProviders;
+
+        private int turnsToWait;
+        private bool allocation;
 
         public CloudAuctioneer()
         {
             userBids = new List<Bid>();
             providerBids = new List<Bid>();
-            turnsToWait = 5;
+            turnsToWait = 20;
+            allocation = false;
         }
 
         public override void Act(Message message)
         {
             Console.WriteLine($"\t{message.Format()}");
-            message.Parse(out string action, out List<string> parameters);
+            message.Parse(out string action, out string parameters);
 
             switch (action)
             {
@@ -38,31 +46,54 @@ namespace Cloud_Computing_Double_Auction
                     HandleBid(message.Sender, parameters);
                     break;
 
+                case "give":
+                    HandleGive(parameters);
+                    break;
+
                 default:
                     break;
             }
         }
 
+        
         public override void ActDefault()
         {
-            if (--turnsToWait <= 0)
+            if (--turnsToWait <= 0 && allocation == false)
             {
                 HandleAllocation();
+                allocation = true;
+                turnsToWait = 20;
+            }
+
+            if (--turnsToWait <= 0 && allocation == true)
+            {
+                Stop();
             }
         }
+        
 
-        public void HandleBid(string sender, List<string> info)
+        public void HandleGive(string info)
         {
-            var bid = new Bid(sender, Convert.ToInt32(info[1]), Convert.ToInt32(info[2]));
+            string[] values = info.Split(' ');
 
-            if (info[0] == "user")
+        }
+
+        public void HandleBid(string sender, string info)
+        {
+            string[] values = info.Split(' ');
+
+            var bid = new Bid(sender, Convert.ToInt32(values[1]), Convert.ToInt32(values[2]));
+
+            if (values[0] == "user")
             {
                 userBids.Add(bid);
+                userCounter++;
             }
 
-            if (info[0] == "provider")
+            if (values[0] == "provider")
             {
                 providerBids.Add(bid);
+                providerCounter++;
             }
         }
 
@@ -100,8 +131,6 @@ namespace Cloud_Computing_Double_Auction
                 {
                     PriceDetermination();
                 }
-
-                Stop();
             }
             catch (Exception ex)
             {
@@ -139,11 +168,17 @@ namespace Cloud_Computing_Double_Auction
 
                         if (FirstConditionBidPrice(i, j) && FirstConditionQuantity(providerQuantity))
                         {
+                            winningUsers = i;
+                            winningProviders = j;
+
                             Console.WriteLine($"\n[{Name}]: First Condition:- \n\t\tNo. of winning users = {i + 1} \n\t\tNo. of winning providers = {j + 1}");
                             return;
                         }
                         else if (SecondConditionBidPrice(i, j) && SecondConditionQuantity(userQuantity))
                         {
+                            winningUsers = i;
+                            winningProviders = j;
+
                             Console.WriteLine($"\n[{Name}]: Second Condition:- \n\t\tNo. of winning users = {i + 1} \n\t\tNo. of winning providers = {j + 1}");
                             return;
                         }
@@ -179,22 +214,23 @@ namespace Cloud_Computing_Double_Auction
                         winUserBids[i].BidQuantity = userQuantity - providerQuantity;
                         winProviderBids[j].BidQuantity = 0;
 
-                        Send(winProviderBids[j].Bidder, $"allocate {providerQuantity} {winUserBids[i].Bidder}");
+                        string message = $"allocate {providerQuantity} {winUserBids[i].Bidder} {userBids[winningUsers].BidPrice}";
+
+                        Send(winProviderBids[j].Bidder, $"allocate {winUserBids[i].Bidder} {providerQuantity} {userBids[winningUsers].BidPrice}");
                     }
                     else if (providerQuantity > userQuantity)
                     {
                         winProviderBids[j].BidQuantity = providerQuantity - userQuantity;
                         winUserBids[i].BidQuantity = 0;
 
-                        Send(winProviderBids[j].Bidder, $"allocate {userQuantity} {winUserBids[i].Bidder}");
-
+                        Send(winProviderBids[j].Bidder, $"allocate {winUserBids[i].Bidder} {userQuantity} {userBids[winningUsers].BidPrice} ");
                     }
                     else
                     {
                         winUserBids[i].BidQuantity = 0;
                         winProviderBids[j].BidQuantity = 0;
 
-                        Send(winProviderBids[j].Bidder, $"allocate {userQuantity} {winUserBids[i].Bidder}");
+                        Send(winProviderBids[j].Bidder, $"allocate {winUserBids[i].Bidder} {userQuantity} {userBids[winningUsers].BidPrice}");
                     }
                 }
             }
@@ -273,7 +309,7 @@ namespace Cloud_Computing_Double_Auction
                     }
 
                     if (infiniteCounter == winUserBids.Count)
-                    {
+                     {
                         winProviderBids.RemoveAt(winProviderBids.Count - 1);
                         counter++;
                     }
