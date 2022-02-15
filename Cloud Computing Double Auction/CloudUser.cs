@@ -15,6 +15,8 @@ namespace Cloud_Computing_Double_Auction
         private int demand;
         private int bidPrice;
 
+        private int profit;
+
         private UserPosition position;
         private string stringPosition;
 
@@ -54,7 +56,12 @@ namespace Cloud_Computing_Double_Auction
                         HandleInform(parameters);
                         break;
 
-                    case "send":   
+                    case "won":
+                        HandleWin(parameters);
+                        break;
+
+                    case "paid":
+                        HandlePayment(parameters);
                         break;
 
                     default:
@@ -64,7 +71,7 @@ namespace Cloud_Computing_Double_Auction
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }          
+            }
         }
 
         private void HandleInform(string info)
@@ -75,8 +82,25 @@ namespace Cloud_Computing_Double_Auction
             bidPrice = Int32.Parse(values[1]);
 
             Send("auctioneer", $"bid user {demand} {bidPrice}");
-
-            Stop();
         }
+
+        private void HandleWin(string info)
+        {
+            string[] values = info.Split(' ');
+
+            string provider = values[0];
+            int amount = Convert.ToInt32(values[1]);
+            int pricePerUnit = Convert.ToInt32(values[2]);
+
+            int totalPrice = amount * pricePerUnit;
+
+            Send("auctioneer", $"pay {provider} {totalPrice} {amount}");
+        }
+
+        private void HandlePayment(string str)
+        {
+            int payment = Convert.ToInt32(str);
+        }
+
     }
 }

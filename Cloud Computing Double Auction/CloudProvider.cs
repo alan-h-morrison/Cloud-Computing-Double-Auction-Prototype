@@ -81,11 +81,8 @@ namespace Cloud_Computing_Double_Auction
 
             string bidder = values[0];
             int amount = Convert.ToInt32(values[1]);
-            int pricePerUnit = Convert.ToInt32(values[2]);
 
-            int totalPrice = amount * pricePerUnit;
-
-            Send("auctioneer", $"give {bidder} {amount} {totalPrice}");
+            Send("auctioneer", $"give {bidder} {amount}");
         }
     }
 }

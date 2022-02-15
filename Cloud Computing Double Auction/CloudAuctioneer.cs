@@ -47,8 +47,12 @@ namespace Cloud_Computing_Double_Auction
                     break;
 
                 case "give":
-                    HandleGive(parameters);
+                    HandleGive(message.Sender, parameters);
                     break;
+
+                case "pay":
+                    HandlePay(parameters);
+                        break;
 
                 default:
                     break;
@@ -71,13 +75,19 @@ namespace Cloud_Computing_Double_Auction
             }
         }
         
-
-        public void HandleGive(string info)
+        private void HandlePay(string info)
         {
             string[] values = info.Split(' ');
 
-        }
+            string provider = values[0];
+            int payment = Convert.ToInt32(values[1]);
+            int quantity = Convert.ToInt32(values[2]);
 
+            int providerProfit = providerBids[winningProviders].BidPrice * quantity;
+
+            Send(provider, $"paid {providerProfit}");
+        }
+        
         public void HandleBid(string sender, string info)
         {
             string[] values = info.Split(' ');
@@ -97,7 +107,19 @@ namespace Cloud_Computing_Double_Auction
             }
         }
 
-        public void HandleAllocation()
+        private void HandleGive(string sender, string info)
+        {
+            string[] values = info.Split(' ');
+
+            string user = values[0];
+            int amount = Convert.ToInt32(values[1]);
+
+            int pricePerUnit = userBids[winningUsers].BidPrice;
+
+            Send(user, $"won {sender} {amount} {pricePerUnit}");
+        }
+
+        private void HandleAllocation()
         {
             try
             {
@@ -139,7 +161,7 @@ namespace Cloud_Computing_Double_Auction
             }          
         }
 
-        public void WinnerDetermination()
+        private void WinnerDetermination()
         {
             winUserBids = new List<Bid>();
             winProviderBids = new List<Bid>();
@@ -214,23 +236,21 @@ namespace Cloud_Computing_Double_Auction
                         winUserBids[i].BidQuantity = userQuantity - providerQuantity;
                         winProviderBids[j].BidQuantity = 0;
 
-                        string message = $"allocate {providerQuantity} {winUserBids[i].Bidder} {userBids[winningUsers].BidPrice}";
-
-                        Send(winProviderBids[j].Bidder, $"allocate {winUserBids[i].Bidder} {providerQuantity} {userBids[winningUsers].BidPrice}");
+                        Send(winProviderBids[j].Bidder, $"allocate {winUserBids[i].Bidder} {providerQuantity}");
                     }
                     else if (providerQuantity > userQuantity)
                     {
                         winProviderBids[j].BidQuantity = providerQuantity - userQuantity;
                         winUserBids[i].BidQuantity = 0;
 
-                        Send(winProviderBids[j].Bidder, $"allocate {winUserBids[i].Bidder} {userQuantity} {userBids[winningUsers].BidPrice} ");
+                        Send(winProviderBids[j].Bidder, $"allocate {winUserBids[i].Bidder} {providerQuantity}");
                     }
                     else
                     {
                         winUserBids[i].BidQuantity = 0;
                         winProviderBids[j].BidQuantity = 0;
 
-                        Send(winProviderBids[j].Bidder, $"allocate {winUserBids[i].Bidder} {userQuantity} {userBids[winningUsers].BidPrice}");
+                        Send(winProviderBids[j].Bidder, $"allocate {winUserBids[i].Bidder} {providerQuantity}");
                     }
                 }
             }
