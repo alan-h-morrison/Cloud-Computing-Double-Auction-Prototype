@@ -222,13 +222,13 @@ namespace Cloud_Computing_Double_Auction
                     if (userQuantity == 0)
                     {
                         winUserBids.RemoveAt(i);
-                        break;
+                        return;
                     }
 
                     if (providerQuantity == 0)
                     {
                         winProviderBids.RemoveAt(j);
-                        break;
+                        return;
                     }
 
                     if (userQuantity > providerQuantity)
@@ -243,14 +243,14 @@ namespace Cloud_Computing_Double_Auction
                         winProviderBids[j].BidQuantity = providerQuantity - userQuantity;
                         winUserBids[i].BidQuantity = 0;
 
-                        Send(winProviderBids[j].Bidder, $"allocate {winUserBids[i].Bidder} {providerQuantity}");
+                        Send(winProviderBids[j].Bidder, $"allocate {winUserBids[i].Bidder} {userQuantity}");
                     }
                     else
                     {
                         winUserBids[i].BidQuantity = 0;
                         winProviderBids[j].BidQuantity = 0;
 
-                        Send(winProviderBids[j].Bidder, $"allocate {winUserBids[i].Bidder} {providerQuantity}");
+                        Send(winProviderBids[j].Bidder, $"allocate {winUserBids[i].Bidder} {userQuantity}");
                     }
                 }
             }
