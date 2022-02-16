@@ -27,6 +27,9 @@ namespace Cloud_Computing_Double_Auction
         private int turnsToWait;
         private bool allocation;
 
+        private int totalProviderQuantity;
+        private int totalUserQuantity;
+
         public CloudAuctioneer()
         {
             userBids = new List<Bid>();
@@ -69,24 +72,20 @@ namespace Cloud_Computing_Double_Auction
                 turnsToWait = 20;
             }
 
-            if (--turnsToWait <= 0 && allocation == true)
+            if (totalUserQuantity == 0 && totalProviderQuantity == 0)
             {
-                Stop();
+                FinishAuction();
             }
         }
-        
-        private void HandlePay(string info)
+
+        private void FinishAuction()
         {
-            string[] values = info.Split(' ');
+            Console.WriteLine("END AUCTION");
 
-            string provider = values[0];
-            int payment = Convert.ToInt32(values[1]);
-            int quantity = Convert.ToInt32(values[2]);
-
-            int providerProfit = providerBids[winningProviders].BidPrice * quantity;
-
-            Send(provider, $"paid {providerProfit}");
+            Stop();
         }
+        
+        
         
         public void HandleBid(string sender, string info)
         {
@@ -112,11 +111,28 @@ namespace Cloud_Computing_Double_Auction
             string[] values = info.Split(' ');
 
             string user = values[0];
-            int amount = Convert.ToInt32(values[1]);
+            int quantity = Convert.ToInt32(values[1]);
 
             int pricePerUnit = userBids[winningUsers].BidPrice;
 
-            Send(user, $"won {sender} {amount} {pricePerUnit}");
+            totalProviderQuantity = totalProviderQuantity - quantity;
+
+            Send(user, $"won {sender} {quantity} {pricePerUnit}");
+        }
+
+        private void HandlePay(string info)
+        {
+            string[] values = info.Split(' ');
+
+            string provider = values[0];
+            int payment = Convert.ToInt32(values[1]);
+            int quantity = Convert.ToInt32(values[2]);
+
+            int providerProfit = providerBids[winningProviders].BidPrice * quantity;
+
+            totalUserQuantity = totalUserQuantity - quantity;
+
+            Send(provider, $"paid {providerProfit}");
         }
 
         private void HandleAllocation()
@@ -141,8 +157,8 @@ namespace Cloud_Computing_Double_Auction
                 AltAdjustQuantities();
                 //AdjustQuantities();
 
-                int totalProviderQuantity = winProviderBids.Sum(provider => provider.BidQuantity);
-                int totalUserQuantity = winUserBids.Sum(user => user.BidQuantity);
+                totalProviderQuantity = winProviderBids.Sum(provider => provider.BidQuantity);
+                totalUserQuantity = winUserBids.Sum(user => user.BidQuantity);
                 int totalDiff = 0;
 
                 totalDiff = Math.Abs(totalUserQuantity - totalProviderQuantity);
@@ -222,13 +238,13 @@ namespace Cloud_Computing_Double_Auction
                     if (userQuantity == 0)
                     {
                         winUserBids.RemoveAt(i);
-                        return;
+                        break;
                     }
 
                     if (providerQuantity == 0)
                     {
                         winProviderBids.RemoveAt(j);
-                        return;
+                        break;
                     }
 
                     if (userQuantity > providerQuantity)
