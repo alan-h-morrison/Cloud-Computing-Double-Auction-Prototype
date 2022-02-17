@@ -89,6 +89,7 @@ namespace Cloud_Computing_Double_Auction
             }
             else if (chkProvider.IsChecked == false)
             {
+                Properties.Settings.Default.NumUsers = Convert.ToInt32(cmbUsers.SelectedItem);
                 Properties.Settings.Default.ManualUser = false;
             }
 
@@ -98,11 +99,9 @@ namespace Cloud_Computing_Double_Auction
             }
             else if(chkProvider.IsChecked == false)
             {
+                Properties.Settings.Default.NumProviders = Convert.ToInt32(cmbProviders.SelectedItem);
                 Properties.Settings.Default.ManualProvider = false;
             }
-
-            Properties.Settings.Default.NumUsers = Convert.ToInt32(cmbUsers.SelectedItem);
-            Properties.Settings.Default.NumProviders = Convert.ToInt32(cmbProviders.SelectedItem);
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
