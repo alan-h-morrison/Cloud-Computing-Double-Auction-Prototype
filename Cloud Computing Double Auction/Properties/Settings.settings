@@ -9,16 +9,16 @@
       <Value Profile="(Default)">15</Value>
     </Setting>
     <Setting Name="UserQuantities" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">8 2 3 1 8 7 5</Value>
     </Setting>
     <Setting Name="UserPrices" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">47 45 35 34 33 22 12</Value>
     </Setting>
     <Setting Name="ProviderQuantites" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">5 5 1 2 4 8 3</Value>
     </Setting>
     <Setting Name="ProviderPrices" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">15 17 20 22 25 30 49</Value>
     </Setting>
     <Setting Name="ManualUser" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

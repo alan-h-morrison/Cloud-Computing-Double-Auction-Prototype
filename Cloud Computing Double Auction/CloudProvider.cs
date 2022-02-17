@@ -16,8 +16,6 @@ namespace Cloud_Computing_Double_Auction
         private int supply;
         private int bidPrice;
 
-        private int tempCounter = 20;
-
         private ProviderPosition position;
         private string stringPosition;
 

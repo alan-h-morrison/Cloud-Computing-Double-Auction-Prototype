@@ -49,7 +49,7 @@ namespace Cloud_Computing_Double_Auction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("8 2 3 1 8 7 5")]
         public string UserQuantities {
             get {
                 return ((string)(this["UserQuantities"]));
@@ -61,7 +61,7 @@ namespace Cloud_Computing_Double_Auction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("47 45 35 34 33 22 12")]
         public string UserPrices {
             get {
                 return ((string)(this["UserPrices"]));
@@ -73,7 +73,7 @@ namespace Cloud_Computing_Double_Auction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5 5 1 2 4 8 3")]
         public string ProviderQuantites {
             get {
                 return ((string)(this["ProviderQuantites"]));
@@ -85,7 +85,7 @@ namespace Cloud_Computing_Double_Auction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("15 17 20 22 25 30 49")]
         public string ProviderPrices {
             get {
                 return ((string)(this["ProviderPrices"]));

@@ -15,8 +15,6 @@ namespace Cloud_Computing_Double_Auction
         private int demand;
         private int bidPrice;
 
-        private int profit;
-
         private UserPosition position;
         private string stringPosition;
 

@@ -44,6 +44,51 @@ namespace Cloud_Computing_Double_Auction
         public Settings()
         {
             InitializeComponent();
+            GetSettings();
+        }
+
+        private void GetSettings()
+        {
+            txtUserQuantity.Text = Properties.Settings.Default.UserQuantities;
+            txtUserPrices.Text = Properties.Settings.Default.UserPrices;
+            txtProviderQuantity.Text = Properties.Settings.Default.ProviderQuantites;
+            txtProviderPrices.Text = Properties.Settings.Default.ProviderPrices;
+
+            if(Properties.Settings.Default.ManualUser == true)
+            {
+                chkUser.IsChecked = true;
+            }
+
+            if(Properties.Settings.Default.ManualProvider == true)
+            {
+                chkProvider.IsChecked = true;
+            }
+        }
+
+        private void SaveSettings()
+        {
+            Properties.Settings.Default.UserQuantities = txtUserQuantity.Text;
+            Properties.Settings.Default.UserPrices = txtUserPrices.Text;
+            Properties.Settings.Default.ProviderQuantites = txtProviderQuantity.Text;
+            Properties.Settings.Default.ProviderPrices = txtProviderPrices.Text;
+
+            if (chkUser.IsChecked == true)
+            {
+                Properties.Settings.Default.ManualUser = true;
+            }
+            else if (chkProvider.IsChecked == false)
+            {
+                Properties.Settings.Default.ManualUser = false;
+            }
+
+            if (chkProvider.IsChecked == true)
+            {
+                Properties.Settings.Default.ManualProvider = true;
+            }
+            else if(chkProvider.IsChecked == false)
+            {
+                Properties.Settings.Default.ManualProvider = false;
+            }
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -60,6 +105,8 @@ namespace Cloud_Computing_Double_Auction
                     ValidateProviderFields();
                 }
 
+                SaveSettings();
+
                 MainWindow mainMenu = new MainWindow();
                 mainMenu.Show();
                 this.Close();
@@ -72,69 +119,120 @@ namespace Cloud_Computing_Double_Auction
 
         public void ValidateUserFields()
         {
-            if (!(String.IsNullOrWhiteSpace(txtUserDemands.Text)) && !((String.IsNullOrWhiteSpace(txtUserPrices.Text))))
-            {
-                string usrDemandRegex = "^[1-5][0-9]( [1-9][0-9])*$";
+            txtUserQuantity.Text = txtUserQuantity.Text.Trim();
+            txtUserPrices.Text = txtUserPrices.Text.Trim();
 
-                if ((Regex.IsMatch(txtUserDemands.Text, usrDemandRegex)))
+            if (!(String.IsNullOrWhiteSpace(txtUserQuantity.Text)) && !((String.IsNullOrWhiteSpace(txtUserPrices.Text))))
+            {
+                string usrQuantityRegexSpaces = "[0-9 ]+";
+                string usrQuantityRegexNum = "^[1-9][0-9]?$|^100";
+
+                if (Regex.IsMatch(txtUserQuantity.Text, usrQuantityRegexSpaces))
                 {
-                    string[] strUserQuantites = txtUserDemands.Text.Split(' ');
+  
+                    string[] strUserQuantites = txtUserQuantity.Text.Split(' ');
+
+                    foreach(string item in strUserQuantites)
+                    {
+                        string entry = item.Trim();
+
+                        if(!(Regex.IsMatch(entry, usrQuantityRegexNum)))
+                        {
+                            throw new ArgumentException("User Quantities is not valid:- This field can only contain numbers and spaces and quantities must range from 1 to 100");
+                        }
+                    }
+
                     userQuantites = Array.ConvertAll(strUserQuantites, s => int.Parse(s));
                 }
                 else
                 {
-                    throw new ArgumentException("User demands  is not valid:- Can only be numbers and spaces");
+                    throw new ArgumentException("User Quantities is not valid:- This field can only contain numbers and spaces and quantities must range from 1 to 100");
                 }
 
-                string usrQuantityRegex = "^[1-5][0-9]( [1-9][0-9])*$";
+                string usrPricesRegexSpaces = "[0-9 ]+";
+                string usrPricesRegexNum = "^[1-9][0-9]?$|^100";
 
-                if ((Regex.IsMatch(txtUserPrices.Text, usrQuantityRegex)))
+                if ((Regex.IsMatch(txtUserPrices.Text, usrPricesRegexSpaces)))
                 {
                     string[] strUserPrices = txtUserPrices.Text.Split(' ');
+
+                    foreach (string item in strUserPrices)
+                    {
+                        string entry = item.Trim();
+
+                        if (!(Regex.IsMatch(entry, usrPricesRegexNum)))
+                        {
+                            throw new ArgumentException("User Prices is not valid:- This field can only contain numbers and spaces and prices must range from 1 to 100");
+                        }
+                    }
+
                     userPrices = Array.ConvertAll(strUserPrices, s => int.Parse(s));
                 }
                 else
                 {
-                    throw new ArgumentException("User prices field is not valid:- Can only be numbers and spaces");
+                    throw new ArgumentException("User Prices is not valid:- This field can only contain numbers and spaces and prices must range from 1 to 100");
                 }
             }
             else
             {
-                throw new ArgumentException("Users demand quanties or price field is empty, please enter the approriate values");
+                throw new ArgumentException("Users Quantity/Prices field is empty, please enter the approriate values");
             }
         }
 
         public void ValidateProviderFields()
         {
-            if (!(String.IsNullOrWhiteSpace(txtProviderSupply.Text)) && !((String.IsNullOrWhiteSpace(txtProviderPrices.Text))))
+            if (!(String.IsNullOrWhiteSpace(txtProviderQuantity.Text)) && !((String.IsNullOrWhiteSpace(txtProviderPrices.Text))))
             {
-                string providerSupplyRegex = "^[1-5][0-9]( [1-9][0-9])*$";
+                string proQuantityRegexSpaces = "[0-9 ]+";
+                string proQuantityRegexNum = "^[1-9][0-9]?$|^100";
 
-                if ((Regex.IsMatch(txtProviderSupply.Text, providerSupplyRegex)))
+                if ((Regex.IsMatch(txtProviderQuantity.Text, proQuantityRegexSpaces)))
                 {
-                    string[] strProviderQuantities = txtProviderSupply.Text.Split(' ');
+                    string[] strProviderQuantities = txtProviderQuantity.Text.Split(' ');
+
+                    foreach (string item in strProviderQuantities)
+                    {
+                        string entry = item.Trim();
+
+                        if (!(Regex.IsMatch(entry, proQuantityRegexNum)))
+                        {
+                            throw new ArgumentException("Provider Quantities is not valid:- This field can only contain numbers and spaces and quantities must range from 1 to 100");
+                        }
+                    }
                     providerQuantities = Array.ConvertAll(strProviderQuantities, s => int.Parse(s));
                 }
                 else
                 {
-                    throw new ArgumentException("Provider supplies field is not valid:- Can only be numbers and spaces");
+                    throw new ArgumentException("Provider Quantities is not valid:- This field can only contain numbers and spaces and quantities must range from 1 to 100");
                 }
 
-                string prvPricesRegex = "^[1-5][0-9]( [1-9][0-9])*$";
+                string proPricesRegexSpaces = "[0-9 ]+";
+                string proPricesRegexNum = "^[1-9][0-9]?$|^100";
 
-                if ((Regex.IsMatch(txtProviderPrices.Text, prvPricesRegex)))
+                if ((Regex.IsMatch(txtProviderPrices.Text, proPricesRegexSpaces)))
                 {
                     string[] strProviderPrices = txtProviderPrices.Text.Split(' ');
+
+                    foreach (string item in strProviderPrices)
+                    {
+                        string entry = item.Trim();
+
+                        if (!(Regex.IsMatch(entry, proPricesRegexNum)))
+                        {
+                            throw new ArgumentException("Provider Prices is not valid:- This field can only contain numbers and spaces and prices must range from 1 to 100");
+                        }
+                    }
+
                     providerPrices = Array.ConvertAll(strProviderPrices, s => int.Parse(s));
                 }
                 else
                 {
-                    throw new ArgumentException("Provider prices field is not valid:- Can only be numbers and spaces");
+                    throw new ArgumentException("Provider Prices is not valid:- This field can only contain numbers and spaces and prices must range from 1 to 100");
                 }
             }
             else
             {
-                throw new ArgumentException("Provider supply field or price field is empty, please enter the approriate values");
+                throw new ArgumentException("Provider Quantity field or price field is empty, please enter the approriate values");
             }
         }
 
