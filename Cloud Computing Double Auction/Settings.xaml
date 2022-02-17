@@ -18,5 +18,7 @@
         <TextBox x:Name="txtProviderPrices" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="624" Margin="125,194,0,0"/>
         <CheckBox x:Name="chkUser" Content="User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="754,35,0,0"/>
         <CheckBox x:Name="chkProvider" Content="Provider " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="754,141,0,0"/>
+        <ComboBox x:Name="cmbUsers" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="125,254,0,0" Height="32"/>
+        <ComboBox x:Name="cmbProviders" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="204,254,0,0" Height="32"/>
     </Grid>
 </Window>

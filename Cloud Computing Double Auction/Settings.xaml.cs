@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -60,6 +61,19 @@ namespace Cloud_Computing_Double_Auction
             {
                 chkProvider.IsChecked = true;
             }
+
+            ObservableCollection<string> numbers = new ObservableCollection<string>();
+            for (int i = 1; i < 101; i++)
+            {
+                numbers.Add($"{i}");
+            }
+
+            cmbUsers.ItemsSource = numbers;
+            cmbProviders.ItemsSource = numbers;
+
+            cmbUsers.SelectedItem = $"{Properties.Settings.Default.NumUsers}";
+            cmbProviders.SelectedItem = $"{Properties.Settings.Default.NumProviders}";
+
         }
 
         private void SaveSettings()
@@ -86,6 +100,9 @@ namespace Cloud_Computing_Double_Auction
             {
                 Properties.Settings.Default.ManualProvider = false;
             }
+
+            Properties.Settings.Default.NumUsers = Convert.ToInt32(cmbUsers.SelectedItem);
+            Properties.Settings.Default.NumProviders = Convert.ToInt32(cmbProviders.SelectedItem);
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
