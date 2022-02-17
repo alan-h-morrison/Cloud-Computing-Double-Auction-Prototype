@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="NumUsers" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">15</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="NumProviders" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">15</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="UserQuantities" Type="System.String" Scope="User">
       <Value Profile="(Default)">8 2 3 1 8 7 5</Value>

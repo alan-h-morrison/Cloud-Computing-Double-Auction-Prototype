@@ -32,6 +32,9 @@ namespace Cloud_Computing_Double_Auction
         public int[] providerQuantities = { 5, 5, 1, 2, 4, 8, 3 };
         public int[] providerPrices = { 15, 17, 20, 22, 25, 30, 49 };
 
+        int numUsers = Properties.Settings.Default.NumUsers;
+        int numProviders = Properties.Settings.Default.NumProviders;
+
         private void BtnTest_Click(object sender, RoutedEventArgs e)
         {
             var env = new EnvironmentMas();
@@ -60,17 +63,35 @@ namespace Cloud_Computing_Double_Auction
         private void BtnAuction_Click(object sender, RoutedEventArgs e)
         {
             var env = new EnvironmentMas();
-
-            for (int i = 0; i < Settings.numProviders; i++)
+      
+            if(Properties.Settings.Default.ManualUser == true)
             {
-                var providerAgent = new CloudProvider(ProviderPosition.Positive);
-                env.Add(providerAgent, $"provider{i+1:D2}");
+                string strQuantities = Properties.Settings.Default.UserQuantities;
+                int[] usrQuantities = strQuantities.Split(' ').Select(n => Convert.ToInt32(n)).ToArray();
+
+                string strPrices = Properties.Settings.Default.UserPrices;
+                int[] usrPrices = strPrices.Split(' ').Select(n => Convert.ToInt32(n)).ToArray();
+
+                UserManualGeneration(env, usrQuantities, usrPrices);
+            }
+            else
+            {
+                UserAutoGeneration(env);
             }
 
-            for (int i = 0; i < Settings.numUsers; i++)
+            if (Properties.Settings.Default.ManualProvider == true)
             {
-                var userAgent = new CloudUser(UserPosition.Positive);
-                env.Add(userAgent, $"user{i+1:D2}");
+                string strQuantities = Properties.Settings.Default.ProviderQuantites;
+                int[] proQuantities = strQuantities.Split(' ').Select(n => Convert.ToInt32(n)).ToArray();
+
+                string strPrices = Properties.Settings.Default.ProviderPrices;
+                int[] proPrices = strPrices.Split(' ').Select(n => Convert.ToInt32(n)).ToArray();
+
+                ProviderManualGeneration(env, proQuantities, proPrices);
+            }
+            else
+            {
+                ProviderAutoGeneration(env);
             }
 
             var auctioneerAgent = new CloudAuctioneer();
@@ -81,6 +102,42 @@ namespace Cloud_Computing_Double_Auction
 
             env.Start();
 
+        }
+
+        public void UserAutoGeneration(EnvironmentMas enviroment)
+        {
+            for (int i = 0; i < numUsers; i++)
+            {
+                var userAgent = new CloudUser(UserPosition.Positive);
+                enviroment.Add(userAgent, $"user{i + 1:D2}");
+            }
+        }
+
+        public void ProviderAutoGeneration(EnvironmentMas environment)
+        {
+            for (int i = 0; i < numProviders; i++)
+            {
+                var providerAgent = new CloudProvider(ProviderPosition.Positive);
+                environment.Add(providerAgent, $"provider{i + 1:D2}");
+            }
+        }
+
+        public void UserManualGeneration(EnvironmentMas environment, int[] quantities, int[] prices)
+        {
+            for (int i = 0; i < numUsers; i++)
+            {
+                var userAgent = new CloudUser(UserPosition.Positive, quantities[i], prices[i]);
+                environment.Add(userAgent, $"user{i + 1:D2}");
+            }            
+        }
+
+        public void ProviderManualGeneration(EnvironmentMas environment, int[] quantities, int[] prices)
+        {
+            for (int i = 0; i < numProviders; i++)
+            {
+                var providerAgent = new CloudProvider(ProviderPosition.Positive, quantities[i], prices[i]);
+                environment.Add(providerAgent, $"provider{i + 1:D2}");
+            }
         }
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)

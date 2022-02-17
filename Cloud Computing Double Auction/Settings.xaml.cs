@@ -20,9 +20,6 @@ namespace Cloud_Computing_Double_Auction
     /// </summary>
     public partial class Settings : Window
     {
-        public static int numProviders = 6;
-        public static int numUsers = 6;
-
         public static int minDemand = 5;
         public static int maxDemand = 15;
 
@@ -167,10 +164,21 @@ namespace Cloud_Computing_Double_Auction
                     }
 
                     userPrices = Array.ConvertAll(strUserPrices, s => int.Parse(s));
+
                 }
                 else
                 {
                     throw new ArgumentException("User Prices is not valid:- This field can only contain numbers and spaces and prices must range from 1 to 100");
+                }
+
+
+                if (userQuantites.Count() == userPrices.Count())
+                {
+                    Properties.Settings.Default.NumUsers = userPrices.Count();
+                }
+                else
+                {
+                    throw new ArgumentException($"There are an uneven amount of user quantity and price entries: \n\tNumber of User Quantites: {userQuantites.Count()}\n\tNumber of User Prices: {userPrices.Count()}");
                 }
             }
             else
@@ -228,6 +236,15 @@ namespace Cloud_Computing_Double_Auction
                 else
                 {
                     throw new ArgumentException("Provider Prices is not valid:- This field can only contain numbers and spaces and prices must range from 1 to 100");
+                }
+
+                if (providerQuantities.Count() == providerPrices.Count())
+                {
+                    Properties.Settings.Default.NumProviders = providerPrices.Count();
+                }
+                else
+                {
+                    throw new ArgumentException($"There are an uneven amount of provider quantity and price entries: \n\tNumber of User Quantites: {providerQuantities.Count()}\n\tNumber of User Prices: {providerPrices.Count()}");
                 }
             }
             else

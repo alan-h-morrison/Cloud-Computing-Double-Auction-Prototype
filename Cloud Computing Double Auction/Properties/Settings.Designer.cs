@@ -25,7 +25,7 @@ namespace Cloud_Computing_Double_Auction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public int NumUsers {
             get {
                 return ((int)(this["NumUsers"]));
@@ -37,7 +37,7 @@ namespace Cloud_Computing_Double_Auction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public int NumProviders {
             get {
                 return ((int)(this["NumProviders"]));
