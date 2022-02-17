@@ -52,6 +52,10 @@ namespace Cloud_Computing_Double_Auction
 
             switch (action)
             {
+                case "end":
+                    HandleEnd(parameters);
+                    break;
+
                 case "inform":
                     HandleInform(parameters);
                     break;
@@ -63,6 +67,11 @@ namespace Cloud_Computing_Double_Auction
                 default:
                     break;
             }
+        }
+        
+        private void HandleEnd(string info)
+        {
+            Stop();
         }
 
         private void HandleInform(string info)

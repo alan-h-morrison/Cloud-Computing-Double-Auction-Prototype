@@ -72,7 +72,7 @@ namespace Cloud_Computing_Double_Auction
                 turnsToWait = 20;
             }
 
-            if (totalUserQuantity == 0 && totalProviderQuantity == 0)
+            if (totalUserQuantity == 0 && totalProviderQuantity == 0 && allocation == true)
             {
                 FinishAuction();
             }
@@ -80,7 +80,15 @@ namespace Cloud_Computing_Double_Auction
 
         private void FinishAuction()
         {
-            Console.WriteLine("END AUCTION");
+            foreach(var user in userBids)
+            {
+                Send(user.Bidder, $"end");
+            }
+
+            foreach (var provider in providerBids)
+            { 
+                Send(provider.Bidder, $"end");
+            }
 
             Stop();
         }
