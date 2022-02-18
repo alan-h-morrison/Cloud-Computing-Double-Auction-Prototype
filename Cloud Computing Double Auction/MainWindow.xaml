@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cloud_Computing_Double_Auction"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="900" 
+        WindowStartupLocation="CenterScreen" 
+        ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="410*"/>
             <RowDefinition Height="11*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="btnAuction" Content="Run Auction" HorizontalAlignment="Left" Height="100" Margin="310,29,0,0" VerticalAlignment="Top" Width="180" RenderTransformOrigin="0.476,0.717" FontSize="24" Click="BtnAuction_Click"/>
-        <Button x:Name="btnSettings" Content="Settings" HorizontalAlignment="Left" Height="100" Margin="310,134,0,0" VerticalAlignment="Top" Width="180" RenderTransformOrigin="0.476,0.717" FontSize="24" Click="BtnSettings_Click"/>
-        <Button x:Name="btnTest" Content="Test" HorizontalAlignment="Left" Margin="310,239,0,0" VerticalAlignment="Top" Width="180" Height="100" FontSize="24" Click="BtnTest_Click"/>
+        <Button x:Name="btnAuction" Content="Run Auction" HorizontalAlignment="Left" Height="100" Margin="349,102,0,0" VerticalAlignment="Top" Width="180" RenderTransformOrigin="0.476,0.717" FontSize="24" Click="BtnAuction_Click"/>
+        <Button x:Name="btnSettings" Content="Settings" HorizontalAlignment="Left" Height="100" Margin="349,207,0,0" VerticalAlignment="Top" Width="180" RenderTransformOrigin="0.476,0.717" FontSize="24" Click="BtnSettings_Click"/>
+        <Button x:Name="btnTest" Content="Test" HorizontalAlignment="Left" Margin="349,312,0,0" VerticalAlignment="Top" Width="180" Height="100" FontSize="24" Click="BtnTest_Click"/>
 
     </Grid>
 </Window>

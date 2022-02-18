@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cloud_Computing_Double_Auction"
         mc:Ignorable="d"
-        Title="Settings" Height="436.608" Width="916.021">
+        Title="Settings" Height="600" Width="900" 
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     <Grid>
         <Button x:Name="btnBack" Content="&lt;&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="10,10,0,0" Height="55" Click="BtnBack_Click"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="125,10,0,0" Height="25" Width="536"><Run Text="Enter Users"/><Run Text=" "/><Run Text="Quantities "/><Run Text="Manually:"/></TextBlock>
@@ -16,9 +18,12 @@
         <TextBox x:Name="txtProviderQuantity" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="624" Margin="125,141,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="125,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Enter Providers Prices Manually:"/>
         <TextBox x:Name="txtProviderPrices" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="624" Margin="125,194,0,0"/>
-        <CheckBox x:Name="chkUser" Content="User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="754,35,0,0"/>
-        <CheckBox x:Name="chkProvider" Content="Provider " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="754,141,0,0"/>
-        <ComboBox x:Name="cmbUsers" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="125,254,0,0" Height="32"/>
-        <ComboBox x:Name="cmbProviders" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="204,254,0,0" Height="32"/>
+        <CheckBox x:Name="chkUser" Content="User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="486,250,0,0"/>
+        <CheckBox x:Name="chkProvider" Content="Provider " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="486,272,0,0"/>
+        <ComboBox x:Name="cmbUsers" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="282,238,0,0" Height="32" RenderTransformOrigin="0.857,0.514"/>
+        <ComboBox x:Name="cmbProviders" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="282,287,0,0" Height="32"/>
+        <TextBlock HorizontalAlignment="Left" Margin="125,245,0,0" TextWrapping="Wrap" Text="Number of Users:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="125,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Number of "/><Run Text="Providers:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="391,245,0,0" TextWrapping="Wrap" Text="Manual Entry:" VerticalAlignment="Top"/>
     </Grid>
 </Window>
