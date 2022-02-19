@@ -31,9 +31,7 @@
                             MinWidth="65"
                             Binding="{Binding Path=UserID}"
                             Header="User ID" />
-                        <DataGridTextColumn 
-                            Binding="{Binding Path=Demand}" 
-                            Header="Demand Quantity" />
+                        <DataGridTextColumn Binding="{Binding Path=Demand}" Header="Demand Quantity" />
                         <DataGridTextColumn
                             MinWidth="100"
                             Binding="{Binding Path=BidPrice}"
@@ -65,9 +63,7 @@
                             MinWidth="65"
                             Binding="{Binding Path=ProviderID}"
                             Header="Provider ID" />
-                        <DataGridTextColumn 
-                            Binding="{Binding Path=Supply}" 
-                            Header="Supply Quantity" />
+                        <DataGridTextColumn Binding="{Binding Path=Supply}" Header="Supply Quantity" />
                         <DataGridTextColumn
                             MinWidth="100"
                             Binding="{Binding Path=BidPrice}"
