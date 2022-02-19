@@ -11,13 +11,13 @@
     <Grid>
         <Button x:Name="btnBack" Content="&lt;&lt;&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="10,10,0,0" Height="55" Click="BtnBack_Click"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="125,10,0,0" Height="25" Width="536"><Run Text="Enter Users"/><Run Text=" "/><Run Text="Quantities "/><Run Text="Manually:"/></TextBlock>
-        <TextBox x:Name="txtUserQuantity" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="624" Margin="125,35,0,0"/>
+        <TextBox x:Name="txtUserQuantity" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="727" Margin="125,35,0,0"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="128,63,0,0"><Run Text="Enter Users"/><Run Text=" Prices Manually"/><Run Text=":"/></TextBlock>
-        <TextBox x:Name="txtUserPrices" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="624" Margin="125,88,0,0"/>
+        <TextBox x:Name="txtUserPrices" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="727" Margin="125,88,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="125,116,0,0" TextWrapping="Wrap" Text="Enter Providers Supply Manually:" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtProviderQuantity" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="624" Margin="125,141,0,0"/>
+        <TextBox x:Name="txtProviderQuantity" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="727" Margin="125,141,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="125,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Enter Providers Prices Manually:"/>
-        <TextBox x:Name="txtProviderPrices" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="624" Margin="125,194,0,0"/>
+        <TextBox x:Name="txtProviderPrices" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="727" Margin="125,194,0,0"/>
         <CheckBox x:Name="chkUser" Content="User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="486,250,0,0"/>
         <CheckBox x:Name="chkProvider" Content="Provider " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="486,272,0,0"/>
         <ComboBox x:Name="cmbUsers" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="282,238,0,0" Height="32" RenderTransformOrigin="0.857,0.514"/>

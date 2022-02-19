@@ -9,12 +9,16 @@ namespace Cloud_Computing_Double_Auction
 {
     public class CloudEnvironment : Agent
     {
+        public static List<UserStatistic> listUserDetails { get; set; }
+
         public Random rand = new Random();
         int turnsToWait;
+        bool statReceived;
 
         public CloudEnvironment()
         {
             turnsToWait = 10;
+            listUserDetails = new List<UserStatistic>();
         }
 
         public override void Act(Message message)
@@ -33,6 +37,10 @@ namespace Cloud_Computing_Double_Auction
                     HandleProvider(message.Sender, parameters);
                     break;
 
+                case "statistics":
+                    HandleStatistics(message.Sender, parameters);
+                    break;
+
                 default:
                     break;
             }
@@ -40,9 +48,38 @@ namespace Cloud_Computing_Double_Auction
 
         public override void ActDefault()
         {
-            if (--turnsToWait <= 0)
+            if (--turnsToWait <= 0 && statReceived == true)
             {
                 Stop();
+            }
+        }
+
+        private void HandleStatistics(string sender, string info)
+        {
+            string[] values = info.Split(' ');
+
+            if (sender.Contains("user"))
+            {
+                Console.WriteLine($"\t[{sender}]:\n\t\t-demand quantity = {values[0]}\n\t\t-bid price (per unit): {values[1]}\n");
+                turnsToWait = 5;
+                statReceived = true;
+
+                int demand = Convert.ToInt32(values[0]);
+                int bid = Convert.ToInt32(values[1]);
+
+                UserStatistic user = new UserStatistic(sender, demand, bid);
+
+                listUserDetails.Add(user);
+            }
+            else if (sender.Contains("provider"))
+            {
+                Console.WriteLine($"\t[{sender}]:\n\t\t-supply quantity = {values[0]}\n\t\t-bid price (per unit): {values[1]}\n");
+                turnsToWait = 5;
+                statReceived = true;
+            }
+            else if (sender.Contains("auctioneer"))
+            {
+
             }
         }
 
@@ -85,6 +122,5 @@ namespace Cloud_Computing_Double_Auction
 
             Send(providerID, providerContent);
         }
-
     } 
 }

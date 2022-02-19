@@ -77,6 +77,7 @@ namespace Cloud_Computing_Double_Auction
 
         private void HandleEnd(string info)
         {
+            Send("environment", $"statistics {demand} {bidPrice}");
             Stop();
         }
 

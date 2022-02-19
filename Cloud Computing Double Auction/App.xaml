@@ -1,9 +1,8 @@
-﻿<Application x:Class="Cloud_Computing_Double_Auction.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Cloud_Computing_Double_Auction"
-             StartupUri="MainWindow.xaml">
-    <Application.Resources>
-         
-    </Application.Resources>
+﻿<Application
+    x:Class="Cloud_Computing_Double_Auction.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Cloud_Computing_Double_Auction"
+    StartupUri="MainWindow.xaml">
+    <Application.Resources />
 </Application>

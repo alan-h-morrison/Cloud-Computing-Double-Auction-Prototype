@@ -87,7 +87,7 @@ namespace Cloud_Computing_Double_Auction
             {
                 Properties.Settings.Default.ManualUser = true;
             }
-            else if (chkProvider.IsChecked == false)
+            else if (chkUser.IsChecked == false)
             {
                 Properties.Settings.Default.NumUsers = Convert.ToInt32(cmbUsers.SelectedItem);
                 Properties.Settings.Default.ManualUser = false;

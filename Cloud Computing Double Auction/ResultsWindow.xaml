@@ -1,0 +1,96 @@
+﻿<Window
+    x:Class="Cloud_Computing_Double_Auction.ResultsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Cloud_Computing_Double_Auction"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Results Window"
+    Width="900"
+    Height="1200"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid>
+        <ScrollViewer>
+            <Canvas Width="900" Height="1200">
+                <DataGrid
+                    x:Name="dgInitUserData"
+                    Width="292"
+                    Height="330"
+                    Margin="132,10,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    AutoGenerateColumns="False"
+                    HeadersVisibility="Column"
+                    RowHeight="30"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            MinWidth="65"
+                            Binding="{Binding Path=UserID}"
+                            Header="User ID" />
+                        <DataGridTextColumn 
+                            Binding="{Binding Path=Demand}" 
+                            Header="Demand Quantity" />
+                        <DataGridTextColumn
+                            MinWidth="100"
+                            Binding="{Binding Path=BidPrice}"
+                            Header="Bid Price" />
+                    </DataGrid.Columns>
+
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Setter Property="IsHitTestVisible" Value="False" />
+                        </Style>
+                    </DataGrid.Resources>
+                </DataGrid>
+
+                <DataGrid
+                    x:Name="dgInitProvData"
+                    Canvas.Left="450"
+                    Canvas.Top="10"
+                    Width="292"
+                    Height="330"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    AutoGenerateColumns="False"
+                    HeadersVisibility="Column"
+                    RowHeight="30"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            MinWidth="65"
+                            Binding="{Binding Path=ProviderID}"
+                            Header="Provider ID" />
+                        <DataGridTextColumn 
+                            Binding="{Binding Path=Supply}" 
+                            Header="Supply Quantity" />
+                        <DataGridTextColumn
+                            MinWidth="100"
+                            Binding="{Binding Path=BidPrice}"
+                            Header="Bid Price" />
+                    </DataGrid.Columns>
+
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Setter Property="IsHitTestVisible" Value="False" />
+                        </Style>
+                    </DataGrid.Resources>
+                </DataGrid>
+            </Canvas>
+        </ScrollViewer>
+        <Button
+            x:Name="btnBack"
+            Width="96"
+            Height="55"
+            Margin="10,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="BtnBack_Click"
+            Content="&lt;&lt;&lt;" />
+
+    </Grid>
+</Window>

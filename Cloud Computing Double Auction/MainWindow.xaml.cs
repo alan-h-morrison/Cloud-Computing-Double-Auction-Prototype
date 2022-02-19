@@ -102,6 +102,10 @@ namespace Cloud_Computing_Double_Auction
 
             env.Start();
 
+            ResultsWindow resultsWindow = new ResultsWindow();
+            resultsWindow.Show();
+            this.Close();
+
         }
 
         public void UserAutoGeneration(EnvironmentMas enviroment)
