@@ -6,25 +6,27 @@
     xmlns:local="clr-namespace:Cloud_Computing_Double_Auction"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Results Window"
+    Height="600"
     Width="900"
-    Height="1200"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
         <ScrollViewer>
-            <Canvas Width="900" Height="1200">
+            <Canvas Height="1200" Width="900">
                 <DataGrid
                     x:Name="dgInitUserData"
                     Width="292"
-                    Height="330"
+                    Height="326"
                     Margin="132,10,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     AutoGenerateColumns="False"
                     HeadersVisibility="Column"
                     RowHeight="30"
-                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    HorizontalGridLinesBrush="LightGray"
+                    VerticalGridLinesBrush="LightGray">
 
                     <DataGrid.Columns>
                         <DataGridTextColumn
@@ -33,7 +35,7 @@
                             Header="User ID" />
                         <DataGridTextColumn Binding="{Binding Path=Demand}" Header="Demand Quantity" />
                         <DataGridTextColumn
-                            MinWidth="100"
+                            MinWidth="125"
                             Binding="{Binding Path=BidPrice}"
                             Header="Bid Price" />
                     </DataGrid.Columns>
