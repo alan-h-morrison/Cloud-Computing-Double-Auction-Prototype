@@ -34,7 +34,7 @@ namespace Cloud_Computing_Double_Auction
         {
             userBids = new List<Bid>();
             providerBids = new List<Bid>();
-            turnsToWait = 20;
+            turnsToWait = 50;
             allocation = false;
         }
 
@@ -69,7 +69,7 @@ namespace Cloud_Computing_Double_Auction
             {
                 HandleAllocation();
                 allocation = true;
-                turnsToWait = 20;
+                turnsToWait = 50;
             }
 
             if (totalUserQuantity == 0 && totalProviderQuantity == 0 && allocation == true)

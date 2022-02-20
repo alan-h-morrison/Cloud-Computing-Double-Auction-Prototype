@@ -13,22 +13,23 @@
     mc:Ignorable="d">
     <Grid>
         <ScrollViewer>
-            <Canvas Width="900" Height="1200">
+            <Canvas Width="910" Height="1200">
                 <Rectangle
                     Canvas.Left="135"
                     Canvas.Top="10"
-                    Width="290"
+                    Width="300"
                     Height="325"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
 
                 <Rectangle
-                    Canvas.Left="450"
+                    Canvas.Left="506"
                     Canvas.Top="10"
-                    Width="290"
+                    Width="300"
                     Height="325"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
+
 
                 <Button
                     x:Name="btnBack"
@@ -43,7 +44,7 @@
                     x:Name="dgInitUserData"
                     Canvas.Left="135"
                     Canvas.Top="10"
-                    Width="290"
+                    Width="300"
                     Height="Auto"
                     MaxHeight="330"
                     HorizontalAlignment="Left"
@@ -58,7 +59,7 @@
 
                     <DataGrid.Columns>
                         <DataGridTextColumn
-                            MinWidth="65"
+                            MinWidth="75"
                             Binding="{Binding Path=UserID}"
                             Header="User ID" />
                         <DataGridTextColumn Binding="{Binding Path=Demand}" Header="Demand Quantity" />
@@ -77,9 +78,9 @@
 
                 <DataGrid
                     x:Name="dgInitProvData"
-                    Canvas.Left="450"
+                    Canvas.Left="506"
                     Canvas.Top="10"
-                    Width="290"
+                    Width="300"
                     Height="Auto"
                     MaxHeight="330"
                     HorizontalAlignment="Left"
@@ -94,7 +95,7 @@
 
                     <DataGrid.Columns>
                         <DataGridTextColumn
-                            MinWidth="85"
+                            MinWidth="95"
                             Binding="{Binding Path=ProviderID}"
                             Header="Provider ID" />
                         <DataGridTextColumn Binding="{Binding Path=Supply}" Header="Supply Quantity" />

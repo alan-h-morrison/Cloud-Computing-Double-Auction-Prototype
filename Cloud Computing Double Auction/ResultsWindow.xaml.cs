@@ -29,7 +29,7 @@ namespace Cloud_Computing_Double_Auction
             ListUsers = new ObservableCollection<UserStatistic>();
 
             var userData = CloudEnvironment.listUserDetails;
-            userData = userData.OrderBy(x => x.UserID).ToList();
+            userData = userData.OrderBy(x => x.UserID.Substring(3)).ToList();
 
             foreach (var user in userData)
             {
@@ -48,12 +48,18 @@ namespace Cloud_Computing_Double_Auction
                  column.Width = new DataGridLength(1.0, DataGridLengthUnitType.Auto);
             }
 
-            /*
-            if(userData.Count() < 11)
+        }
+
+        public class NumberComparer : IComparer<string>
+        {
+            public int Compare(string a, string b)
             {
-                dgInitUserData.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+                string[] arr1 = a.Split(' ');
+                string[] arr2 = b.Split(' ');
+                int int1 = int.Parse(arr1[1]);
+                int int2 = int.Parse(arr2[1]);
+                return int1.CompareTo(int2);
             }
-            */
         }
 
 

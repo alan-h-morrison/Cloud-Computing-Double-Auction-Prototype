@@ -113,7 +113,8 @@ namespace Cloud_Computing_Double_Auction
             for (int i = 0; i < numUsers; i++)
             {
                 var userAgent = new CloudUser(UserPosition.Positive);
-                enviroment.Add(userAgent, $"user{i + 1:D2}");
+
+                enviroment.Add(userAgent, $"user_{i + 1:D3}");
             }
         }
 
@@ -122,7 +123,7 @@ namespace Cloud_Computing_Double_Auction
             for (int i = 0; i < numProviders; i++)
             {
                 var providerAgent = new CloudProvider(ProviderPosition.Positive);
-                environment.Add(providerAgent, $"provider{i + 1:D2}");
+                environment.Add(providerAgent, $"provider_{i + 1:D3}");
             }
         }
 
@@ -131,7 +132,7 @@ namespace Cloud_Computing_Double_Auction
             for (int i = 0; i < numUsers; i++)
             {
                 var userAgent = new CloudUser(UserPosition.Positive, quantities[i], prices[i]);
-                environment.Add(userAgent, $"user{i + 1:D2}");
+                environment.Add(userAgent, $"user_{i + 1:D3}");
             }            
         }
 
@@ -140,7 +141,7 @@ namespace Cloud_Computing_Double_Auction
             for (int i = 0; i < numProviders; i++)
             {
                 var providerAgent = new CloudProvider(ProviderPosition.Positive, quantities[i], prices[i]);
-                environment.Add(providerAgent, $"provider{i + 1:D2}");
+                environment.Add(providerAgent, $"provider_{i + 1:D3}");
             }
         }
 
