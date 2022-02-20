@@ -14,6 +14,15 @@
     <Grid>
         <ScrollViewer>
             <Canvas Height="1200" Width="900">
+                <Button
+            x:Name="btnBack"
+            Width="96"
+            Height="55"
+            Margin="10,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="BtnBack_Click"
+            Content="&lt;&lt;&lt;" />
                 <DataGrid
                     x:Name="dgInitUserData"
                     Width="292"
@@ -80,15 +89,5 @@
                 </DataGrid>
             </Canvas>
         </ScrollViewer>
-        <Button
-            x:Name="btnBack"
-            Width="96"
-            Height="55"
-            Margin="10,10,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Click="BtnBack_Click"
-            Content="&lt;&lt;&lt;" />
-
     </Grid>
 </Window>
