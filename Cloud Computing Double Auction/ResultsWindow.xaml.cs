@@ -39,27 +39,46 @@ namespace Cloud_Computing_Double_Auction
 
         public void DisplayParticipants()
         {
-            var ListUsers = new ObservableCollection<UserStatistic>();
-            var ListProviders = new ObservableCollection<ProviderStatistic>();
+            var listUsers = new ObservableCollection<Participant>();
+            var listProviders = new ObservableCollection<Participant>();
+            var listWinningUsers = new ObservableCollection<Participant>();
+            var listWinningProviders = new ObservableCollection<Participant>();
 
             var userData = CloudEnvironment.listUserDetails;
             var provData = CloudEnvironment.listProvDetails;
+            var winningUserData = CloudEnvironment.listWinningUsers;
+            var winningProviderData = CloudEnvironment.listWinningProviders;
 
             userData = userData.OrderBy(x => x.ID.Substring(3)).ToList();
             provData = provData.OrderBy(x => x.ID.Substring(3)).ToList();
+            winningUserData = winningUserData.OrderBy(x => x.ID.Substring(3)).ToList();
+            winningProviderData = winningProviderData.OrderBy(x => x.ID.Substring(3)).ToList();
+
 
             foreach (var provider in provData)
             {
-                ListProviders.Add(provider);
+                listProviders.Add(provider);
             }
 
             foreach (var user in userData)
             {
-                ListUsers.Add(user);
+                listUsers.Add(user);
             }
 
-            dgInitUserData.ItemsSource = ListUsers;
-            dgInitProvData.ItemsSource = ListProviders;
+            foreach(var winningUser in winningUserData)
+            {
+                listWinningUsers.Add(winningUser);
+            }
+
+            foreach(var winningProvider in winningProviderData)
+            {
+                listWinningProviders.Add(winningProvider);
+            }
+
+            dgInitUserData.ItemsSource = listUsers;
+            dgInitProvData.ItemsSource = listProviders;
+            dgWinningUsers.ItemsSource = listWinningUsers;
+            dgWinningProv.ItemsSource = listWinningProviders;
         }
 
 

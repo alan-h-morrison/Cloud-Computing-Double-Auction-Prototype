@@ -9,8 +9,10 @@ namespace Cloud_Computing_Double_Auction
 {
     public class CloudEnvironment : Agent
     {
-        public static List<UserStatistic> listUserDetails { get; set; }
-        public static List<ProviderStatistic> listProvDetails { get; set; }
+        public static List<Participant> listUserDetails { get; set; }
+        public static List<Participant> listProvDetails { get; set; }
+        public static List<Participant> listWinningUsers { get; set; }
+        public static List<Participant> listWinningProviders { get; set; }
 
         public Random rand = new Random();
         int turnsToWait;
@@ -19,8 +21,10 @@ namespace Cloud_Computing_Double_Auction
         public CloudEnvironment()
         {
             turnsToWait = 10;
-            listUserDetails = new List<UserStatistic>();
-            listProvDetails = new List<ProviderStatistic>();
+            listUserDetails = new List<Participant>();
+            listProvDetails = new List<Participant>();
+            listWinningUsers = new List<Participant>();
+            listWinningProviders = new List<Participant>();
         }
 
         public override void Act(Message message)
@@ -66,12 +70,20 @@ namespace Cloud_Computing_Double_Auction
                 turnsToWait = 5;
                 statReceived = true;
 
-                int demand = Convert.ToInt32(values[0]);
-                int bid = Convert.ToInt32(values[1]);
+                string won = values[0];
+                int demand = Convert.ToInt32(values[1]);
+                int bid = Convert.ToInt32(values[2]);
+                int quantityReceived = Convert.ToInt32(values[3]);
+                int totalPaid = Convert.ToInt32(values[4]);
 
-                UserStatistic user = new UserStatistic(sender, demand, bid);
-
+                Participant user = new Participant(sender, demand, bid);
                 listUserDetails.Add(user);
+
+                if (won == "true")
+                {
+                    Participant winningUser = new Participant(sender, demand, bid, quantityReceived, totalPaid);
+                    listWinningUsers.Add(winningUser);
+                }
             }
             else if (sender.Contains("provider"))
             {
@@ -79,12 +91,21 @@ namespace Cloud_Computing_Double_Auction
                 turnsToWait = 5;
                 statReceived = true;
 
-                int supply = Convert.ToInt32(values[0]);
-                int bid = Convert.ToInt32(values[1]);
+                string won = values[0];
+                int supply = Convert.ToInt32(values[1]);
+                int bid = Convert.ToInt32(values[2]);
+                int quantityAllocated = Convert.ToInt32(values[3]);
+                int totalReceived = Convert.ToInt32(values[4]);
 
-                ProviderStatistic provider = new ProviderStatistic(sender, supply, bid);
 
+                Participant provider = new Participant(sender, supply, bid);
                 listProvDetails.Add(provider);
+
+                if(won == "true")
+                {
+                    Participant winningProvider = new Participant(sender, supply, bid, quantityAllocated, totalReceived);
+                    listWinningProviders.Add(winningProvider);
+                }
             }
             else if (sender.Contains("auctioneer"))
             {

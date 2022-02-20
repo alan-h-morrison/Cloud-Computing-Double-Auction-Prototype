@@ -100,7 +100,14 @@ namespace Cloud_Computing_Double_Auction
             var envionmentAgent = new CloudEnvironment();
             env.Add(envionmentAgent, "environment");
 
-            env.Start();
+            try
+            {
+                env.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
 
             ResultsWindow resultsWindow = new ResultsWindow();
             resultsWindow.Show();

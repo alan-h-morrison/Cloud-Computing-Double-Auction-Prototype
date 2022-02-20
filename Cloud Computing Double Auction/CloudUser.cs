@@ -14,6 +14,9 @@ namespace Cloud_Computing_Double_Auction
 
         private int demand;
         private int bidPrice;
+        private int finalQuantity;
+        private int totalPricePaid;
+        private string won;
 
         private UserPosition position;
         private string stringPosition;
@@ -25,7 +28,10 @@ namespace Cloud_Computing_Double_Auction
 
             demand = 0;
             bidPrice = 0;
-        }
+            finalQuantity = 0;
+            totalPricePaid = 0;
+            won = "false";
+    }
 
         public CloudUser(UserPosition userPosition, int demandQuantity, int pricePerUnit)
         {
@@ -34,6 +40,9 @@ namespace Cloud_Computing_Double_Auction
 
             demand = demandQuantity;
             bidPrice = pricePerUnit;
+            finalQuantity = 0;
+            totalPricePaid = 0;
+            won = "false";
         }
 
         public override void Setup()
@@ -77,7 +86,7 @@ namespace Cloud_Computing_Double_Auction
 
         private void HandleEnd(string info)
         {
-            Send("environment", $"statistics {demand} {bidPrice}");
+            Send("environment", $"statistics {won} {demand} {bidPrice} {finalQuantity} {totalPricePaid}");
             Stop();
         }
 
@@ -100,6 +109,10 @@ namespace Cloud_Computing_Double_Auction
             int pricePerUnit = Convert.ToInt32(values[2]);
 
             int totalPrice = amount * pricePerUnit;
+
+            won = "true";
+            finalQuantity = finalQuantity + amount;
+            totalPricePaid = totalPricePaid + totalPrice;
 
             Send("auctioneer", $"pay {provider} {totalPrice} {amount}");
         }

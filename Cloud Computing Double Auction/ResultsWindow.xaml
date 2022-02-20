@@ -13,20 +13,36 @@
     mc:Ignorable="d">
     <Grid>
         <ScrollViewer>
-            <Canvas Width="910" Height="1200">
+            <Canvas Width="894" Height="1162">
                 <Rectangle
                     Canvas.Left="135"
-                    Canvas.Top="10"
-                    Width="300"
+                    Canvas.Top="80"
+                    Width="320"
                     Height="325"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
 
                 <Rectangle
                     Canvas.Left="506"
-                    Canvas.Top="10"
-                    Width="300"
+                    Canvas.Top="80"
+                    Width="320"
                     Height="325"
+                    Fill="#FFF4F4F5"
+                    Stroke="LightGray" />
+
+                <Rectangle
+                    Canvas.Left="180"
+                    Canvas.Top="506"
+                    Width="555"
+                    Height="180"
+                    Fill="#FFF4F4F5"
+                    Stroke="LightGray" />
+
+                <Rectangle
+                    Canvas.Left="180"
+                    Canvas.Top="734"
+                    Width="555"
+                    Height="180"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
 
@@ -42,8 +58,8 @@
                 <DataGrid
                     x:Name="dgInitUserData"
                     Canvas.Left="135"
-                    Canvas.Top="10"
-                    Width="300"
+                    Canvas.Top="80"
+                    Width="320"
                     Height="Auto"
                     MaxHeight="330"
                     HorizontalAlignment="Left"
@@ -81,8 +97,8 @@
                 <DataGrid
                     x:Name="dgInitProvData"
                     Canvas.Left="506"
-                    Canvas.Top="10"
-                    Width="300"
+                    Canvas.Top="80"
+                    Width="320"
                     Height="Auto"
                     MaxHeight="330"
                     HorizontalAlignment="Left"
@@ -105,7 +121,7 @@
                             Binding="{Binding Path=Quantity}"
                             Header="Supply Quantity" />
                         <DataGridTextColumn
-                            MinWidth="100"
+                            MinWidth="110"
                             Binding="{Binding Path=BidPrice}"
                             Header="Bid Price" />
                     </DataGrid.Columns>
@@ -115,7 +131,120 @@
                             <Setter Property="IsHitTestVisible" Value="False" />
                         </Style>
                     </DataGrid.Resources>
+
                 </DataGrid>
+
+                <DataGrid
+                    x:Name="dgWinningUsers"
+                    Canvas.Left="180"
+                    Canvas.Top="506"
+                    Width="555"
+                    Height="Auto"
+                    MaxHeight="180"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    AutoGenerateColumns="False"
+                    BorderBrush="LightGray"
+                    HeadersVisibility="Column"
+                    HorizontalGridLinesBrush="LightGray"
+                    RowHeight="30"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    VerticalGridLinesBrush="LightGray">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            MinWidth="100"
+                            Binding="{Binding Path=ID}"
+                            Header="User ID" />
+                        <DataGridTextColumn
+                            MinWidth="100"
+                            Binding="{Binding Path=Quantity}"
+                            Header="Demand Quantity" />
+                        <DataGridTextColumn
+                            MinWidth="100"
+                            Binding="{Binding Path=BidPrice}"
+                            Header="Bid Price" />
+                        <DataGridTextColumn
+                            MinWidth="100"
+                            Binding="{Binding Path=FinalQuantity}"
+                            Header="Final Quantity" />
+                        <DataGridTextColumn
+                            MinWidth="130"
+                            Binding="{Binding Path=TotalPrice}"
+                            Header="Price Paid" />
+                    </DataGrid.Columns>
+
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Setter Property="IsHitTestVisible" Value="False" />
+                        </Style>
+                    </DataGrid.Resources>
+
+                </DataGrid>
+
+                <DataGrid
+                    x:Name="dgWinningProv"
+                    Canvas.Left="180"
+                    Canvas.Top="734"
+                    Width="555"
+                    Height="Auto"
+                    MaxHeight="180"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    AutoGenerateColumns="False"
+                    BorderBrush="LightGray"
+                    HeadersVisibility="Column"
+                    HorizontalGridLinesBrush="LightGray"
+                    RowHeight="30"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    VerticalGridLinesBrush="LightGray">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            MinWidth="100"
+                            Binding="{Binding Path=ID}"
+                            Header="User ID" />
+                        <DataGridTextColumn
+                            MinWidth="100"
+                            Binding="{Binding Path=Quantity}"
+                            Header="Supply Quantity" />
+                        <DataGridTextColumn
+                            MinWidth="100"
+                            Binding="{Binding Path=BidPrice}"
+                            Header="Bid Price" />
+                        <DataGridTextColumn
+                            MinWidth="100"
+                            Binding="{Binding Path=FinalQuantity}"
+                            Header="Final Quantity" />
+                        <DataGridTextColumn
+                            MinWidth="130"
+                            Binding="{Binding Path=TotalPrice}"
+                            Header="Price Received" />
+                    </DataGrid.Columns>
+
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Setter Property="IsHitTestVisible" Value="False" />
+                        </Style>
+                    </DataGrid.Resources>
+
+                </DataGrid>
+                <TextBlock
+                    Canvas.Left="135"
+                    Canvas.Top="18"
+                    Width="671"
+                    Height="47"
+                    FontSize="36"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap"><Run Text="User/Provider" TextDecorations="Underline" /><Run Text=" Initial Bids" TextDecorations="Underline" /><LineBreak /></TextBlock>
+                <TextBlock
+                    Canvas.Left="135"
+                    Canvas.Top="438"
+                    Width="671"
+                    Height="47"
+                    FontSize="36"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="User/Provider" TextDecorations="Underline" /><Run Text=" Initial Bids" TextDecorations="Underline" /><LineBreak /></TextBlock>
             </Canvas>
         </ScrollViewer>
     </Grid>
