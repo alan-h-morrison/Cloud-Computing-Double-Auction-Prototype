@@ -6,35 +6,54 @@
     xmlns:local="clr-namespace:Cloud_Computing_Double_Auction"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Results Window"
-    Height="600"
     Width="900"
+    Height="600"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
         <ScrollViewer>
-            <Canvas Height="1200" Width="900">
+            <Canvas Width="900" Height="1200">
+                <Rectangle
+                    Canvas.Left="135"
+                    Canvas.Top="10"
+                    Width="290"
+                    Height="325"
+                    Fill="#FFF4F4F5"
+                    Stroke="LightGray" />
+
+                <Rectangle
+                    Canvas.Left="450"
+                    Canvas.Top="10"
+                    Width="290"
+                    Height="325"
+                    Fill="#FFF4F4F5"
+                    Stroke="LightGray" />
+
                 <Button
-            x:Name="btnBack"
-            Width="96"
-            Height="55"
-            Margin="10,10,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Click="BtnBack_Click"
-            Content="&lt;&lt;&lt;" />
+                    x:Name="btnBack"
+                    Width="96"
+                    Height="55"
+                    Margin="10,10,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Click="BtnBack_Click"
+                    Content="&lt;&lt;&lt;" />
                 <DataGrid
                     x:Name="dgInitUserData"
-                    Width="292"
-                    Height="326"
-                    Margin="132,10,0,0"
+                    Canvas.Left="135"
+                    Canvas.Top="10"
+                    Width="290"
+                    Height="Auto"
+                    MaxHeight="330"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     AutoGenerateColumns="False"
+                    BorderBrush="LightGray"
                     HeadersVisibility="Column"
+                    HorizontalGridLinesBrush="LightGray"
                     RowHeight="30"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                    HorizontalGridLinesBrush="LightGray"
                     VerticalGridLinesBrush="LightGray">
 
                     <DataGrid.Columns>
@@ -60,18 +79,22 @@
                     x:Name="dgInitProvData"
                     Canvas.Left="450"
                     Canvas.Top="10"
-                    Width="292"
-                    Height="330"
+                    Width="290"
+                    Height="Auto"
+                    MaxHeight="330"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     AutoGenerateColumns="False"
+                    BorderBrush="LightGray"
                     HeadersVisibility="Column"
+                    HorizontalGridLinesBrush="LightGray"
                     RowHeight="30"
-                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    VerticalGridLinesBrush="LightGray">
 
                     <DataGrid.Columns>
                         <DataGridTextColumn
-                            MinWidth="65"
+                            MinWidth="85"
                             Binding="{Binding Path=ProviderID}"
                             Header="Provider ID" />
                         <DataGridTextColumn Binding="{Binding Path=Supply}" Header="Supply Quantity" />

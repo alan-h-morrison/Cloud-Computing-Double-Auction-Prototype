@@ -47,8 +47,14 @@ namespace Cloud_Computing_Double_Auction
                 //if you want to size your column as per both header and cell content
                  column.Width = new DataGridLength(1.0, DataGridLengthUnitType.Auto);
             }
-        }
 
+            /*
+            if(userData.Count() < 11)
+            {
+                dgInitUserData.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            }
+            */
+        }
 
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
