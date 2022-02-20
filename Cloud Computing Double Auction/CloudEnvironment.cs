@@ -10,6 +10,7 @@ namespace Cloud_Computing_Double_Auction
     public class CloudEnvironment : Agent
     {
         public static List<UserStatistic> listUserDetails { get; set; }
+        public static List<ProviderStatistic> listProvDetails { get; set; }
 
         public Random rand = new Random();
         int turnsToWait;
@@ -19,6 +20,7 @@ namespace Cloud_Computing_Double_Auction
         {
             turnsToWait = 10;
             listUserDetails = new List<UserStatistic>();
+            listProvDetails = new List<ProviderStatistic>();
         }
 
         public override void Act(Message message)
@@ -76,6 +78,13 @@ namespace Cloud_Computing_Double_Auction
                 Console.WriteLine($"\t[{sender}]:\n\t\t-supply quantity = {values[0]}\n\t\t-bid price (per unit): {values[1]}\n");
                 turnsToWait = 5;
                 statReceived = true;
+
+                int supply = Convert.ToInt32(values[0]);
+                int bid = Convert.ToInt32(values[1]);
+
+                ProviderStatistic provider = new ProviderStatistic(sender, supply, bid);
+
+                listProvDetails.Add(provider);
             }
             else if (sender.Contains("auctioneer"))
             {

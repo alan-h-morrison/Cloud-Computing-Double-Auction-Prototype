@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Cloud_Computing_Double_Auction
 {
-    public class UserStatistic : Participant
+    public class ProviderStatistic : Participant
     {
-        public UserStatistic(string id, int demand, int bidPrice)
+        public ProviderStatistic(string id, int supply, int bidPrice)
         {
             this.ID = id;
-            this.Quantity = demand;
+            this.Quantity = supply;
             this.BidPrice = bidPrice;
         }
     }

@@ -30,7 +30,6 @@
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
 
-
                 <Button
                     x:Name="btnBack"
                     Width="96"
@@ -59,12 +58,15 @@
 
                     <DataGrid.Columns>
                         <DataGridTextColumn
-                            MinWidth="75"
-                            Binding="{Binding Path=UserID}"
+                            MinWidth="100"
+                            Binding="{Binding Path=ID}"
                             Header="User ID" />
-                        <DataGridTextColumn Binding="{Binding Path=Demand}" Header="Demand Quantity" />
                         <DataGridTextColumn
-                            MinWidth="125"
+                            MinWidth="100"
+                            Binding="{Binding Path=Quantity}"
+                            Header="Demand Quantity" />
+                        <DataGridTextColumn
+                            MinWidth="100"
                             Binding="{Binding Path=BidPrice}"
                             Header="Bid Price" />
                     </DataGrid.Columns>
@@ -95,10 +97,13 @@
 
                     <DataGrid.Columns>
                         <DataGridTextColumn
-                            MinWidth="95"
-                            Binding="{Binding Path=ProviderID}"
+                            MinWidth="100"
+                            Binding="{Binding Path=ID}"
                             Header="Provider ID" />
-                        <DataGridTextColumn Binding="{Binding Path=Supply}" Header="Supply Quantity" />
+                        <DataGridTextColumn
+                            MinWidth="100"
+                            Binding="{Binding Path=Quantity}"
+                            Header="Supply Quantity" />
                         <DataGridTextColumn
                             MinWidth="100"
                             Binding="{Binding Path=BidPrice}"

@@ -20,23 +20,11 @@ namespace Cloud_Computing_Double_Auction
     /// </summary>
     public partial class ResultsWindow : Window
     {
-        public ObservableCollection<UserStatistic> ListUsers { get; set; }
-
         public ResultsWindow()
         {
             InitializeComponent();
 
-            ListUsers = new ObservableCollection<UserStatistic>();
-
-            var userData = CloudEnvironment.listUserDetails;
-            userData = userData.OrderBy(x => x.UserID.Substring(3)).ToList();
-
-            foreach (var user in userData)
-            {
-                ListUsers.Add(user);
-            }
-
-            dgInitUserData.ItemsSource = ListUsers;
+            DisplayParticipants();
             
             foreach(DataGridColumn column in dgInitUserData.Columns)
             {
@@ -47,19 +35,31 @@ namespace Cloud_Computing_Double_Auction
                 //if you want to size your column as per both header and cell content
                  column.Width = new DataGridLength(1.0, DataGridLengthUnitType.Auto);
             }
-
         }
 
-        public class NumberComparer : IComparer<string>
+        public void DisplayParticipants()
         {
-            public int Compare(string a, string b)
+            var ListUsers = new ObservableCollection<UserStatistic>();
+            var ListProviders = new ObservableCollection<ProviderStatistic>();
+
+            var userData = CloudEnvironment.listUserDetails;
+            var provData = CloudEnvironment.listProvDetails;
+
+            userData = userData.OrderBy(x => x.ID.Substring(3)).ToList();
+            provData = provData.OrderBy(x => x.ID.Substring(3)).ToList();
+
+            foreach (var provider in provData)
             {
-                string[] arr1 = a.Split(' ');
-                string[] arr2 = b.Split(' ');
-                int int1 = int.Parse(arr1[1]);
-                int int2 = int.Parse(arr2[1]);
-                return int1.CompareTo(int2);
+                ListProviders.Add(provider);
             }
+
+            foreach (var user in userData)
+            {
+                ListUsers.Add(user);
+            }
+
+            dgInitUserData.ItemsSource = ListUsers;
+            dgInitProvData.ItemsSource = ListProviders;
         }
 
 

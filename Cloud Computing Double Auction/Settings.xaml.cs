@@ -269,6 +269,13 @@ namespace Cloud_Computing_Double_Auction
             }
         }
 
+        public void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= TextBox_GotFocus;
+        }
+
         private static int counter = 0;
         private static readonly object lockObject = new object();
         public static void Increment()
