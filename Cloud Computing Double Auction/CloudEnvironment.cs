@@ -66,7 +66,6 @@ namespace Cloud_Computing_Double_Auction
 
             if (sender.Contains("user"))
             {
-                Console.WriteLine($"\t[{sender}]:\n\t\t-demand quantity = {values[0]}\n\t\t-bid price (per unit): {values[1]}\n");
                 turnsToWait = 5;
                 statReceived = true;
 
@@ -87,7 +86,6 @@ namespace Cloud_Computing_Double_Auction
             }
             else if (sender.Contains("provider"))
             {
-                Console.WriteLine($"\t[{sender}]:\n\t\t-supply quantity = {values[0]}\n\t\t-bid price (per unit): {values[1]}\n");
                 turnsToWait = 5;
                 statReceived = true;
 
