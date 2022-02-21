@@ -17,7 +17,7 @@
                 <Rectangle
                     Canvas.Left="135"
                     Canvas.Top="80"
-                    Width="320"
+                    Width="315"
                     Height="325"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
@@ -59,7 +59,7 @@
                     x:Name="dgInitUserData"
                     Canvas.Left="135"
                     Canvas.Top="80"
-                    Width="320"
+                    Width="315"
                     Height="Auto"
                     MaxHeight="330"
                     HorizontalAlignment="Left"
@@ -74,15 +74,15 @@
 
                     <DataGrid.Columns>
                         <DataGridTextColumn
-                            MinWidth="100"
+                            Width="105"
                             Binding="{Binding Path=ID}"
                             Header="User ID" />
                         <DataGridTextColumn
-                            MinWidth="100"
+                            Width="105"
                             Binding="{Binding Path=Quantity}"
                             Header="Demand Quantity" />
                         <DataGridTextColumn
-                            MinWidth="100"
+                            Width="105"
                             Binding="{Binding Path=BidPrice}"
                             Header="Bid Price" />
                     </DataGrid.Columns>
