@@ -373,17 +373,10 @@ namespace Cloud_Computing_Double_Auction
         {
             int nextUserPrice = 0;
 
-            try
-            {
-                if (i + 1 != userBids.Count)
-                {
-                    nextUserPrice = userBids[i + 1].BidPrice;
-                }
 
-            }
-            catch (Exception ex)
+            if (i + 1 != userBids.Count)
             {
-
+                nextUserPrice = userBids[i + 1].BidPrice;
             }
             
             if ((userBids[i].BidPrice >= providerBids[j].BidPrice) && (providerBids[j].BidPrice >= nextUserPrice))

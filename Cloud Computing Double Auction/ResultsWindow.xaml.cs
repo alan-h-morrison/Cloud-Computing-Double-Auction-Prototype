@@ -37,50 +37,51 @@ namespace Cloud_Computing_Double_Auction
             }
         }
 
-        public void DisplayParticipants()
+        public void DisplayParticipants()    
         {
-            var listUsers = new ObservableCollection<Participant>();
-            var listProviders = new ObservableCollection<Participant>();
-            var listWinningUsers = new ObservableCollection<Participant>();
-            var listWinningProviders = new ObservableCollection<Participant>();
-
             var userData = CloudEnvironment.listUserDetails;
             var provData = CloudEnvironment.listProvDetails;
             var winningUserData = CloudEnvironment.listWinningUsers;
             var winningProviderData = CloudEnvironment.listWinningProviders;
 
-            userData = userData.OrderBy(x => x.ID.Substring(3)).ToList();
-            provData = provData.OrderBy(x => x.ID.Substring(3)).ToList();
-            winningUserData = winningUserData.OrderBy(x => x.ID.Substring(3)).ToList();
-            winningProviderData = winningProviderData.OrderBy(x => x.ID.Substring(3)).ToList();
+            DisplayData(userData, dgInitUserData);
+            DisplayData(provData, dgInitProvData);
 
-
-            foreach (var provider in provData)
+            if (winningUserData.Count != 0 || winningProviderData.Count != 0)
             {
-                listProviders.Add(provider);
-            }
+                int totalUsers = Properties.Settings.Default.NumUsers;
+                int totalProviders = Properties.Settings.Default.NumProviders;
 
-            foreach (var user in userData)
-            {
-                listUsers.Add(user);
-            }
+                DisplayData(winningUserData, dgWinningUsers);
+                DisplayData(winningProviderData, dgWinningProv);
 
-            foreach(var winningUser in winningUserData)
-            {
-                listWinningUsers.Add(winningUser);
-            }
+                lblWinningUsers.Text = winningUserData.Count().ToString();
+                lblWinningProviders.Text = winningProviderData.Count().ToString();
 
-            foreach(var winningProvider in winningProviderData)
-            {
-                listWinningProviders.Add(winningProvider);
-            }
+                lblStatus.Text = "Success";
+                lblStatus.Foreground = Brushes.Green;
+                lblStatus.TextDecorations = TextDecorations.Underline;
 
-            dgInitUserData.ItemsSource = listUsers;
-            dgInitProvData.ItemsSource = listProviders;
-            dgWinningUsers.ItemsSource = listWinningUsers;
-            dgWinningProv.ItemsSource = listWinningProviders;
+                lblNumUsers.Text = totalUsers.ToString();
+                lblNumProviders.Text = totalProviders.ToString();
+                lblTotal.Text = (totalUsers + totalProviders).ToString();
+
+            }
         }
 
+        private void DisplayData(List<Participant> data, DataGrid dataGrid)
+        {
+            var listParticpants = new ObservableCollection<Participant>();
+
+            data = data.OrderBy(x => x.ID.Substring(3)).ToList();
+
+            foreach (var participant in data)
+            {
+                listParticpants.Add(participant);
+            }
+
+            dataGrid.ItemsSource = listParticpants;
+        }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
