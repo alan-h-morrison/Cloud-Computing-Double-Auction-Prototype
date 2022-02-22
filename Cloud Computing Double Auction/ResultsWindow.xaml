@@ -12,39 +12,35 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="358*" />
-            <ColumnDefinition Width="89*" />
-        </Grid.ColumnDefinitions>
-        <ScrollViewer Grid.ColumnSpan="2">
-            <Canvas Width="894" Height="1404">
+        <ScrollViewer>
+            <Canvas Width="900" Height="1450">
                 <Rectangle
-                    Canvas.Left="135"
-                    Canvas.Top="164"
+                    Canvas.Left="90"
+                    Canvas.Top="240"
                     Width="320"
                     Height="325"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
 
                 <Rectangle
-                    Canvas.Left="506"
-                    Canvas.Top="164"
+                    Canvas.Left="490"
+                    Canvas.Top="240"
                     Width="320"
                     Height="325"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
 
                 <Rectangle
-                    Canvas.Left="135"
-                    Canvas.Top="733"
+                    Canvas.Left="60"
+                    Canvas.Top="749"
                     Width="555"
                     Height="180"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
 
                 <Rectangle
-                    Canvas.Left="136"
-                    Canvas.Top="1055"
+                    Canvas.Left="61"
+                    Canvas.Top="1058"
                     Width="555"
                     Height="180"
                     Fill="#FFF4F4F5"
@@ -62,8 +58,8 @@
                     Content="&lt;&lt;&lt;" />
                 <DataGrid
                     x:Name="dgInitUserData"
-                    Canvas.Left="135"
-                    Canvas.Top="164"
+                    Canvas.Left="90"
+                    Canvas.Top="240"
                     Width="320"
                     Height="Auto"
                     MaxHeight="330"
@@ -101,8 +97,8 @@
 
                 <DataGrid
                     x:Name="dgInitProvData"
-                    Canvas.Left="506"
-                    Canvas.Top="164"
+                    Canvas.Left="490"
+                    Canvas.Top="240"
                     Width="320"
                     Height="Auto"
                     MaxHeight="330"
@@ -141,8 +137,8 @@
 
                 <DataGrid
                     x:Name="dgWinningUsers"
-                    Canvas.Left="135"
-                    Canvas.Top="733"
+                    Canvas.Left="60"
+                    Canvas.Top="749"
                     Width="555"
                     Height="Auto"
                     MaxHeight="180"
@@ -189,8 +185,8 @@
 
                 <DataGrid
                     x:Name="dgWinningProv"
-                    Canvas.Left="136"
-                    Canvas.Top="1055"
+                    Canvas.Left="61"
+                    Canvas.Top="1058"
                     Width="555"
                     Height="Auto"
                     MaxHeight="180"
@@ -235,16 +231,18 @@
 
                 </DataGrid>
                 <TextBlock
-                    Canvas.Left="135"
-                    Canvas.Top="11"
-                    Width="428"
-                    Height="54"
-                    FontSize="38"
+                    Canvas.Left="62"
+                    Canvas.Top="658"
+                    Width="768"
+                    Height="47"
+                    FontSize="36"
                     Foreground="#FF3C2AB4"
+                    TextAlignment="Center"
                     TextWrapping="Wrap"><Run Text="User/Provider Initial Bids" TextDecorations="Underline" /><LineBreak /></TextBlock>
                 <TextBlock
-                    Canvas.Top="629"
-                    Width="894"
+                    Canvas.Left="59"
+                    Canvas.Top="181"
+                    Width="691"
                     Height="47"
                     FontSize="36"
                     Foreground="#FF3C2AB4"
@@ -252,8 +250,8 @@
                     TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="Participant Statistics" TextDecorations="Underline" /><LineBreak /></TextBlock>
 
                 <TextBlock
-                    Canvas.Left="137"
-                    Canvas.Top="694"
+                    Canvas.Left="62"
+                    Canvas.Top="710"
                     Width="554"
                     Height="34"
                     FontSize="24"
@@ -262,18 +260,18 @@
                     TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="User" TextDecorations="Underline" /><Run Text="s" TextDecorations="Underline" /><LineBreak /></TextBlock>
 
                 <Border
-                    Canvas.Left="586"
+                    Canvas.Left="599"
                     Canvas.Top="11"
                     Width="244"
-                    Height="54"
+                    Height="47"
                     Padding="12"
                     Background="#FFF4F4F5"
                     BorderBrush="LightGray"
                     BorderThickness="1" />
 
                 <TextBlock
-                    Canvas.Left="586"
-                    Canvas.Top="23"
+                    Canvas.Left="599"
+                    Canvas.Top="18"
                     Width="244"
                     Height="34"
                     HorizontalAlignment="Left"
@@ -288,10 +286,11 @@
                     </InlineUIContainer></TextBlock>
 
                 <TextBlock
-                    Canvas.Left="136"
-                    Canvas.Top="502"
+                    Canvas.Left="90"
+                    Canvas.Top="584"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    RenderTransformOrigin="0.685,0.6"
                     TextWrapping="Wrap"><Run Text="Number of Users" /><Run Text=" = " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblNumUsers"
@@ -301,8 +300,8 @@
                     </InlineUIContainer></TextBlock>
 
                 <TextBlock
-                    Canvas.Left="136"
-                    Canvas.Top="69"
+                    Canvas.Left="62"
+                    Canvas.Top="96"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Black"
@@ -317,8 +316,8 @@
                     </InlineUIContainer></TextBlock>
 
                 <TextBlock
-                    Canvas.Left="506"
-                    Canvas.Top="502"
+                    Canvas.Left="490"
+                    Canvas.Top="584"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     TextWrapping="Wrap"><Run Text="Number of " /><Run Text="Providers" /><Run Text=" " /><Run Text="=" /><Run Text="  " /><InlineUIContainer>
@@ -329,8 +328,8 @@
                             TextWrapping="Wrap" />
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="137"
-                    Canvas.Top="1016"
+                    Canvas.Left="62"
+                    Canvas.Top="1019"
                     Width="554"
                     Height="34"
                     FontSize="24"
@@ -338,8 +337,8 @@
                     TextAlignment="Left"
                     TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="Providers" TextDecorations="Underline" /><LineBreak /></TextBlock>
                 <TextBlock
-                    Canvas.Left="137"
-                    Canvas.Top="928"
+                    Canvas.Left="60"
+                    Canvas.Top="946"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Black"
@@ -353,8 +352,8 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="135"
-                    Canvas.Top="1250"
+                    Canvas.Left="60"
+                    Canvas.Top="1253"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Black"
@@ -367,6 +366,16 @@
                             TextWrapping="Wrap" />
 
                     </InlineUIContainer></TextBlock>
+                <TextBlock
+                    Canvas.Left="123"
+                    Canvas.Top="12"
+                    Width="246"
+                    Height="47"
+                    FontFamily="Segoe UI Semibold"
+                    FontSize="40"
+                    Foreground="Black"
+                    TextAlignment="Left"
+                    TextWrapping="Wrap"><Run Text="Results Menu" TextDecorations="Underline" /></TextBlock>
 
             </Canvas>
         </ScrollViewer>
