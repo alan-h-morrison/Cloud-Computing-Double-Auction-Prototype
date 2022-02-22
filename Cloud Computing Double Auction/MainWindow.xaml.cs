@@ -103,16 +103,16 @@ namespace Cloud_Computing_Double_Auction
             try
             {
                 env.Start();
+
+                ResultsWindow resultsWindow = new ResultsWindow();
+                resultsWindow.Show();
+                this.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+                MessageBox.Show("The double auction resulted in no winning users or providers. Please run again or adjust settings appropriately");
             }
-
-            ResultsWindow resultsWindow = new ResultsWindow();
-            resultsWindow.Show();
-            this.Close();
-
         }
 
         public void UserAutoGeneration(EnvironmentMas enviroment)

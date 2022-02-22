@@ -149,34 +149,32 @@ namespace Cloud_Computing_Double_Auction
             {
                 WinnerDetermination();
 
-                if(winUserBids.Count == 0 || winProviderBids.Count == 0)
+                if(winUserBids.Count > 0 && winProviderBids.Count > 0)
                 {
-                    Console.WriteLine("MISTAKE");
-                }
+                    if (!(winUserBids.Count == 1 || winProviderBids.Count == 1))
+                    {
+                        winUserBids.RemoveAt(winUserBids.Count - 1);
+                        winProviderBids.RemoveAt(winProviderBids.Count - 1);
+                    }
 
-                if(!(winUserBids.Count == 1 || winProviderBids.Count == 1))
-                {
-                    winUserBids.RemoveAt(winUserBids.Count - 1);
-                    winProviderBids.RemoveAt(winProviderBids.Count - 1);
-                }
+                    Console.WriteLine($"\n[{Name}]: Removed Least Profitable User/Provider:- \n\t\tNo. of winning users = {winUserBids.Count} \n\t\tNo. of winning providers = {winProviderBids.Count}");
 
-                Console.WriteLine($"\n[{Name}]: Removed Least Profitable User/Provider:- \n\t\tNo. of winning users = {winUserBids.Count} \n\t\tNo. of winning providers = {winProviderBids.Count}");
+                    AltAdjustQuantities();
+                    //AdjustQuantities();
 
-                AltAdjustQuantities();
-                //AdjustQuantities();
+                    totalProviderQuantity = winProviderBids.Sum(provider => provider.BidQuantity);
+                    totalUserQuantity = winUserBids.Sum(user => user.BidQuantity);
+                    int totalDiff = 0;
 
-                totalProviderQuantity = winProviderBids.Sum(provider => provider.BidQuantity);
-                totalUserQuantity = winUserBids.Sum(user => user.BidQuantity);
-                int totalDiff = 0;
+                    totalDiff = Math.Abs(totalUserQuantity - totalProviderQuantity);
+                    Console.WriteLine($"\n[{Name}]: Reallocation Difference = {totalDiff}\n");
 
-                totalDiff = Math.Abs(totalUserQuantity - totalProviderQuantity);
-                Console.WriteLine($"\n[{Name}]: Reallocation Difference = {totalDiff}\n");
-
-                // makes sure all trading has occured
-                while((winProviderBids.Sum(provider => provider.BidQuantity) > 0) && (winUserBids.Sum(user => user.BidQuantity)) > 0)
-                {
-                    PriceDetermination();
-                }
+                    // makes sure all trading has occured
+                    while ((winProviderBids.Sum(provider => provider.BidQuantity) > 0) && (winUserBids.Sum(user => user.BidQuantity)) > 0)
+                    {
+                        PriceDetermination();
+                    }
+                }               
             }
             catch (Exception ex)
             {
@@ -375,11 +373,19 @@ namespace Cloud_Computing_Double_Auction
         {
             int nextUserPrice = 0;
 
-            if (!(i + 1 == userBids.Count - 1))
+            try
             {
-                nextUserPrice = userBids[i + 1].BidPrice;
-            }
+                if (i + 1 != userBids.Count)
+                {
+                    nextUserPrice = userBids[i + 1].BidPrice;
+                }
 
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
             if ((userBids[i].BidPrice >= providerBids[j].BidPrice) && (providerBids[j].BidPrice >= nextUserPrice))
             {
                 return true;

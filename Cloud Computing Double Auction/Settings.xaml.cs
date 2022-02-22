@@ -63,7 +63,7 @@ namespace Cloud_Computing_Double_Auction
             }
 
             ObservableCollection<string> numbers = new ObservableCollection<string>();
-            for (int i = 1; i < 101; i++)
+            for (int i = 5; i < 101; i++)
             {
                 numbers.Add($"{i}");
             }
