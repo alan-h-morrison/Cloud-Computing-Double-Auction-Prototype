@@ -14,6 +14,18 @@ namespace Cloud_Computing_Double_Auction
         public static List<Participant> listWinningUsers { get; set; }
         public static List<Participant> listWinningProviders { get; set; }
 
+        private int minUserQuantity = Properties.Settings.Default.MinUserQuantity;
+        private int maxUserQuantity = Properties.Settings.Default.MaxUserQuantity;
+
+        private int minUserPrice = Properties.Settings.Default.MinUserPrice;
+        private int maxUserPrice = Properties.Settings.Default.MaxUserPrice;
+
+        private int minProvQuantity = Properties.Settings.Default.MinProvQuantity;
+        private int maxProvQuantity = Properties.Settings.Default.MaxProvQuantity;
+
+        private int minProviderPrice = Properties.Settings.Default.MinProvPrice;
+        private int maxProviderPrice = Properties.Settings.Default.MaxProvPrice;
+
         public Random rand = new Random();
         int turnsToWait;
         bool statReceived;
@@ -122,8 +134,8 @@ namespace Cloud_Computing_Double_Auction
 
             if(demand == 0 && userPrice == 0)
             {
-                demand = rand.Next(Settings.minDemand, Settings.maxDemand);
-                userPrice = rand.Next(Settings.minUserPrice, Settings.maxUserPrice);
+                demand = rand.Next(minUserQuantity, maxUserQuantity);
+                userPrice = rand.Next(minUserPrice, maxUserPrice);
             }
 
             string userContent = $"inform {demand} {userPrice}";
@@ -142,8 +154,8 @@ namespace Cloud_Computing_Double_Auction
 
             if (supply == 0 && userPrice == 0)
             {
-                supply = rand.Next(Settings.minSupply, Settings.maxSupply);
-                userPrice = rand.Next(Settings.minProviderPrice, Settings.maxProviderPrice);
+                supply = rand.Next(minProvQuantity, maxProvQuantity);
+                userPrice = rand.Next(minProviderPrice, maxProviderPrice);
             }
 
             string providerContent = $"inform {supply} {userPrice}";

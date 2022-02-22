@@ -118,5 +118,101 @@ namespace Cloud_Computing_Double_Auction.Properties {
                 this["ManualProvider"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int MinUserQuantity {
+            get {
+                return ((int)(this["MinUserQuantity"]));
+            }
+            set {
+                this["MinUserQuantity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        public int MaxUserQuantity {
+            get {
+                return ((int)(this["MaxUserQuantity"]));
+            }
+            set {
+                this["MaxUserQuantity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int MinUserPrice {
+            get {
+                return ((int)(this["MinUserPrice"]));
+            }
+            set {
+                this["MinUserPrice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int MaxUserPrice {
+            get {
+                return ((int)(this["MaxUserPrice"]));
+            }
+            set {
+                this["MaxUserPrice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int MinProvQuantity {
+            get {
+                return ((int)(this["MinProvQuantity"]));
+            }
+            set {
+                this["MinProvQuantity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        public int MaxProvQuantity {
+            get {
+                return ((int)(this["MaxProvQuantity"]));
+            }
+            set {
+                this["MaxProvQuantity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int MinProvPrice {
+            get {
+                return ((int)(this["MinProvPrice"]));
+            }
+            set {
+                this["MinProvPrice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int MaxProvPrice {
+            get {
+                return ((int)(this["MaxProvPrice"]));
+            }
+            set {
+                this["MaxProvPrice"] = value;
+            }
+        }
     }
 }

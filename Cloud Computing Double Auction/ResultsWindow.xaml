@@ -16,7 +16,7 @@
             <Canvas Width="900" Height="1450">
                 <Rectangle
                     Canvas.Left="90"
-                    Canvas.Top="240"
+                    Canvas.Top="337"
                     Width="320"
                     Height="325"
                     Fill="#FFF4F4F5"
@@ -24,7 +24,7 @@
 
                 <Rectangle
                     Canvas.Left="490"
-                    Canvas.Top="240"
+                    Canvas.Top="337"
                     Width="320"
                     Height="325"
                     Fill="#FFF4F4F5"
@@ -32,7 +32,7 @@
 
                 <Rectangle
                     Canvas.Left="60"
-                    Canvas.Top="749"
+                    Canvas.Top="846"
                     Width="555"
                     Height="180"
                     Fill="#FFF4F4F5"
@@ -40,7 +40,7 @@
 
                 <Rectangle
                     Canvas.Left="61"
-                    Canvas.Top="1058"
+                    Canvas.Top="1155"
                     Width="555"
                     Height="180"
                     Fill="#FFF4F4F5"
@@ -48,10 +48,10 @@
 
                 <Button
                     x:Name="btnBack"
-                    Canvas.Left="21"
-                    Canvas.Top="11"
-                    Width="70"
-                    Height="44"
+                    Canvas.Left="20"
+                    Canvas.Top="20"
+                    Width="100"
+                    Height="60"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Click="BtnBack_Click"
@@ -59,7 +59,7 @@
                 <DataGrid
                     x:Name="dgInitUserData"
                     Canvas.Left="90"
-                    Canvas.Top="240"
+                    Canvas.Top="337"
                     Width="320"
                     Height="Auto"
                     MaxHeight="330"
@@ -98,7 +98,7 @@
                 <DataGrid
                     x:Name="dgInitProvData"
                     Canvas.Left="490"
-                    Canvas.Top="240"
+                    Canvas.Top="337"
                     Width="320"
                     Height="Auto"
                     MaxHeight="330"
@@ -138,7 +138,7 @@
                 <DataGrid
                     x:Name="dgWinningUsers"
                     Canvas.Left="60"
-                    Canvas.Top="749"
+                    Canvas.Top="846"
                     Width="555"
                     Height="Auto"
                     MaxHeight="180"
@@ -186,7 +186,7 @@
                 <DataGrid
                     x:Name="dgWinningProv"
                     Canvas.Left="61"
-                    Canvas.Top="1058"
+                    Canvas.Top="1155"
                     Width="555"
                     Height="Auto"
                     MaxHeight="180"
@@ -232,26 +232,26 @@
                 </DataGrid>
                 <TextBlock
                     Canvas.Left="62"
-                    Canvas.Top="658"
+                    Canvas.Top="755"
                     Width="768"
                     Height="47"
                     FontSize="36"
                     Foreground="#FF3C2AB4"
                     TextAlignment="Center"
-                    TextWrapping="Wrap"><Run Text="User/Provider Initial Bids" TextDecorations="Underline" /><LineBreak /></TextBlock>
+                    TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="Participant Statistics" TextDecorations="Underline" /><LineBreak /><LineBreak /><Run Text="" TextDecorations="Underline" /></TextBlock>
                 <TextBlock
                     Canvas.Left="59"
-                    Canvas.Top="181"
-                    Width="691"
+                    Canvas.Top="278"
+                    Width="771"
                     Height="47"
                     FontSize="36"
                     Foreground="#FF3C2AB4"
                     TextAlignment="Center"
-                    TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="Participant Statistics" TextDecorations="Underline" /><LineBreak /></TextBlock>
+                    TextWrapping="Wrap"><Run Text="Initial Participant Bid" TextDecorations="Underline" /><Run Text=" Statistics" TextDecorations="Underline" /><LineBreak /></TextBlock>
 
                 <TextBlock
                     Canvas.Left="62"
-                    Canvas.Top="710"
+                    Canvas.Top="807"
                     Width="554"
                     Height="34"
                     FontSize="24"
@@ -260,18 +260,18 @@
                     TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="User" TextDecorations="Underline" /><Run Text="s" TextDecorations="Underline" /><LineBreak /></TextBlock>
 
                 <Border
-                    Canvas.Left="599"
-                    Canvas.Top="11"
+                    Canvas.Left="615"
+                    Canvas.Top="20"
                     Width="244"
-                    Height="47"
+                    Height="60"
                     Padding="12"
                     Background="#FFF4F4F5"
                     BorderBrush="LightGray"
                     BorderThickness="1" />
 
                 <TextBlock
-                    Canvas.Left="599"
-                    Canvas.Top="18"
+                    Canvas.Left="615"
+                    Canvas.Top="35"
                     Width="244"
                     Height="34"
                     HorizontalAlignment="Left"
@@ -287,7 +287,7 @@
 
                 <TextBlock
                     Canvas.Left="90"
-                    Canvas.Top="584"
+                    Canvas.Top="681"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     RenderTransformOrigin="0.685,0.6"
@@ -300,8 +300,8 @@
                     </InlineUIContainer></TextBlock>
 
                 <TextBlock
-                    Canvas.Left="62"
-                    Canvas.Top="96"
+                    Canvas.Left="90"
+                    Canvas.Top="184"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Black"
@@ -317,7 +317,7 @@
 
                 <TextBlock
                     Canvas.Left="490"
-                    Canvas.Top="584"
+                    Canvas.Top="681"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     TextWrapping="Wrap"><Run Text="Number of " /><Run Text="Providers" /><Run Text=" " /><Run Text="=" /><Run Text="  " /><InlineUIContainer>
@@ -329,7 +329,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="62"
-                    Canvas.Top="1019"
+                    Canvas.Top="1116"
                     Width="554"
                     Height="34"
                     FontSize="24"
@@ -338,7 +338,7 @@
                     TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="Providers" TextDecorations="Underline" /><LineBreak /></TextBlock>
                 <TextBlock
                     Canvas.Left="60"
-                    Canvas.Top="946"
+                    Canvas.Top="1043"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Black"
@@ -353,7 +353,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="60"
-                    Canvas.Top="1253"
+                    Canvas.Top="1350"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Black"
@@ -367,15 +367,24 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="123"
-                    Canvas.Top="12"
-                    Width="246"
-                    Height="47"
+                    Canvas.Left="120"
+                    Canvas.Top="20"
+                    Width="495"
+                    Height="60"
                     FontFamily="Segoe UI Semibold"
                     FontSize="40"
                     Foreground="Black"
-                    TextAlignment="Left"
+                    TextAlignment="Center"
                     TextWrapping="Wrap"><Run Text="Results Menu" TextDecorations="Underline" /></TextBlock>
+                <TextBlock
+                    Canvas.Left="88"
+                    Canvas.Top="123"
+                    Width="771"
+                    Height="47"
+                    FontSize="36"
+                    Foreground="#FF3C2AB4"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap"><Run Text="Statistical Overview" TextDecorations="Underline" /></TextBlock>
 
             </Canvas>
         </ScrollViewer>

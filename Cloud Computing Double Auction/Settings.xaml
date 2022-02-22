@@ -12,11 +12,26 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
+        <TextBlock
+            Margin="20,10,40,496"
+            FontFamily="Segoe UI Semibold"
+            FontSize="40"
+            Foreground="Black"
+            TextAlignment="Center"
+            TextWrapping="Wrap"><Run Text="Settings" TextDecorations="Underline" /><Run Text=" Menu" TextDecorations="Underline" /></TextBlock>
+        <Rectangle
+            Width="200"
+            Height="107"
+            Margin="640,80,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Fill="#FFF4F4F5"
+            Stroke="LightGray" />
         <Button
             x:Name="btnBack"
-            Width="96"
-            Height="55"
-            Margin="10,10,0,0"
+            Width="100"
+            Height="50"
+            Margin="20,20,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="BtnBack_Click"
@@ -24,68 +39,69 @@
         <TextBlock
             Width="536"
             Height="25"
-            Margin="125,10,0,0"
+            Margin="40,337,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Enter Users"/><Run Text=" "/><Run Text="Quantities "/><Run Text="Manually"/><Run Text=" (i.e. 12 24 25 65 45):"/></TextBlock>
+            TextWrapping="Wrap"><Run Text="Enter Users" /><Run Text=" " /><Run Text="Quantities " /><Run Text="Manually" /><Run Text=" (i.e. 12 24 25 65 45):" /></TextBlock>
         <TextBox
             x:Name="txtUserQuantity"
-            Width="727"
+            Width="800"
             Height="23"
-            Margin="125,35,0,0"
+            Margin="40,362,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TextWrapping="Wrap" />
         <TextBlock
-            Margin="128,63,0,0"
+            Margin="43,390,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TextWrapping="Wrap"><Run Text="Enter Users" /><Run Text=" Prices Manually" /><Run Text=":" /></TextBlock>
         <TextBox
             x:Name="txtUserPrices"
-            Width="727"
+            Width="800"
             Height="23"
-            Margin="125,88,0,0"
+            Margin="40,415,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TextWrapping="Wrap" />
         <TextBlock
-            Margin="125,116,0,0"
+            Margin="43,443,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Text="Enter Providers Supply Manually:"
             TextWrapping="Wrap" />
         <TextBox
             x:Name="txtProviderQuantity"
-            Width="727"
+            Width="797"
             Height="23"
-            Margin="125,141,0,0"
+            Margin="43,468,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TextWrapping="Wrap" />
         <TextBlock
-            Margin="125,169,0,0"
+            Margin="43,496,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Text="Enter Providers Prices Manually:"
             TextWrapping="Wrap" />
         <TextBox
             x:Name="txtProviderPrices"
-            Width="727"
+            Width="797"
             Height="23"
-            Margin="125,194,0,0"
+            Margin="43,521,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TextWrapping="Wrap" />
         <CheckBox
             x:Name="chkUser"
-            Margin="486,250,0,0"
+            Margin="676,119,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="User" />
+            Content="User"
+            RenderTransformOrigin="0.75,1.041" />
         <CheckBox
             x:Name="chkProvider"
-            Margin="486,272,0,0"
+            Margin="675,149,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Provider " />
@@ -93,7 +109,7 @@
             x:Name="cmbUsers"
             Width="60"
             Height="32"
-            Margin="282,238,0,0"
+            Margin="170,100,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             RenderTransformOrigin="0.857,0.514" />
@@ -101,25 +117,27 @@
             x:Name="cmbProviders"
             Width="60"
             Height="32"
-            Margin="282,287,0,0"
+            Margin="415,100,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top" />
         <TextBlock
-            Margin="125,245,0,0"
+            Margin="42,106,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Text="Number of Users:"
             TextWrapping="Wrap" />
         <TextBlock
-            Margin="125,295,0,0"
+            Margin="258,106,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TextWrapping="Wrap"><Run Text="Number of " /><Run Text="Providers:" /></TextBlock>
         <TextBlock
-            Margin="391,245,0,0"
+            Width="200"
+            Margin="640,85,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Text="Manual Entry:"
-            TextWrapping="Wrap" />
+            FontSize="18"
+            TextAlignment="Center"
+            TextWrapping="Wrap"><Run Text="Manual Entry Mode:" TextDecorations="Underline" /></TextBlock>
     </Grid>
 </Window>
