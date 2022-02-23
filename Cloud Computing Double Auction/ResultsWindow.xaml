@@ -263,21 +263,20 @@
                     Canvas.Left="615"
                     Canvas.Top="20"
                     Width="244"
-                    Height="60"
+                    Height="83"
                     Padding="12"
                     Background="#FFF4F4F5"
                     BorderBrush="LightGray"
                     BorderThickness="1" />
 
                 <TextBlock
-                    Canvas.Left="615"
-                    Canvas.Top="35"
-                    Width="244"
+                    Canvas.Left="630"
+                    Canvas.Top="30"
+                    Width="215"
                     Height="34"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="20"
-                    TextAlignment="Center"
                     TextWrapping="Wrap"><Run Text="Auction Status: " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblStatus"
@@ -385,6 +384,20 @@
                     Foreground="#FF3C2AB4"
                     TextAlignment="Center"
                     TextWrapping="Wrap"><Run Text="Statistical Overview" TextDecorations="Underline" /></TextBlock>
+                <TextBlock
+                    Canvas.Left="630"
+                    Canvas.Top="64"
+                    Width="215"
+                    Height="34"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="20"
+                    TextWrapping="Wrap"><Run Text="Time Taken" /><Run Text=": " /><InlineUIContainer>
+                        <TextBlock
+                            x:Name="lblTime"
+                            Text="0.00s"
+                            TextWrapping="Wrap" />
+                    </InlineUIContainer></TextBlock>
 
             </Canvas>
         </ScrollViewer>

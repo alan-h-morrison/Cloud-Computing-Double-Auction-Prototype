@@ -20,12 +20,17 @@ namespace Cloud_Computing_Double_Auction
     /// </summary>
     public partial class ResultsWindow : Window
     {
-        public ResultsWindow()
+        public ResultsWindow(double time)
         {
             InitializeComponent();
 
             DisplayParticipants();
-            
+
+            lblStatus.Text = "Success";
+            lblStatus.Foreground = Brushes.Green;
+            lblStatus.TextDecorations = TextDecorations.Underline;
+
+            lblTime.Text = $"{time}s";
         }
 
         public void DisplayParticipants()    
@@ -48,10 +53,6 @@ namespace Cloud_Computing_Double_Auction
 
                 lblWinningUsers.Text = winningUserData.Count().ToString();
                 lblWinningProviders.Text = winningProviderData.Count().ToString();
-
-                lblStatus.Text = "Success";
-                lblStatus.Foreground = Brushes.Green;
-                lblStatus.TextDecorations = TextDecorations.Underline;
 
                 lblNumUsers.Text = totalUsers.ToString();
                 lblNumProviders.Text = totalProviders.ToString();
