@@ -126,6 +126,18 @@ namespace Cloud_Computing_Double_Auction
                 Properties.Settings.Default.NumProviders = Convert.ToInt32(cmbProviders.SelectedItem);
                 Properties.Settings.Default.ManualProvider = false;
             }
+
+            Properties.Settings.Default.MinUserQuantity = Convert.ToInt32(cmbMinUserQuan.SelectedItem);
+            Properties.Settings.Default.MaxUserQuantity = Convert.ToInt32(cmbMaxUserQuan.SelectedItem);
+
+            Properties.Settings.Default.MinProvQuantity = Convert.ToInt32(cmbMinProvQuan.SelectedItem);
+            Properties.Settings.Default.MaxProvQuantity = Convert.ToInt32(cmbMaxProvQuan.SelectedItem);
+
+            Properties.Settings.Default.MinUserPrice = Convert.ToInt32(cmbMinUserPrice.SelectedItem);
+            Properties.Settings.Default.MaxUserPrice = Convert.ToInt32(cmbMaxUserPrice.SelectedItem);
+
+            Properties.Settings.Default.MinProvPrice = Convert.ToInt32(cmbMinProvPrice.SelectedItem);
+            Properties.Settings.Default.MaxProvPrice = Convert.ToInt32(cmbMaxProvQuan.SelectedItem);
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -142,6 +154,8 @@ namespace Cloud_Computing_Double_Auction
                     ValidateProviderFields();
                 }
 
+                ValidateRanges();
+
                 SaveSettings();
 
                 MainWindow mainMenu = new MainWindow();
@@ -152,6 +166,30 @@ namespace Cloud_Computing_Double_Auction
             {
                 MessageBox.Show(ex.Message);
             }   
+        }
+
+        private void ValidateRanges()
+        {
+            if (!(Convert.ToInt32(cmbMinUserQuan.SelectedItem) < Convert.ToInt32(cmbMaxUserQuan.SelectedItem)))
+            {
+                throw new ArgumentException("The minimum amount of quantity a given user can have must be lower than the maximum amount of quantity a user can have");
+            }
+
+            if (!(Convert.ToInt32(cmbMinProvQuan.SelectedItem) < Convert.ToInt32(cmbMaxProvQuan.SelectedItem)))
+            {
+                throw new ArgumentException("The minimum amount of quantity a given provider can have must be lower than the maximum amount of quantity a provider can have");
+            }
+
+            if (!(Convert.ToInt32(cmbMinUserPrice.SelectedItem) < Convert.ToInt32(cmbMaxUserPrice.SelectedItem)))
+            {
+                throw new ArgumentException("The minimum bid price for any given user can have must be lower than the maximum bid");
+            }
+
+            if (!(Convert.ToInt32(cmbMinProvPrice.SelectedItem) < Convert.ToInt32(cmbMaxProvPrice.SelectedItem)))
+            {
+                throw new ArgumentException("The minimum bid price for any given provider can have must be lower than the maximum bid");
+            }
+
         }
 
         public void ValidateUserFields()

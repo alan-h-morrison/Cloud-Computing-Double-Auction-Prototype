@@ -367,9 +367,9 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="120"
+                    Canvas.Left="90"
                     Canvas.Top="20"
-                    Width="495"
+                    Width="720"
                     Height="60"
                     FontFamily="Segoe UI Semibold"
                     FontSize="40"
@@ -379,7 +379,7 @@
                 <TextBlock
                     Canvas.Left="88"
                     Canvas.Top="123"
-                    Width="771"
+                    Width="742"
                     Height="47"
                     FontSize="36"
                     Foreground="#FF3C2AB4"
