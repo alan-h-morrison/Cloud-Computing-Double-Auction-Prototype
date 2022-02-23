@@ -15,16 +15,16 @@ namespace Cloud_Computing_Double_Auction
         public static List<Participant> listWinningProviders { get; set; }
 
         private int minUserQuantity = Properties.Settings.Default.MinUserQuantity;
-        private int maxUserQuantity = Properties.Settings.Default.MaxUserQuantity;
+        private int maxUserQuantity = Properties.Settings.Default.MaxUserQuantity + 1;
 
         private int minUserPrice = Properties.Settings.Default.MinUserPrice;
-        private int maxUserPrice = Properties.Settings.Default.MaxUserPrice;
+        private int maxUserPrice = Properties.Settings.Default.MaxUserPrice + 1;
 
         private int minProvQuantity = Properties.Settings.Default.MinProvQuantity;
-        private int maxProvQuantity = Properties.Settings.Default.MaxProvQuantity;
+        private int maxProvQuantity = Properties.Settings.Default.MaxProvQuantity + 1;
 
         private int minProviderPrice = Properties.Settings.Default.MinProvPrice;
-        private int maxProviderPrice = Properties.Settings.Default.MaxProvPrice;
+        private int maxProviderPrice = Properties.Settings.Default.MaxProvPrice + 1;
 
         public Random rand = new Random();
         int turnsToWait;
