@@ -50,17 +50,42 @@ namespace Cloud_Computing_Double_Auction
                 chkProvider.IsChecked = true;
             }
 
-            ObservableCollection<string> numbers = new ObservableCollection<string>();
+            ObservableCollection<string> participantNum = new ObservableCollection<string>();
             for (int i = 5; i < 101; i++)
             {
-                numbers.Add($"{i}");
+                participantNum.Add($"{i}");
             }
 
-            cmbUsers.ItemsSource = numbers;
-            cmbProviders.ItemsSource = numbers;
+            cmbUsers.ItemsSource = participantNum;
+            cmbProviders.ItemsSource = participantNum;
 
             cmbUsers.SelectedItem = $"{Properties.Settings.Default.NumUsers}";
             cmbProviders.SelectedItem = $"{Properties.Settings.Default.NumProviders}";
+
+            ObservableCollection<string> quantityRange = new ObservableCollection<string>();
+            for (int i = 5; i < 51; i++)
+            {
+                quantityRange.Add($"{i}");
+            }
+
+            cmbMinUserQuan.ItemsSource = quantityRange;
+            cmbMaxUserQuan.ItemsSource = quantityRange;
+
+            cmbMinProvQuan.ItemsSource = quantityRange;
+            cmbMaxProvQuan.ItemsSource = quantityRange;
+
+            cmbMinUserQuan.SelectedItem = $"{Properties.Settings.Default.MinUserQuantity}";
+            cmbMaxUserQuan.SelectedItem = $"{Properties.Settings.Default.MaxUserQuantity}";
+
+            cmbMinProvQuan.SelectedItem = $"{Properties.Settings.Default.MinProvQuantity}";
+            cmbMaxProvQuan.SelectedItem = $"{Properties.Settings.Default.MaxProvQuantity}";
+
+            ObservableCollection<string> priceRange = new ObservableCollection<string>();
+            for (int i = 5; i < 101; i++)
+            {
+                participantNum.Add($"{i}");
+            }
+
 
         }
 
