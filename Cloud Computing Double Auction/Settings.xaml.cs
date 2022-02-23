@@ -81,11 +81,22 @@ namespace Cloud_Computing_Double_Auction
             cmbMaxProvQuan.SelectedItem = $"{Properties.Settings.Default.MaxProvQuantity}";
 
             ObservableCollection<string> priceRange = new ObservableCollection<string>();
-            for (int i = 5; i < 101; i++)
+            for (int i = 10; i < 150; i++)
             {
-                participantNum.Add($"{i}");
+                priceRange.Add($"{i}");
             }
 
+            cmbMinUserPrice.ItemsSource = priceRange;
+            cmbMaxUserPrice.ItemsSource = priceRange;
+
+            cmbMinProvPrice.ItemsSource = priceRange;
+            cmbMaxProvPrice.ItemsSource = priceRange;
+
+            cmbMinUserPrice.SelectedItem = $"{Properties.Settings.Default.MinUserPrice}";
+            cmbMaxUserPrice.SelectedItem = $"{Properties.Settings.Default.MaxUserPrice}";
+
+            cmbMinProvPrice.SelectedItem = $"{Properties.Settings.Default.MinProvPrice}";
+            cmbMaxProvPrice.SelectedItem = $"{Properties.Settings.Default.MaxProvPrice}";
 
         }
 
