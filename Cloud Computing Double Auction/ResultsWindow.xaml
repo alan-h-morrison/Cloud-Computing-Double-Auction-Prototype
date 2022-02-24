@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Results Window"
     Width="900"
-    Height="1450"
+    Height="600"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -272,12 +272,12 @@
 
                 <TextBlock
                     Canvas.Left="90"
-                    Canvas.Top="259"
+                    Canvas.Top="270"
                     Width="212"
                     Height="20"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    TextWrapping="Wrap"><Run Text="Auction Status: " /><InlineUIContainer>
+                    TextWrapping="Wrap" FontSize="16"><Run Text="Auction Status: " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblStatus"
                             Foreground="Red"
@@ -290,7 +290,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     RenderTransformOrigin="0.685,0.6"
-                    TextWrapping="Wrap"><Run Text="Number of Users" /><Run Text=" = " /><InlineUIContainer>
+                    TextWrapping="Wrap" FontSize="16"><Run Text="Number of Users" /><Run Text=" = " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblNumUsers"
                             Foreground="Black"
@@ -300,13 +300,13 @@
 
                 <TextBlock
                     Canvas.Left="90"
-                    Canvas.Top="184"
+                    Canvas.Top="180"
                     Width="212"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap"><Run Text="Number " /><Run Text="of " /><Run Text="Participants" /><Run Text=" =" /><Run Text=" " /><InlineUIContainer>
+                    TextWrapping="Wrap" FontSize="16"><Run Text="Number " /><Run Text="of " /><Run Text="Participants" /><Run Text=" =" /><Run Text=" " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblTotal"
                             Foreground="Black"
@@ -338,12 +338,12 @@
                     TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="Providers" TextDecorations="Underline" /><LineBreak /></TextBlock>
                 <TextBlock
                     Canvas.Left="60"
-                    Canvas.Top="1043"
+                    Canvas.Top="1040"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap"><Run Text="Total" /><Run Text=" Number of Winning Users" /><Run Text=" " /><Run Text="= " /><InlineUIContainer>
+                    TextWrapping="Wrap" FontSize="16"><Run Text="Total" /><Run Text=" Number of Winning Users" /><Run Text=" " /><Run Text="= " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblWinningUsers"
                             Foreground="Black"
@@ -353,12 +353,12 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="60"
-                    Canvas.Top="1350"
+                    Canvas.Top="1349"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap"><Run Text="Total" /><Run Text=" Number of Winning " /><Run Text="Providers " /><Run Text="= " /><InlineUIContainer>
+                    TextWrapping="Wrap" FontSize="16"><Run Text="Total" /><Run Text=" Number of Winning " /><Run Text="Providers " /><Run Text="= " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblWinningProviders"
                             Foreground="Black"
@@ -377,12 +377,12 @@
                     TextWrapping="Wrap"><Run Text="Statistical Overview" TextDecorations="Underline" /></TextBlock>
                 <TextBlock
                     Canvas.Left="90"
-                    Canvas.Top="234"
+                    Canvas.Top="240"
                     Width="212"
                     Height="20"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    TextWrapping="Wrap"><Run Text="Time Taken" /><Run Text=": " /><InlineUIContainer>
+                    TextWrapping="Wrap" FontSize="16"><Run Text="Time Taken" /><Run Text=": " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblTime"
                             Text="0.00s"
@@ -390,13 +390,13 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="90"
-                    Canvas.Top="209"
+                    Canvas.Top="210"
                     Width="212"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap"><Run Text="Total " /><Run Text="Trade Surplus" /><Run Text=" =" /><Run Text=" " /><InlineUIContainer>
+                    TextWrapping="Wrap" FontSize="16"><Run Text="Total " /><Run Text="Trade Surplus" /><Run Text=" =" /><Run Text=" " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblSurplus"
                             Foreground="Black"
@@ -406,12 +406,12 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="62"
-                    Canvas.Top="1375"
+                    Canvas.Top="1380"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap"><Run Text="Price Per Unit =" /><Run Text=" " /><InlineUIContainer>
+                    TextWrapping="Wrap" FontSize="16"><Run Text="Price Per Unit =" /><Run Text=" " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblProvUnitPrice"
                             Foreground="Black"
@@ -421,12 +421,12 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="62"
-                    Canvas.Top="1068"
+                    Canvas.Top="1070"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap"><Run Text="Price Per Unit " /><Run Text="= " /><InlineUIContainer>
+                    TextWrapping="Wrap" FontSize="16"><Run Text="Price Per Unit " /><Run Text="= " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblUserUnitPrice"
                             Foreground="Black"
