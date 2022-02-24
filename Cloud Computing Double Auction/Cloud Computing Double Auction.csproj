@@ -62,20 +62,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AuctionStatistics.cs" />
     <Compile Include="Bid.cs" />
     <Compile Include="CloudAuctioneer.cs" />
     <Compile Include="CloudEnvironment.cs" />
     <Compile Include="CloudProvider.cs" />
     <Compile Include="CloudUser.cs" />
     <Compile Include="Participant.cs" />
-    <Compile Include="ProviderStatistic.cs" />
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="ResultsWindow.xaml.cs">
       <DependentUpon>ResultsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserStatistic.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

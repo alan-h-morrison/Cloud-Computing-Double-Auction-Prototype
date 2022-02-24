@@ -30,6 +30,9 @@ namespace Cloud_Computing_Double_Auction
         private int totalProviderQuantity;
         private int totalUserQuantity;
 
+        private int userQuantityCounter;
+        private int providerQuanityCounter;
+
         public CloudAuctioneer()
         {
             userBids = new List<Bid>();
@@ -55,7 +58,7 @@ namespace Cloud_Computing_Double_Auction
 
                 case "pay":
                     HandlePay(parameters);
-                        break;
+                    break;
 
                 default:
                     break;
@@ -72,7 +75,7 @@ namespace Cloud_Computing_Double_Auction
                 turnsToWait = 50;
             }
 
-            if (totalUserQuantity == 0 && totalProviderQuantity == 0 && allocation == true)
+            if (userQuantityCounter == 0 && providerQuanityCounter == 0 && allocation == true)
             {
                 FinishAuction();
             }
@@ -90,6 +93,11 @@ namespace Cloud_Computing_Double_Auction
                 Send(provider.Bidder, $"end");
             }
 
+            int userBidPrice = userBids[winningUsers].BidPrice;
+            int providerBidPrice = providerBids[winningProviders].BidPrice;
+
+            int tradeSurplus = Math.Min(totalUserQuantity, totalProviderQuantity) * (userBidPrice - providerBidPrice);
+            Send("environment", $"statistics {userBidPrice} {providerBidPrice} {tradeSurplus}");
             Stop();
         }
         
@@ -123,7 +131,7 @@ namespace Cloud_Computing_Double_Auction
 
             int pricePerUnit = userBids[winningUsers].BidPrice;
 
-            totalProviderQuantity = totalProviderQuantity - quantity;
+            providerQuanityCounter = providerQuanityCounter - quantity;
 
             Send(user, $"won {sender} {quantity} {pricePerUnit}");
         }
@@ -138,9 +146,9 @@ namespace Cloud_Computing_Double_Auction
 
             int providerProfit = providerBids[winningProviders].BidPrice * quantity;
 
-            totalUserQuantity = totalUserQuantity - quantity;
+            userQuantityCounter = userQuantityCounter - quantity;
 
-            Send(provider, $"paid {providerProfit}");
+            Send(provider, $"paid {providerProfit} {providerBids[winningProviders].BidPrice}");
         }
 
         private void HandleAllocation()
@@ -164,6 +172,10 @@ namespace Cloud_Computing_Double_Auction
 
                     totalProviderQuantity = winProviderBids.Sum(provider => provider.BidQuantity);
                     totalUserQuantity = winUserBids.Sum(user => user.BidQuantity);
+
+                    providerQuanityCounter = totalProviderQuantity;
+                    userQuantityCounter = totalUserQuantity;
+
                     int totalDiff = 0;
 
                     totalDiff = Math.Abs(totalUserQuantity - totalProviderQuantity);
@@ -372,7 +384,6 @@ namespace Cloud_Computing_Double_Auction
         private bool FirstConditionBidPrice(int i, int j)
         {
             int nextUserPrice = 0;
-
 
             if (i + 1 != userBids.Count)
             {

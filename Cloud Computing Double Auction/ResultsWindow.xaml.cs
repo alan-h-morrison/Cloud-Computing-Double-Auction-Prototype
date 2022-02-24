@@ -24,21 +24,17 @@ namespace Cloud_Computing_Double_Auction
         {
             InitializeComponent();
 
-            DisplayParticipants();
-
-            lblStatus.Text = "Success";
-            lblStatus.Foreground = Brushes.Green;
-            lblStatus.TextDecorations = TextDecorations.Underline;
+            DisplayStatistics();
 
             lblTime.Text = $"{time}s";
         }
 
-        public void DisplayParticipants()    
+        public void DisplayStatistics()    
         {
-            var userData = CloudEnvironment.listUserDetails;
-            var provData = CloudEnvironment.listProvDetails;
-            var winningUserData = CloudEnvironment.listWinningUsers;
-            var winningProviderData = CloudEnvironment.listWinningProviders;
+            var userData = CloudEnvironment.ListUserDetails;
+            var provData = CloudEnvironment.ListProvDetails;
+            var winningUserData = CloudEnvironment.ListWinningUsers;
+            var winningProviderData = CloudEnvironment.ListWinningProviders;
 
             DisplayData(userData, dgInitUserData);
             DisplayData(provData, dgInitProvData);
@@ -58,6 +54,13 @@ namespace Cloud_Computing_Double_Auction
                 lblNumProviders.Text = totalProviders.ToString();
                 lblTotal.Text = (totalUsers + totalProviders).ToString();
 
+                lblStatus.Text = "Success";
+                lblStatus.Foreground = Brushes.Green;
+                lblStatus.TextDecorations = TextDecorations.Underline;
+
+                lblSurplus.Text = CloudEnvironment.AuctionStats.TotalTradeSurplus.ToString();
+                lblUserUnitPrice.Text = CloudEnvironment.AuctionStats.UserPricePerUnit.ToString();
+                lblProvUnitPrice.Text = CloudEnvironment.AuctionStats.ProviderPricePerUnit.ToString();
             }
         }
 

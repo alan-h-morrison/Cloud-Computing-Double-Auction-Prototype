@@ -9,10 +9,11 @@ namespace Cloud_Computing_Double_Auction
 {
     public class CloudEnvironment : Agent
     {
-        public static List<Participant> listUserDetails { get; set; }
-        public static List<Participant> listProvDetails { get; set; }
-        public static List<Participant> listWinningUsers { get; set; }
-        public static List<Participant> listWinningProviders { get; set; }
+        public static AuctionStatistics AuctionStats { get; set; }
+        public static List<Participant> ListUserDetails { get; set; }
+        public static List<Participant> ListProvDetails { get; set; }
+        public static List<Participant> ListWinningUsers { get; set; }
+        public static List<Participant> ListWinningProviders { get; set; }
 
         private int minUserQuantity = Properties.Settings.Default.MinUserQuantity;
         private int maxUserQuantity = Properties.Settings.Default.MaxUserQuantity + 1;
@@ -33,10 +34,10 @@ namespace Cloud_Computing_Double_Auction
         public CloudEnvironment()
         {
             turnsToWait = 10;
-            listUserDetails = new List<Participant>();
-            listProvDetails = new List<Participant>();
-            listWinningUsers = new List<Participant>();
-            listWinningProviders = new List<Participant>();
+            ListUserDetails = new List<Participant>();
+            ListProvDetails = new List<Participant>();
+            ListWinningUsers = new List<Participant>();
+            ListWinningProviders = new List<Participant>();
         }
 
         public override void Act(Message message)
@@ -86,14 +87,15 @@ namespace Cloud_Computing_Double_Auction
                 int bid = Convert.ToInt32(values[2]);
                 int quantityReceived = Convert.ToInt32(values[3]);
                 int totalPaid = Convert.ToInt32(values[4]);
+                int utilityGained = Convert.ToInt32(values[5]);
 
                 Participant user = new Participant(sender, demand, bid);
-                listUserDetails.Add(user);
+                ListUserDetails.Add(user);
 
                 if (won == "true")
                 {
-                    Participant winningUser = new Participant(sender, demand, bid, quantityReceived, totalPaid);
-                    listWinningUsers.Add(winningUser);
+                    Participant winningUser = new Participant(sender, demand, bid, quantityReceived, totalPaid, utilityGained);
+                    ListWinningUsers.Add(winningUser);
                 }
             }
             else if (sender.Contains("provider"))
@@ -106,20 +108,25 @@ namespace Cloud_Computing_Double_Auction
                 int bid = Convert.ToInt32(values[2]);
                 int quantityAllocated = Convert.ToInt32(values[3]);
                 int totalReceived = Convert.ToInt32(values[4]);
+                int utilityGained = Convert.ToInt32(values[5]);
 
 
                 Participant provider = new Participant(sender, supply, bid);
-                listProvDetails.Add(provider);
+                ListProvDetails.Add(provider);
 
                 if(won == "true")
                 {
-                    Participant winningProvider = new Participant(sender, supply, bid, quantityAllocated, totalReceived);
-                    listWinningProviders.Add(winningProvider);
+                    Participant winningProvider = new Participant(sender, supply, bid, quantityAllocated, totalReceived, utilityGained);
+                    ListWinningProviders.Add(winningProvider);
                 }
             }
             else if (sender.Contains("auctioneer"))
             {
+                int userPricePerUnit = Convert.ToInt32(values[0]);
+                int providerPricePerUnit = Convert.ToInt32(values[1]);
+                int tradeSurplus = Convert.ToInt32(values[2]);
 
+                AuctionStats = new AuctionStatistics(userPricePerUnit, providerPricePerUnit, tradeSurplus);
             }
         }
 
