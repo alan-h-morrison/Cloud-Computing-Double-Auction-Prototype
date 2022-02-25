@@ -79,10 +79,10 @@ namespace Cloud_Computing_Double_Auction
                 lblTotalProvUtilty.Text = totalProvUtilit.ToString();
 
                 double averageUserUtility = totalUserUtility / winningUserData.Count();
-                double averageProvUtilit = totalProvUtilit / winningProviderData.Count();
+                double averageProvUtility = totalProvUtilit / winningProviderData.Count();
 
                 lblAverageUserUtilty.Text = averageUserUtility.ToString();
-                lblAverageProvUtilty.Text = averageProvUtilit.ToString();
+                lblAverageProvUtilty.Text = averageProvUtility.ToString();
 
             }
         }
