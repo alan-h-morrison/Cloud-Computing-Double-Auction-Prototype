@@ -7,13 +7,29 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Results Window"
     Width="900"
-    Height="1641"
+    Height="2077.5"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
         <ScrollViewer Margin="0,1,0,-1">
-            <Canvas Width="900" Height="1612">
+            <Canvas Width="900" Height="2062">
+                <TextBlock
+                    Canvas.Left="109"
+                    Canvas.Top="1330"
+                    Width="662"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="16"
+                    Foreground="Black"
+                    RenderTransformOrigin="0.524,-0.185"
+                    TextWrapping="Wrap"><Run Text="Percentage " /><Run Text="Received Quantity Compared " /><Run Text="T" /><Run Text="o Requested Quantity" /><Run Text=" " /><Run Text="= " /><InlineUIContainer>
+                        <TextBlock
+                            x:Name="lblPercentUserQuantity"
+                            Foreground="Black"
+                            Text="0.0%"
+                            TextWrapping="Wrap" />
+                    </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="90"
                     Canvas.Top="20"
@@ -51,7 +67,7 @@
 
                 <Rectangle
                     Canvas.Left="109"
-                    Canvas.Top="1284"
+                    Canvas.Top="1410"
                     Width="662"
                     Height="180"
                     Fill="#FFF4F4F5"
@@ -138,12 +154,12 @@
                             Header="Provider ID" />
                         <DataGridTextColumn
                             Width="100"
-                            Binding="{Binding Quantity}"
-                            Header="Supply Quantity" />
-                        <DataGridTextColumn
-                            Width="130"
                             Binding="{Binding BidPrice}"
                             Header="Bid Price" />
+                        <DataGridTextColumn
+                            Width="130"
+                            Binding="{Binding Quantity}"
+                            Header="Supply Quantity" />
                     </DataGrid.Columns>
 
                 </DataGrid>
@@ -203,7 +219,7 @@
                 <DataGrid
                     x:Name="dgWinningProv"
                     Canvas.Left="109"
-                    Canvas.Top="1285"
+                    Canvas.Top="1411"
                     Width="Auto"
                     Height="Auto"
                     MaxHeight="180"
@@ -273,7 +289,7 @@
                 <TextBlock
                     Canvas.Left="109"
                     Canvas.Top="916"
-                    Width="554"
+                    Width="663"
                     Height="34"
                     FontSize="24"
                     Foreground="Black"
@@ -297,7 +313,7 @@
 
                 <TextBlock
                     Canvas.Left="77"
-                    Canvas.Top="779"
+                    Canvas.Top="776"
                     Width="323"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -331,7 +347,7 @@
 
                 <TextBlock
                     Canvas.Left="485"
-                    Canvas.Top="779"
+                    Canvas.Top="776"
                     Width="332"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -344,7 +360,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="109"
-                    Canvas.Top="1246"
+                    Canvas.Top="1372"
                     Width="554"
                     Height="34"
                     FontSize="24"
@@ -353,7 +369,7 @@
                     TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="Providers" TextDecorations="Underline" /><LineBreak /></TextBlock>
                 <TextBlock
                     Canvas.Left="109"
-                    Canvas.Top="1149"
+                    Canvas.Top="1150"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -369,7 +385,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="109"
-                    Canvas.Top="1479"
+                    Canvas.Top="1605"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -425,7 +441,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="109"
-                    Canvas.Top="1510"
+                    Canvas.Top="1641"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -441,7 +457,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="109"
-                    Canvas.Top="1179"
+                    Canvas.Top="1186"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -456,8 +472,8 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="480"
-                    Canvas.Top="1149"
+                    Canvas.Left="109"
+                    Canvas.Top="1222"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -472,8 +488,8 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="480"
-                    Canvas.Top="1179"
+                    Canvas.Left="109"
+                    Canvas.Top="1258"
                     Height="21"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -489,8 +505,8 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="480"
-                    Canvas.Top="1480"
+                    Canvas.Left="109"
+                    Canvas.Top="1677"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -505,8 +521,8 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="480"
-                    Canvas.Top="1510"
+                    Canvas.Left="109"
+                    Canvas.Top="1713"
                     Height="21"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -540,7 +556,69 @@
                     Foreground="Black"
                     TextAlignment="Left"
                     TextWrapping="Wrap"><Run Text="Provider Bids" TextDecorations="Underline" /><LineBreak /></TextBlock>
+                <TextBlock
+                    Canvas.Left="109"
+                    Canvas.Top="1294"
+                    Width="662"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="16"
+                    Foreground="Black"
+                    RenderTransformOrigin="0.524,-0.185"
+                    TextWrapping="Wrap"><Run Text="Percentage of Users" /><Run Text=" Compared" /><Run Text=" " /><Run Text="T" /><Run Text="o Winning Users " /><Run Text="= " /><InlineUIContainer>
+                        <TextBlock
+                            x:Name="lblPercentUsers"
+                            Foreground="Black"
+                            TextWrapping="Wrap"><Run Text="0" /><Run Text=".0" /><Run Text="%" /></TextBlock>
+                    </InlineUIContainer></TextBlock>
+                <TextBlock
+                    Canvas.Left="110"
+                    Canvas.Top="1785"
+                    Width="514"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="16"
+                    Foreground="Black"
+                    RenderTransformOrigin="0.524,-0.185"
+                    TextWrapping="Wrap"><Run Text="Percentage " /><Run Text="Given " /><Run Text="Quantity Compared " /><Run Text="T" /><Run Text="o " /><Run Text="Offered " /><Run Text="Quantity" /><Run Text=" " /><Run Text="= " /><InlineUIContainer>
+                        <TextBlock
+                            x:Name="lblPercentProviderQuantity"
+                            Foreground="Black"
+                            Text="0.0%"
+                            TextWrapping="Wrap" />
+                    </InlineUIContainer></TextBlock>
+                <TextBlock
+                    Canvas.Left="110"
+                    Canvas.Top="1749"
+                    Width="662"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="16"
+                    Foreground="Black"
+                    RenderTransformOrigin="0.524,-0.185"
+                    TextWrapping="Wrap"><Run Text="Percentage of " /><Run Text="Providers " /><Run Text="Compared" /><Run Text=" " /><Run Text="T" /><Run Text="o Winning " /><Run Text="Providers " /><Run Text="= " /><InlineUIContainer>
+                        <TextBlock
+                            x:Name="lblPercentProviders"
+                            Foreground="Black"
+                            TextWrapping="Wrap"><Run Text="0" /><Run Text=".0" /><Run Text="%" /></TextBlock>
+                    </InlineUIContainer></TextBlock>
+                <TextBlock
+                    Canvas.Left="451"
+                    Canvas.Top="181"
+                    Width="359"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="16"
+                    Foreground="Black"
+                    RenderTransformOrigin="0.524,-0.185"
+                    TextWrapping="Wrap"><Run Text="Percentage of Participants Who Won" /><Run Text=" " /><Run Text="=" /><Run Text=" " /><InlineUIContainer>
+                        <TextBlock
+                            x:Name="lblPercentWinning"
+                            Foreground="Black"
+                            Text="0.0%"
+                            TextWrapping="Wrap" />
 
+                    </InlineUIContainer></TextBlock>
             </Canvas>
         </ScrollViewer>
     </Grid>

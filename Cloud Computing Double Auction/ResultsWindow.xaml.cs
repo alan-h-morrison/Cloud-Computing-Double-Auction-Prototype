@@ -31,6 +31,7 @@ namespace Cloud_Computing_Double_Auction
 
         public void DisplayStatistics()    
         {
+            // Display User/Provider initial bids and winning users/providers data in appropriate data grids
             var userData = CloudEnvironment.ListUserDetails;
             var provData = CloudEnvironment.ListProvDetails;
             var winningUserData = CloudEnvironment.ListWinningUsers;
@@ -39,16 +40,20 @@ namespace Cloud_Computing_Double_Auction
             ProcessData(userData, dgInitUserData);
             ProcessData(provData, dgInitProvData);
 
+            // If the auction is succesful
             if (winningUserData.Count != 0 || winningProviderData.Count != 0)
             {
-                int totalUsers = Properties.Settings.Default.NumUsers;
-                int totalProviders = Properties.Settings.Default.NumProviders;
+                double totalUsers = Properties.Settings.Default.NumUsers;
+                double totalProviders = Properties.Settings.Default.NumProviders;
 
                 ProcessData(winningUserData, dgWinningUsers);
                 ProcessData(winningProviderData, dgWinningProv);
 
                 lblWinningUsers.Text = winningUserData.Count().ToString();
                 lblWinningProviders.Text = winningProviderData.Count().ToString();
+
+                double percentWinning = (winningProviderData.Count() + winningUserData.Count) / (totalUsers + totalProviders);
+                lblPercentWinning.Text = String.Format("{0:P1}", percentWinning);
 
                 lblNumUsers.Text = totalUsers.ToString();
                 lblNumProviders.Text = totalProviders.ToString();
@@ -64,26 +69,48 @@ namespace Cloud_Computing_Double_Auction
 
                 double totalUserUtility = 0;
                 double totalProvUtilit = 0;
+                double totalUserQuantity = 0;
+                double totalUserFinalQuantity = 0;
+
+                double totalProvQuantity = 0;
+                double totalProvFinalQuantity = 0;
+
+
 
                 foreach (var user in winningUserData)
                 {
                     totalUserUtility = totalUserUtility + user.Utility;
+                    totalUserQuantity = totalUserQuantity + user.Quantity;
+                    totalUserFinalQuantity = totalUserFinalQuantity + user.FinalQuantity;
                 }
 
-                foreach(var provider in winningProviderData)
+                foreach (var provider in winningProviderData)
                 {
                     totalProvUtilit = totalProvUtilit + provider.Utility;
+                    totalProvQuantity = totalProvQuantity + provider.Quantity;
+                    totalProvFinalQuantity = totalProvFinalQuantity + provider.FinalQuantity;
                 }
 
                 lblTotalUserUtility.Text = totalUserUtility.ToString();
                 lblTotalProvUtilty.Text = totalProvUtilit.ToString();
 
-                double averageUserUtility = totalUserUtility / winningUserData.Count();
-                double averageProvUtility = totalProvUtilit / winningProviderData.Count();
+                double averageUserUtility = Math.Round(totalUserUtility / winningUserData.Count(), 1);
+                double averageProvUtility = Math.Round(totalProvUtilit / winningProviderData.Count(), 1);
 
                 lblAverageUserUtilty.Text = averageUserUtility.ToString();
                 lblAverageProvUtilty.Text = averageProvUtility.ToString();
 
+                double percentWinningUser = winningUserData.Count() / totalUsers;
+                lblPercentUsers.Text = String.Format("{0:P1}", percentWinningUser);
+
+                double percentWinningProvider = winningProviderData.Count() / totalProviders;
+                lblPercentProviders.Text = String.Format("{0:P1}", percentWinningProvider);
+
+                double percentUserQuantity = totalUserFinalQuantity / totalUserQuantity;
+                lblPercentUserQuantity.Text = String.Format("{0:P1}", percentUserQuantity);
+
+                double percentProviderQuantity = totalProvFinalQuantity / totalProvQuantity;
+                lblPercentProviderQuantity.Text = String.Format("{0:P1}", percentProviderQuantity);
             }
         }
 

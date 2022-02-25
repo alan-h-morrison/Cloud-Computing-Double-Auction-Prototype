@@ -17,7 +17,6 @@ namespace Cloud_Computing_Double_Auction
         private int bidPrice;
         private int finalQuantity;
         private int totalPriceRecieved;
-        private int pricePerUnit;
         private int utilityGained;
         private string won;
 
@@ -33,7 +32,6 @@ namespace Cloud_Computing_Double_Auction
             bidPrice = 0;
             finalQuantity = 0;
             totalPriceRecieved = 0;
-            pricePerUnit = 0;
             won = "false";
         }
 
@@ -47,7 +45,6 @@ namespace Cloud_Computing_Double_Auction
             bidPrice = pricePerUnit;
             finalQuantity = 0;
             totalPriceRecieved = 0;
-            pricePerUnit = 0;
             won = "false";
         }
 
