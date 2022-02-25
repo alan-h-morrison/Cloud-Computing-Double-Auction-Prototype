@@ -36,16 +36,16 @@ namespace Cloud_Computing_Double_Auction
             var winningUserData = CloudEnvironment.ListWinningUsers;
             var winningProviderData = CloudEnvironment.ListWinningProviders;
 
-            DisplayData(userData, dgInitUserData);
-            DisplayData(provData, dgInitProvData);
+            ProcessData(userData, dgInitUserData);
+            ProcessData(provData, dgInitProvData);
 
             if (winningUserData.Count != 0 || winningProviderData.Count != 0)
             {
                 int totalUsers = Properties.Settings.Default.NumUsers;
                 int totalProviders = Properties.Settings.Default.NumProviders;
 
-                DisplayData(winningUserData, dgWinningUsers);
-                DisplayData(winningProviderData, dgWinningProv);
+                ProcessData(winningUserData, dgWinningUsers);
+                ProcessData(winningProviderData, dgWinningProv);
 
                 lblWinningUsers.Text = winningUserData.Count().ToString();
                 lblWinningProviders.Text = winningProviderData.Count().ToString();
@@ -61,10 +61,33 @@ namespace Cloud_Computing_Double_Auction
                 lblSurplus.Text = CloudEnvironment.AuctionStats.TotalTradeSurplus.ToString();
                 lblUserUnitPrice.Text = CloudEnvironment.AuctionStats.UserPricePerUnit.ToString();
                 lblProvUnitPrice.Text = CloudEnvironment.AuctionStats.ProviderPricePerUnit.ToString();
+
+                double totalUserUtility = 0;
+                double totalProvUtilit = 0;
+
+                foreach (var user in winningUserData)
+                {
+                    totalUserUtility = totalUserUtility + user.Utility;
+                }
+
+                foreach(var provider in winningProviderData)
+                {
+                    totalProvUtilit = totalProvUtilit + provider.Utility;
+                }
+
+                lblTotalUserUtility.Text = totalUserUtility.ToString();
+                lblTotalProvUtilty.Text = totalProvUtilit.ToString();
+
+                double averageUserUtility = totalUserUtility / winningUserData.Count();
+                double averageProvUtilit = totalProvUtilit / winningProviderData.Count();
+
+                lblAverageUserUtilty.Text = averageUserUtility.ToString();
+                lblAverageProvUtilty.Text = averageProvUtilit.ToString();
+
             }
         }
 
-        private void DisplayData(List<Participant> data, DataGrid dataGrid)
+        private void ProcessData(List<Participant> data, DataGrid dataGrid)
         {
             var listParticpants = new ObservableCollection<Participant>();
 

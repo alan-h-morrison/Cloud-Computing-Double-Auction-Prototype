@@ -41,7 +41,7 @@
                     Stroke="LightGray" />
 
                 <Rectangle
-                    Canvas.Left="60"
+                    Canvas.Left="109"
                     Canvas.Top="846"
                     Width="663"
                     Height="180"
@@ -49,7 +49,7 @@
                     Stroke="LightGray" />
 
                 <Rectangle
-                    Canvas.Left="61"
+                    Canvas.Left="109"
                     Canvas.Top="1155"
                     Width="662"
                     Height="180"
@@ -148,7 +148,7 @@
 
                 <DataGrid
                     x:Name="dgWinningUsers"
-                    Canvas.Left="60"
+                    Canvas.Left="109"
                     Canvas.Top="846"
                     Width="Auto"
                     Height="Auto"
@@ -200,7 +200,7 @@
 
                 <DataGrid
                     x:Name="dgWinningProv"
-                    Canvas.Left="61"
+                    Canvas.Left="109"
                     Canvas.Top="1155"
                     Width="Auto"
                     Height="Auto"
@@ -269,7 +269,7 @@
                     TextWrapping="Wrap"><Run Text="Initial Participant Bid" TextDecorations="Underline" /><Run Text=" Statistics" TextDecorations="Underline" /><LineBreak /></TextBlock>
 
                 <TextBlock
-                    Canvas.Left="62"
+                    Canvas.Left="109"
                     Canvas.Top="807"
                     Width="554"
                     Height="34"
@@ -339,7 +339,7 @@
                             TextWrapping="Wrap" />
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="62"
+                    Canvas.Left="109"
                     Canvas.Top="1116"
                     Width="554"
                     Height="34"
@@ -348,7 +348,7 @@
                     TextAlignment="Left"
                     TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="Providers" TextDecorations="Underline" /><LineBreak /></TextBlock>
                 <TextBlock
-                    Canvas.Left="60"
+                    Canvas.Left="109"
                     Canvas.Top="1040"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -364,7 +364,7 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="60"
+                    Canvas.Left="109"
                     Canvas.Top="1349"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -420,7 +420,7 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="62"
+                    Canvas.Left="109"
                     Canvas.Top="1380"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -436,7 +436,7 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="62"
+                    Canvas.Left="109"
                     Canvas.Top="1070"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -461,7 +461,7 @@
                     RenderTransformOrigin="0.524,-0.185"
                     TextWrapping="Wrap"><Run Text="Total Utility Gained " /><Run Text="= " /><InlineUIContainer>
                         <TextBlock
-                            x:Name="lblUserTotalUtility"
+                            x:Name="lblTotalUserUtility"
                             Foreground="Black"
                             Text="0"
                             TextWrapping="Wrap" />
@@ -478,7 +478,7 @@
                     RenderTransformOrigin="0.524,-0.185"
                     TextWrapping="Wrap"><Run Text="Average Utility Gained" /><Run Text="= " /><InlineUIContainer>
                         <TextBlock
-                            x:Name="lblUserAverageUtilty"
+                            x:Name="lblAverageUserUtilty"
                             Foreground="Black"
                             Text="0"
                             TextWrapping="Wrap" />
