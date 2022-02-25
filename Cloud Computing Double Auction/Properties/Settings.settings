@@ -21,10 +21,10 @@
       <Value Profile="(Default)">15 17 20 22 25 30 49</Value>
     </Setting>
     <Setting Name="ManualUser" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ManualProvider" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="MinUserQuantity" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5</Value>

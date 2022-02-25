@@ -27,7 +27,7 @@
                 <Rectangle
                     Canvas.Left="90"
                     Canvas.Top="374"
-                    Width="320"
+                    Width="332"
                     Height="325"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
@@ -35,7 +35,7 @@
                 <Rectangle
                     Canvas.Left="490"
                     Canvas.Top="374"
-                    Width="320"
+                    Width="332"
                     Height="325"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
@@ -43,7 +43,7 @@
                 <Rectangle
                     Canvas.Left="60"
                     Canvas.Top="846"
-                    Width="555"
+                    Width="663"
                     Height="180"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
@@ -51,7 +51,7 @@
                 <Rectangle
                     Canvas.Left="61"
                     Canvas.Top="1155"
-                    Width="555"
+                    Width="662"
                     Height="180"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
@@ -70,7 +70,7 @@
                     x:Name="dgInitUserData"
                     Canvas.Left="90"
                     Canvas.Top="374"
-                    Width="320"
+                    Width="Auto"
                     Height="Auto"
                     MaxHeight="330"
                     HorizontalAlignment="Left"
@@ -91,17 +91,17 @@
 
                     <DataGrid.Columns>
                         <DataGridTextColumn
-                            MinWidth="100"
+                            Width="100"
                             Binding="{Binding ID}"
                             Header="User ID" />
                         <DataGridTextColumn
-                            MinWidth="100"
-                            Binding="{Binding Quantity}"
-                            Header="Demand Quantity" />
-                        <DataGridTextColumn
-                            MinWidth="100"
+                            Width="100"
                             Binding="{Binding BidPrice}"
                             Header="Bid Price" />
+                        <DataGridTextColumn
+                            Width="130"
+                            Binding="{Binding Quantity}"
+                            Header="Demand Quantity" />
                     </DataGrid.Columns>
 
                 </DataGrid>
@@ -110,7 +110,7 @@
                     x:Name="dgInitProvData"
                     Canvas.Left="490"
                     Canvas.Top="374"
-                    Width="320"
+                    Width="Auto"
                     Height="Auto"
                     MaxHeight="330"
                     HorizontalAlignment="Left"
@@ -131,15 +131,15 @@
 
                     <DataGrid.Columns>
                         <DataGridTextColumn
-                            MinWidth="100"
+                            Width="100"
                             Binding="{Binding ID}"
                             Header="Provider ID" />
                         <DataGridTextColumn
-                            MinWidth="100"
+                            Width="100"
                             Binding="{Binding Quantity}"
                             Header="Supply Quantity" />
                         <DataGridTextColumn
-                            MinWidth="110"
+                            Width="130"
                             Binding="{Binding BidPrice}"
                             Header="Bid Price" />
                     </DataGrid.Columns>
@@ -150,7 +150,7 @@
                     x:Name="dgWinningUsers"
                     Canvas.Left="60"
                     Canvas.Top="846"
-                    Width="555"
+                    Width="Auto"
                     Height="Auto"
                     MaxHeight="180"
                     HorizontalAlignment="Left"
@@ -171,25 +171,29 @@
 
                     <DataGrid.Columns>
                         <DataGridTextColumn
-                            MinWidth="100"
+                            Width="100"
                             Binding="{Binding ID}"
                             Header="User ID" />
                         <DataGridTextColumn
-                            MinWidth="100"
-                            Binding="{Binding Quantity}"
-                            Header="Demand Quantity" />
-                        <DataGridTextColumn
-                            MinWidth="100"
+                            Width="100"
                             Binding="{Binding BidPrice}"
                             Header="Bid Price" />
                         <DataGridTextColumn
-                            MinWidth="100"
+                            Width="130"
+                            Binding="{Binding Quantity}"
+                            Header="Demand Quantity" />
+                        <DataGridTextColumn
+                            Width="110"
                             Binding="{Binding FinalQuantity}"
                             Header="Final Quantity" />
                         <DataGridTextColumn
-                            MinWidth="130"
+                            Width="110"
                             Binding="{Binding TotalPrice}"
                             Header="Price Paid" />
+                        <DataGridTextColumn
+                            Width="110"
+                            Binding="{Binding Utility}"
+                            Header="Utility Gained" />
                     </DataGrid.Columns>
 
                 </DataGrid>
@@ -198,7 +202,7 @@
                     x:Name="dgWinningProv"
                     Canvas.Left="61"
                     Canvas.Top="1155"
-                    Width="555"
+                    Width="Auto"
                     Height="Auto"
                     MaxHeight="180"
                     HorizontalAlignment="Left"
@@ -224,20 +228,24 @@
                             Header="Provider ID" />
                         <DataGridTextColumn
                             MinWidth="100"
-                            Binding="{Binding Quantity}"
-                            Header="Supply Quantity" />
-                        <DataGridTextColumn
-                            MinWidth="100"
                             Binding="{Binding BidPrice}"
                             Header="Bid Price" />
                         <DataGridTextColumn
-                            MinWidth="100"
+                            MinWidth="130"
+                            Binding="{Binding Quantity}"
+                            Header="Supply Quantity" />
+                        <DataGridTextColumn
+                            MinWidth="110"
                             Binding="{Binding FinalQuantity}"
                             Header="Final Quantity" />
                         <DataGridTextColumn
-                            MinWidth="130"
+                            MinWidth="110"
                             Binding="{Binding TotalPrice}"
                             Header="Price Received" />
+                        <DataGridTextColumn
+                            MinWidth="110"
+                            Binding="{Binding Utility}"
+                            Header="Utility Gained" />
                     </DataGrid.Columns>
 
                 </DataGrid>
@@ -277,7 +285,8 @@
                     Height="20"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    TextWrapping="Wrap" FontSize="16"><Run Text="Auction Status: " /><InlineUIContainer>
+                    FontSize="16"
+                    TextWrapping="Wrap"><Run Text="Auction Status: " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblStatus"
                             Foreground="Red"
@@ -289,8 +298,9 @@
                     Canvas.Top="718"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    FontSize="16"
                     RenderTransformOrigin="0.685,0.6"
-                    TextWrapping="Wrap" FontSize="16"><Run Text="Number of Users" /><Run Text=" = " /><InlineUIContainer>
+                    TextWrapping="Wrap"><Run Text="Number of Users" /><Run Text=" = " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblNumUsers"
                             Foreground="Black"
@@ -304,9 +314,10 @@
                     Width="212"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    FontSize="16"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap" FontSize="16"><Run Text="Number " /><Run Text="of " /><Run Text="Participants" /><Run Text=" =" /><Run Text=" " /><InlineUIContainer>
+                    TextWrapping="Wrap"><Run Text="Number " /><Run Text="of " /><Run Text="Participants" /><Run Text=" =" /><Run Text=" " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblTotal"
                             Foreground="Black"
@@ -341,9 +352,10 @@
                     Canvas.Top="1040"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    FontSize="16"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap" FontSize="16"><Run Text="Total" /><Run Text=" Number of Winning Users" /><Run Text=" " /><Run Text="= " /><InlineUIContainer>
+                    TextWrapping="Wrap"><Run Text="Total" /><Run Text=" Number of Winning Users" /><Run Text=" " /><Run Text="= " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblWinningUsers"
                             Foreground="Black"
@@ -356,9 +368,10 @@
                     Canvas.Top="1349"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    FontSize="16"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap" FontSize="16"><Run Text="Total" /><Run Text=" Number of Winning " /><Run Text="Providers " /><Run Text="= " /><InlineUIContainer>
+                    TextWrapping="Wrap"><Run Text="Total" /><Run Text=" Number of Winning " /><Run Text="Providers " /><Run Text="= " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblWinningProviders"
                             Foreground="Black"
@@ -382,7 +395,8 @@
                     Height="20"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    TextWrapping="Wrap" FontSize="16"><Run Text="Time Taken" /><Run Text=": " /><InlineUIContainer>
+                    FontSize="16"
+                    TextWrapping="Wrap"><Run Text="Time Taken" /><Run Text=": " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblTime"
                             Text="0.00s"
@@ -394,9 +408,10 @@
                     Width="212"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    FontSize="16"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap" FontSize="16"><Run Text="Total " /><Run Text="Trade Surplus" /><Run Text=" =" /><Run Text=" " /><InlineUIContainer>
+                    TextWrapping="Wrap"><Run Text="Total " /><Run Text="Trade Surplus" /><Run Text=" =" /><Run Text=" " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblSurplus"
                             Foreground="Black"
@@ -409,9 +424,10 @@
                     Canvas.Top="1380"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    FontSize="16"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap" FontSize="16"><Run Text="Price Per Unit =" /><Run Text=" " /><InlineUIContainer>
+                    TextWrapping="Wrap"><Run Text="Price Per Unit =" /><Run Text=" " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblProvUnitPrice"
                             Foreground="Black"
@@ -424,9 +440,10 @@
                     Canvas.Top="1070"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    FontSize="16"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap" FontSize="16"><Run Text="Price Per Unit " /><Run Text="= " /><InlineUIContainer>
+                    TextWrapping="Wrap"><Run Text="Price Per Unit " /><Run Text="= " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblUserUnitPrice"
                             Foreground="Black"
@@ -439,9 +456,10 @@
                     Canvas.Top="1040"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    FontSize="16"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap" FontSize="16"><Run Text="Total Utility Gained "/><Run Text="= "/><InlineUIContainer>
+                    TextWrapping="Wrap"><Run Text="Total Utility Gained " /><Run Text="= " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblUserTotalUtility"
                             Foreground="Black"
@@ -452,11 +470,13 @@
                 <TextBlock
                     Canvas.Left="434"
                     Canvas.Top="1070"
+                    Height="21"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    FontSize="16"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap" FontSize="16" Height="21"><Run Text="Average Utility Gained"/><Run Text="= "/><InlineUIContainer>
+                    TextWrapping="Wrap"><Run Text="Average Utility Gained" /><Run Text="= " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblUserAverageUtilty"
                             Foreground="Black"
@@ -469,9 +489,10 @@
                     Canvas.Top="1350"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    FontSize="16"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap" FontSize="16"><Run Text="Total Utility Gained "/><Run Text="= "/><InlineUIContainer>
+                    TextWrapping="Wrap"><Run Text="Total Utility Gained " /><Run Text="= " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblTotalProvUtilty"
                             Foreground="Black"
@@ -482,11 +503,13 @@
                 <TextBlock
                     Canvas.Left="434"
                     Canvas.Top="1380"
+                    Height="21"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    FontSize="16"
                     Foreground="Black"
                     RenderTransformOrigin="0.524,-0.185"
-                    TextWrapping="Wrap" FontSize="16" Height="21"><Run Text="Average Utility Gained"/><Run Text="= "/><InlineUIContainer>
+                    TextWrapping="Wrap"><Run Text="Average Utility Gained" /><Run Text="= " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblAverageProvUtilty"
                             Foreground="Black"

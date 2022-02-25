@@ -110,7 +110,6 @@ namespace Cloud_Computing_Double_Auction
                 int totalReceived = Convert.ToInt32(values[4]);
                 int utilityGained = Convert.ToInt32(values[5]);
 
-
                 Participant provider = new Participant(sender, supply, bid);
                 ListProvDetails.Add(provider);
 

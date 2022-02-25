@@ -18,6 +18,7 @@ namespace Cloud_Computing_Double_Auction
         private int finalQuantity;
         private int totalPriceRecieved;
         private int pricePerUnit;
+        private int utilityGained;
         private string won;
 
         private ProviderPosition position;
@@ -88,13 +89,13 @@ namespace Cloud_Computing_Double_Auction
             string[] values = info.Split(' ');
 
             totalPriceRecieved = totalPriceRecieved + Convert.ToInt32(values[0]);
-            int utilityGained = Convert.ToInt32(values[1]) - bidPrice;
+            utilityGained = Convert.ToInt32(values[1]) - bidPrice;
             won = "true";
         }
 
         private void HandleEnd(string info)
         {
-            Send("environment", $"statistics {won} {supply} {bidPrice} {finalQuantity} {totalPriceRecieved} {pricePerUnit}");
+            Send("environment", $"statistics {won} {supply} {bidPrice} {finalQuantity} {totalPriceRecieved} {utilityGained}");
             Stop();
         }
 

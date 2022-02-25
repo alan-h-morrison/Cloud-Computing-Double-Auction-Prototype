@@ -97,7 +97,7 @@ namespace Cloud_Computing_Double_Auction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool ManualUser {
             get {
                 return ((bool)(this["ManualUser"]));
@@ -109,7 +109,7 @@ namespace Cloud_Computing_Double_Auction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool ManualProvider {
             get {
                 return ((bool)(this["ManualProvider"]));
