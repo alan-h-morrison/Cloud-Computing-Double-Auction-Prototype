@@ -21,7 +21,7 @@
             TextWrapping="Wrap"><Run Text="Settings" TextDecorations="Underline" /><Run Text=" Menu" TextDecorations="Underline" /></TextBlock>
         <Rectangle
             Width="187"
-            Height="194"
+            Height="112"
             Margin="632,146,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
@@ -39,56 +39,54 @@
         <TextBlock
             Width="536"
             Height="25"
-            Margin="40,416,0,0"
+            Margin="40,447,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Enter Users" /><Run Text=" " /><Run Text="Quantities " /><Run Text="Manually" /><Run Text=" (i.e. 12 24 25 65 45):" /></TextBlock>
+            TextWrapping="Wrap"><Run Text="Enter User " /><Run Text="Bid " /><Run Text="Quantities " /><Run Text="Manually" /><Run Text=" (i.e. 12 24 25 65 45):" /></TextBlock>
         <TextBox
             x:Name="txtUserQuantity"
             Width="800"
             Height="23"
-            Margin="40,441,0,0"
+            Margin="40,472,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TextWrapping="Wrap" />
         <TextBlock
-            Margin="40,469,0,0"
+            Margin="40,500,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Enter Users" /><Run Text=" Prices Manually" /><Run Text=":" /></TextBlock>
+            TextWrapping="Wrap"><Run Text="Enter User Bid" /><Run Text=" Prices Manually" /><Run Text=":" /></TextBlock>
         <TextBox
             x:Name="txtUserPrices"
             Width="800"
             Height="23"
-            Margin="40,494,0,0"
+            Margin="40,525,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TextWrapping="Wrap" />
         <TextBlock
-            Margin="40,522,0,0"
+            Margin="40,553,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Text="Enter Providers Supply Manually:"
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap"><Run Text="Enter Provider " /><Run Text="Bid " /><Run Text="Supply Manually:" /></TextBlock>
         <TextBox
             x:Name="txtProviderQuantity"
             Width="797"
             Height="23"
-            Margin="40,547,0,0"
+            Margin="40,578,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TextWrapping="Wrap" />
         <TextBlock
-            Margin="40,575,0,0"
+            Margin="40,606,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Text="Enter Providers Prices Manually:"
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap"><Run Text="Enter Provider" /><Run Text=" Bid" /><Run Text=" Prices Manually:" /></TextBlock>
         <TextBox
             x:Name="txtProviderPrices"
             Width="797"
             Height="23"
-            Margin="40,600,0,0"
+            Margin="40,631,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TextWrapping="Wrap" />
@@ -201,7 +199,7 @@
             Margin="40,280,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Maximum User " /><Run Text="Bid Price" /></TextBlock>
+            TextWrapping="Wrap"><Run Text="Minimum " /><Run Text="User " /><Run Text="Bid Price" /></TextBlock>
         <ComboBox
             x:Name="cmbMaxProvQuan"
             Width="60"
@@ -252,33 +250,14 @@
             Margin="330,280,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Maximum " /><Run Text="Provider " /><Run Text="Bid Price" /></TextBlock>
-        <CheckBox
-            x:Name="chkUser_Copy"
-            Margin="668,280,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Individual"
-            RenderTransformOrigin="0.75,1.041" />
-        <CheckBox
-            x:Name="chkProvider_Copy"
-            Margin="667,310,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Disposition" />
-        <TextBlock
-            Width="172"
-            Margin="642,246,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="18"
-            TextWrapping="Wrap"><Run Text="Bid Formation " TextDecorations="Underline" /><Run Text="Mode:" TextDecorations="Underline" /></TextBlock>
+            TextWrapping="Wrap"><Run Text="Minimum " /><Run Text="Provider " /><Run Text="Bid Price" /></TextBlock>
         <TextBlock
             Width="260"
             Margin="40,95,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="26"
+            Foreground="#FF3C2AB4"
             TextAlignment="Center"
             TextWrapping="Wrap"><Run Text="User " TextDecorations="Underline" /><Run Text="Settings" TextDecorations="Underline" /></TextBlock>
         <TextBlock
@@ -287,6 +266,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="26"
+            Foreground="#FF3C2AB4"
             TextAlignment="Center"
             TextWrapping="Wrap"><Run Text="Provider " TextDecorations="Underline" /><Run Text="Settings" TextDecorations="Underline" /></TextBlock>
         <ComboBox
@@ -296,6 +276,15 @@
             Margin="524,185,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top" />
+        <TextBlock
+            Width="797"
+            Margin="40,394,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="26"
+            Foreground="#FF3C2AB4"
+            TextAlignment="Center"
+            TextWrapping="Wrap"><Run Text="Manual Entry Mode Settings" TextDecorations="Underline" /></TextBlock>
 
     </Grid>
 </Window>

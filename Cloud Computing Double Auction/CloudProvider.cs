@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 
 namespace Cloud_Computing_Double_Auction
 {
-    public enum ProviderPosition { Positive, Neutral, Negative }
-
     public class CloudProvider : Agent
     {
         private Random rand = new Random();
@@ -20,14 +18,10 @@ namespace Cloud_Computing_Double_Auction
         private int utilityGained;
         private string won;
 
-        private ProviderPosition position;
         private string stringPosition;
 
-        public CloudProvider(ProviderPosition providerPosition)
+        public CloudProvider()
         {
-            position = providerPosition;
-            stringPosition = position.ToString();
-
             supply = 0;
             bidPrice = 0;
             finalQuantity = 0;
@@ -36,11 +30,8 @@ namespace Cloud_Computing_Double_Auction
         }
 
 
-        public CloudProvider(ProviderPosition providerPosition, int supplyQuantity, int pricePerUnit)
+        public CloudProvider(int supplyQuantity, int pricePerUnit)
         {
-            position = providerPosition;
-            stringPosition = position.ToString();
-
             supply = supplyQuantity;
             bidPrice = pricePerUnit;
             finalQuantity = 0;
@@ -50,7 +41,7 @@ namespace Cloud_Computing_Double_Auction
 
         public override void Setup()
         {
-            Send("environment", $"provider {stringPosition} {supply} {bidPrice}");
+            Send("environment", $"provider {supply} {bidPrice}");
         }
 
         public override void Act(Message message)

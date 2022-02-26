@@ -7,16 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Results Window"
     Width="900"
-    Height="2077.5"
+    Height="600"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
-        <ScrollViewer Margin="0,1,0,-1">
-            <Canvas Width="900" Height="2062">
+        <ScrollViewer Margin="0,0,0,1">
+            <Canvas Width="894" Height="1921">
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="1330"
+                    Canvas.Left="160"
+                    Canvas.Top="1360"
                     Width="662"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -31,9 +31,8 @@
                             TextWrapping="Wrap" />
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="90"
                     Canvas.Top="20"
-                    Width="720"
+                    Width="894"
                     Height="60"
                     FontFamily="Segoe UI Semibold"
                     FontSize="40"
@@ -42,7 +41,7 @@
                     TextWrapping="Wrap"><Run Text="Results Menu" TextDecorations="Underline" /></TextBlock>
                 <Rectangle
                     Canvas.Left="77"
-                    Canvas.Top="436"
+                    Canvas.Top="477"
                     Width="332"
                     Height="325"
                     Fill="#FFF4F4F5"
@@ -50,7 +49,7 @@
 
                 <Rectangle
                     Canvas.Left="485"
-                    Canvas.Top="436"
+                    Canvas.Top="477"
                     Canvas.Right="63"
                     Width="332"
                     Height="325"
@@ -58,16 +57,16 @@
                     Stroke="LightGray" />
 
                 <Rectangle
-                    Canvas.Left="109"
-                    Canvas.Top="955"
+                    Canvas.Left="119"
+                    Canvas.Top="970"
                     Width="663"
                     Height="180"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
 
                 <Rectangle
-                    Canvas.Left="109"
-                    Canvas.Top="1410"
+                    Canvas.Left="119"
+                    Canvas.Top="1450"
                     Width="662"
                     Height="180"
                     Fill="#FFF4F4F5"
@@ -86,7 +85,7 @@
                 <DataGrid
                     x:Name="dgInitUserData"
                     Canvas.Left="77"
-                    Canvas.Top="436"
+                    Canvas.Top="477"
                     Width="Auto"
                     Height="Auto"
                     MaxHeight="330"
@@ -126,7 +125,7 @@
                 <DataGrid
                     x:Name="dgInitProvData"
                     Canvas.Left="485"
-                    Canvas.Top="436"
+                    Canvas.Top="477"
                     Canvas.Right="63"
                     Width="Auto"
                     Height="Auto"
@@ -166,8 +165,8 @@
 
                 <DataGrid
                     x:Name="dgWinningUsers"
-                    Canvas.Left="109"
-                    Canvas.Top="955"
+                    Canvas.Left="119"
+                    Canvas.Top="970"
                     Width="Auto"
                     Height="Auto"
                     MaxHeight="180"
@@ -218,8 +217,8 @@
 
                 <DataGrid
                     x:Name="dgWinningProv"
-                    Canvas.Left="109"
-                    Canvas.Top="1411"
+                    Canvas.Left="119"
+                    Canvas.Top="1450"
                     Width="Auto"
                     Height="Auto"
                     MaxHeight="180"
@@ -268,18 +267,16 @@
 
                 </DataGrid>
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="856"
-                    Width="663"
+                    Canvas.Top="870"
+                    Width="894"
                     Height="47"
                     FontSize="36"
                     Foreground="#FF3C2AB4"
                     TextAlignment="Center"
                     TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="Participant Statistics" TextDecorations="Underline" /><LineBreak /><LineBreak /><Run Text="" TextDecorations="Underline" /></TextBlock>
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="315"
-                    Width="708"
+                    Canvas.Top="380"
+                    Width="894"
                     Height="47"
                     FontSize="36"
                     Foreground="#FF3C2AB4"
@@ -287,8 +284,8 @@
                     TextWrapping="Wrap"><Run Text="Initial Participant Bid" TextDecorations="Underline" /><Run Text=" Statistics" TextDecorations="Underline" /><LineBreak /></TextBlock>
 
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="916"
+                    Canvas.Left="119"
+                    Canvas.Top="931"
                     Width="663"
                     Height="34"
                     FontSize="24"
@@ -297,8 +294,8 @@
                     TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="User" TextDecorations="Underline" /><Run Text="s" TextDecorations="Underline" /><LineBreak /></TextBlock>
 
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="271"
+                    Canvas.Left="110"
+                    Canvas.Top="300"
                     Width="212"
                     Height="20"
                     HorizontalAlignment="Left"
@@ -313,12 +310,13 @@
 
                 <TextBlock
                     Canvas.Left="77"
-                    Canvas.Top="776"
+                    Canvas.Top="810"
                     Width="323"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
                     RenderTransformOrigin="0.685,0.6"
+                    TextAlignment="Center"
                     TextWrapping="Wrap"><Run Text="Number of Users" /><Run Text=" = " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblNumUsers"
@@ -329,7 +327,7 @@
 
                 <TextBlock
                     Canvas.Left="109"
-                    Canvas.Top="181"
+                    Canvas.Top="180"
                     Width="212"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -347,10 +345,12 @@
 
                 <TextBlock
                     Canvas.Left="485"
-                    Canvas.Top="776"
+                    Canvas.Top="810"
                     Width="332"
+                    Height="21"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    TextAlignment="Center"
                     TextWrapping="Wrap"><Run Text="Number of " /><Run Text="Providers" /><Run Text=" " /><Run Text="=" /><Run Text="  " /><InlineUIContainer>
                         <TextBlock
                             x:Name="lblNumProviders"
@@ -359,17 +359,17 @@
                             TextWrapping="Wrap" />
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="1372"
-                    Width="554"
+                    Canvas.Left="119"
+                    Canvas.Top="1411"
+                    Width="662"
                     Height="34"
                     FontSize="24"
                     Foreground="Black"
                     TextAlignment="Left"
                     TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="Providers" TextDecorations="Underline" /><LineBreak /></TextBlock>
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="1150"
+                    Canvas.Left="160"
+                    Canvas.Top="1160"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -384,8 +384,8 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="1605"
+                    Canvas.Left="160"
+                    Canvas.Top="1640"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -400,17 +400,17 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="116"
-                    Width="708"
+                    Canvas.Left="-6"
+                    Canvas.Top="120"
+                    Width="900"
                     Height="47"
                     FontSize="36"
                     Foreground="#FF3C2AB4"
                     TextAlignment="Center"
                     TextWrapping="Wrap"><Run Text="Statistical Overview" TextDecorations="Underline" /></TextBlock>
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="241"
+                    Canvas.Left="110"
+                    Canvas.Top="260"
                     Width="212"
                     Height="20"
                     HorizontalAlignment="Left"
@@ -424,7 +424,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="109"
-                    Canvas.Top="211"
+                    Canvas.Top="220"
                     Width="212"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -440,8 +440,8 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="1641"
+                    Canvas.Left="160"
+                    Canvas.Top="1680"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -456,8 +456,8 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="1186"
+                    Canvas.Left="160"
+                    Canvas.Top="1200"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -472,8 +472,8 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="1222"
+                    Canvas.Left="160"
+                    Canvas.Top="1240"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -488,8 +488,8 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="1258"
+                    Canvas.Left="160"
+                    Canvas.Top="1280"
                     Height="21"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -505,8 +505,8 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="1677"
+                    Canvas.Left="160"
+                    Canvas.Top="1720"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -521,8 +521,8 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="1713"
+                    Canvas.Left="160"
+                    Canvas.Top="1760"
                     Height="21"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -539,7 +539,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="77"
-                    Canvas.Top="397"
+                    Canvas.Top="438"
                     Width="332"
                     Height="34"
                     FontSize="24"
@@ -548,7 +548,7 @@
                     TextWrapping="Wrap"><Run Text="User Bids" TextDecorations="Underline" /></TextBlock>
                 <TextBlock
                     Canvas.Left="485"
-                    Canvas.Top="397"
+                    Canvas.Top="438"
                     Canvas.Right="63"
                     Width="332"
                     Height="34"
@@ -557,8 +557,8 @@
                     TextAlignment="Left"
                     TextWrapping="Wrap"><Run Text="Provider Bids" TextDecorations="Underline" /><LineBreak /></TextBlock>
                 <TextBlock
-                    Canvas.Left="109"
-                    Canvas.Top="1294"
+                    Canvas.Left="160"
+                    Canvas.Top="1320"
                     Width="662"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -572,8 +572,8 @@
                             TextWrapping="Wrap"><Run Text="0" /><Run Text=".0" /><Run Text="%" /></TextBlock>
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="110"
-                    Canvas.Top="1785"
+                    Canvas.Left="160"
+                    Canvas.Top="1840"
                     Width="514"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -588,8 +588,8 @@
                             TextWrapping="Wrap" />
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="110"
-                    Canvas.Top="1749"
+                    Canvas.Left="160"
+                    Canvas.Top="1800"
                     Width="662"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -603,8 +603,8 @@
                             TextWrapping="Wrap"><Run Text="0" /><Run Text=".0" /><Run Text="%" /></TextBlock>
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="451"
-                    Canvas.Top="181"
+                    Canvas.Left="110"
+                    Canvas.Top="340"
                     Width="359"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"

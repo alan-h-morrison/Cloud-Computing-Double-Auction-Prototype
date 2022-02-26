@@ -135,8 +135,8 @@ namespace Cloud_Computing_Double_Auction
 
             string userID = user;
 
-            int demand = Convert.ToInt32(values[1]);
-            int userPrice = Convert.ToInt32(values[2]);
+            int demand = Convert.ToInt32(values[0]);
+            int userPrice = Convert.ToInt32(values[1]);
 
             if(demand == 0 && userPrice == 0)
             {
@@ -155,8 +155,8 @@ namespace Cloud_Computing_Double_Auction
 
             string providerID = provider;
 
-            int supply = Convert.ToInt32(values[1]);
-            int userPrice = Convert.ToInt32(values[2]);
+            int supply = Convert.ToInt32(values[0]);
+            int userPrice = Convert.ToInt32(values[1]);
 
             if (supply == 0 && userPrice == 0)
             {

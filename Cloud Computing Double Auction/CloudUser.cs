@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Cloud_Computing_Double_Auction
 {
-    public enum UserPosition { Positive, Neutral, Negative }
     public class CloudUser : Agent
     {
         private Random rand = new Random();
@@ -19,14 +18,8 @@ namespace Cloud_Computing_Double_Auction
         private int pricePerUnit;
         private string won;
 
-        private UserPosition position;
-        private string stringPosition;
-
-        public CloudUser(UserPosition userPosition)
+        public CloudUser()
         {
-            position = userPosition;
-            stringPosition = position.ToString();
-
             demand = 0;
             bidPrice = 0;
             finalQuantity = 0;
@@ -34,11 +27,8 @@ namespace Cloud_Computing_Double_Auction
             won = "false";
     }
 
-        public CloudUser(UserPosition userPosition, int demandQuantity, int pricePerUnit)
+        public CloudUser(int demandQuantity, int pricePerUnit)
         {
-            position = userPosition;
-            stringPosition = position.ToString();
-
             demand = demandQuantity;
             bidPrice = pricePerUnit;
             finalQuantity = 0;
@@ -48,7 +38,7 @@ namespace Cloud_Computing_Double_Auction
 
         public override void Setup()
         {
-            Send("environment", $"user {stringPosition} {demand} {bidPrice}");
+            Send("environment", $"user {demand} {bidPrice}");
         }
 
         public override void Act(Message message)
