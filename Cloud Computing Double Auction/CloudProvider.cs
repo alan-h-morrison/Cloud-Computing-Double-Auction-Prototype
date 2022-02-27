@@ -18,8 +18,6 @@ namespace Cloud_Computing_Double_Auction
         private int utilityGained;
         private string won;
 
-        private string stringPosition;
-
         public CloudProvider()
         {
             supply = 0;
@@ -28,7 +26,6 @@ namespace Cloud_Computing_Double_Auction
             totalPriceRecieved = 0;
             won = "false";
         }
-
 
         public CloudProvider(int supplyQuantity, int pricePerUnit)
         {

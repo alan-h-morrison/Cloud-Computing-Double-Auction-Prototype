@@ -21,92 +21,142 @@ namespace Cloud_Computing_Double_Auction
     /// </summary>
     public partial class Settings : Window
     {
-        public int[] userQuantites;
-        public int[] userPrices;
+        private int[] userQuantites;
+        private int[] userPrices;
 
-        public int[] providerQuantities;
-        public int[] providerPrices;
+        private int[] providerQuantities;
+        private int[] providerPrices;
 
         public Settings()
         {
             InitializeComponent();
+
+            // Displays settings in the settings window
             GetSettings();
         }
 
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            // Try-Catch loop to catch any argument exception
+            try
+            {
+                // When user manual entry mode is selected, the entries for quantities and price per unit is validated
+                // Else the min-max ranges for a user bid quantity and price is validated
+                if (chkUser.IsChecked == true)
+                {
+                    ValidateUserFields();
+                }
+                else
+                {
+                    ValidateUserRanges();
+                }
+
+                // When provider manual entry mode is selected, the entries for quantities and price per unit is validated
+                // Else the min-max ranges for a provider bid quantity and price is validated
+                if (chkProvider.IsChecked == true)
+                {
+                    ValidateProviderFields();
+                }
+                else
+                {
+                    ValidateProviderRanges();
+                }
+
+                // Settings.settings is set to values derived from the textboxes/combo boxes in the settings window
+                SaveSettings();
+
+                MainWindow mainMenu = new MainWindow();
+                mainMenu.Show();
+                this.Close();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Settings retrieved from the Settings.settings class are displayed in the settings menu
         private void GetSettings()
         {
+            // Manual entry fields for user/provider quantities and prices is displayed
             txtUserQuantity.Text = Properties.Settings.Default.UserQuantities;
             txtUserPrices.Text = Properties.Settings.Default.UserPrices;
             txtProviderQuantity.Text = Properties.Settings.Default.ProviderQuantites;
             txtProviderPrices.Text = Properties.Settings.Default.ProviderPrices;
 
+            // If manual entry mode for user is set to true, user manual entry checkbox is checked
             if(Properties.Settings.Default.ManualUser == true)
             {
                 chkUser.IsChecked = true;
             }
 
-            if(Properties.Settings.Default.ManualProvider == true)
+            // If manual entry mode for provider is set to true, user manual entry checkbox is checked
+            if (Properties.Settings.Default.ManualProvider == true)
             {
                 chkProvider.IsChecked = true;
             }
 
+            // Populates the number of user and provider comboboxes with numbers ranging from 5 to 100
             ObservableCollection<string> participantNum = new ObservableCollection<string>();
             for (int i = 5; i < 101; i++)
             {
                 participantNum.Add($"{i}");
             }
-
             cmbUsers.ItemsSource = participantNum;
             cmbProviders.ItemsSource = participantNum;
 
+            // Using Setting.settings, the number of users and providers is displayed
             cmbUsers.SelectedItem = $"{Properties.Settings.Default.NumUsers}";
             cmbProviders.SelectedItem = $"{Properties.Settings.Default.NumProviders}";
 
+            // Populates the min/max quantity range for user and provider comboboxes with numbers ranging from 5 to 50
             ObservableCollection<string> quantityRange = new ObservableCollection<string>();
             for (int i = 5; i < 51; i++)
             {
                 quantityRange.Add($"{i}");
-            }
-
+            }    
             cmbMinUserQuan.ItemsSource = quantityRange;
             cmbMaxUserQuan.ItemsSource = quantityRange;
-
             cmbMinProvQuan.ItemsSource = quantityRange;
             cmbMaxProvQuan.ItemsSource = quantityRange;
 
+            // Using Setting.settings, the min/max range for quantitiy for provider/user is displayed
             cmbMinUserQuan.SelectedItem = $"{Properties.Settings.Default.MinUserQuantity}";
             cmbMaxUserQuan.SelectedItem = $"{Properties.Settings.Default.MaxUserQuantity}";
-
             cmbMinProvQuan.SelectedItem = $"{Properties.Settings.Default.MinProvQuantity}";
             cmbMaxProvQuan.SelectedItem = $"{Properties.Settings.Default.MaxProvQuantity}";
 
+            // Populates the min/max bid price range for user and provider comboboxes with numbers ranging from 10 to 150
             ObservableCollection<string> priceRange = new ObservableCollection<string>();
             for (int i = 10; i < 150; i++)
             {
                 priceRange.Add($"{i}");
-            }
-
+            }       
             cmbMinUserPrice.ItemsSource = priceRange;
             cmbMaxUserPrice.ItemsSource = priceRange;
-
             cmbMinProvPrice.ItemsSource = priceRange;
             cmbMaxProvPrice.ItemsSource = priceRange;
 
+            // Using Setting.settings, the min/max range for bid price for provider/user is displayed
             cmbMinUserPrice.SelectedItem = $"{Properties.Settings.Default.MinUserPrice}";
             cmbMaxUserPrice.SelectedItem = $"{Properties.Settings.Default.MaxUserPrice}";
-
             cmbMinProvPrice.SelectedItem = $"{Properties.Settings.Default.MinProvPrice}";
             cmbMaxProvPrice.SelectedItem = $"{Properties.Settings.Default.MaxProvPrice}";
-
         }
 
+        // Settings.settings is updated to the settings set in the settings window
         private void SaveSettings()
         {
+            // User quantities/bid prices manual entry settings set to values within textboxes
             Properties.Settings.Default.UserQuantities = txtUserQuantity.Text;
             Properties.Settings.Default.UserPrices = txtUserPrices.Text;
+
+            // Provider quantities/bid prices manual entry settings set to values within textboxes
             Properties.Settings.Default.ProviderQuantites = txtProviderQuantity.Text;
             Properties.Settings.Default.ProviderPrices = txtProviderPrices.Text;
 
+            // If the user manual entry mode checkbox is checked then user manual entry mode is set to true
+            // Else the number of users is set the number of users textbox and the user manual entry is set to false
             if (chkUser.IsChecked == true)
             {
                 Properties.Settings.Default.ManualUser = true;
@@ -117,6 +167,8 @@ namespace Cloud_Computing_Double_Auction
                 Properties.Settings.Default.ManualUser = false;
             }
 
+            // If the provider manual entry mode checkbox is checked then provider manual entry mode is set to true
+            // Else the number of providers is set the number of providers textbox and the provider manual entry is set to false
             if (chkProvider.IsChecked == true)
             {
                 Properties.Settings.Default.ManualProvider = true;
@@ -127,76 +179,58 @@ namespace Cloud_Computing_Double_Auction
                 Properties.Settings.Default.ManualProvider = false;
             }
 
+            // Min-Max ranges for user/provider bid quantity is set to the selected items witin the comboboxs
             Properties.Settings.Default.MinUserQuantity = Convert.ToInt32(cmbMinUserQuan.SelectedItem);
             Properties.Settings.Default.MaxUserQuantity = Convert.ToInt32(cmbMaxUserQuan.SelectedItem);
-
             Properties.Settings.Default.MinProvQuantity = Convert.ToInt32(cmbMinProvQuan.SelectedItem);
             Properties.Settings.Default.MaxProvQuantity = Convert.ToInt32(cmbMaxProvQuan.SelectedItem);
 
+            // Min-Max ranges for user/provider bid price per unit is set to the selected items witin the comboboxs
             Properties.Settings.Default.MinUserPrice = Convert.ToInt32(cmbMinUserPrice.SelectedItem);
             Properties.Settings.Default.MaxUserPrice = Convert.ToInt32(cmbMaxUserPrice.SelectedItem);
-
             Properties.Settings.Default.MinProvPrice = Convert.ToInt32(cmbMinProvPrice.SelectedItem);
             Properties.Settings.Default.MaxProvPrice = Convert.ToInt32(cmbMaxProvQuan.SelectedItem);
         }
 
-        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        // Validates the min-max range for a user bid quantities/prices
+        private void ValidateUserRanges()
         {
-            try
-            {
-                if(chkUser.IsChecked == true)
-                {
-                    ValidateUserFields();
-                }
-
-                if (chkProvider.IsChecked == true)
-                {
-                    ValidateProviderFields();
-                }
-
-                ValidateRanges();
-
-                SaveSettings();
-
-                MainWindow mainMenu = new MainWindow();
-                mainMenu.Show();
-                this.Close();
-            }
-            catch(ArgumentException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }   
-        }
-
-        private void ValidateRanges()
-        {
+            // Throws an argument exception if the minimum bid quantity is larger than the maximum bid 
             if (!(Convert.ToInt32(cmbMinUserQuan.SelectedItem) < Convert.ToInt32(cmbMaxUserQuan.SelectedItem)))
             {
                 throw new ArgumentException("The minimum amount of quantity a given user can have must be lower than the maximum amount of quantity a user can have");
             }
 
-            if (!(Convert.ToInt32(cmbMinProvQuan.SelectedItem) < Convert.ToInt32(cmbMaxProvQuan.SelectedItem)))
-            {
-                throw new ArgumentException("The minimum amount of quantity a given provider can have must be lower than the maximum amount of quantity a provider can have");
-            }
-
+            // Throws an argument exception if the minimum bid price is larger than the maximum bid price
             if (!(Convert.ToInt32(cmbMinUserPrice.SelectedItem) < Convert.ToInt32(cmbMaxUserPrice.SelectedItem)))
             {
                 throw new ArgumentException("The minimum bid price for any given user can have must be lower than the maximum bid");
             }
+        }
 
-            if (!(Convert.ToInt32(cmbMinProvPrice.SelectedItem) < Convert.ToInt32(cmbMaxProvPrice.SelectedItem)))
+        // Validates the min-max range for a provider bid quantities/prices
+        private void ValidateProviderRanges()
+        {
+            // Throws an argument exception if the minimum bid quantity is larger than the maximum bid quantity
+            if (Convert.ToInt32(cmbMinProvQuan.SelectedItem) > Convert.ToInt32(cmbMaxProvQuan.SelectedItem))
+            {
+                throw new ArgumentException("The minimum amount of quantity a given provider can have must be lower than the maximum amount of quantity a provider can have");
+            }
+
+            // Throws an argument exception if the minimum bid price is larger than the maximum bid price
+            if (Convert.ToInt32(cmbMinProvPrice.SelectedItem) > Convert.ToInt32(cmbMaxProvPrice.SelectedItem))
             {
                 throw new ArgumentException("The minimum bid price for any given provider can have must be lower than the maximum bid");
             }
-
         }
 
-        public void ValidateUserFields()
+        // Validates the manual entry of bid quantites/prices for users
+        private void ValidateUserFields()
         {
             txtUserQuantity.Text = txtUserQuantity.Text.Trim();
             txtUserPrices.Text = txtUserPrices.Text.Trim();
 
+            // If the either field are empty, throw an arugment exception
             if (!(String.IsNullOrWhiteSpace(txtUserQuantity.Text)) && !((String.IsNullOrWhiteSpace(txtUserPrices.Text))))
             {
                 string usrQuantityRegexSpaces = "[0-9 ]+";
@@ -265,8 +299,9 @@ namespace Cloud_Computing_Double_Auction
             }
         }
 
-        public void ValidateProviderFields()
+        private void ValidateProviderFields()
         {
+            // If the either field are empty, throw an arugment exception
             if (!(String.IsNullOrWhiteSpace(txtProviderQuantity.Text)) && !((String.IsNullOrWhiteSpace(txtProviderPrices.Text))))
             {
                 string proQuantityRegexSpaces = "[0-9 ]+";
@@ -328,34 +363,6 @@ namespace Cloud_Computing_Double_Auction
             else
             {
                 throw new ArgumentException("Provider Quantity field or price field is empty, please enter the approriate values");
-            }
-        }
-
-        public void TextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox tb = (TextBox)sender;
-            tb.Text = string.Empty;
-            tb.GotFocus -= TextBox_GotFocus;
-        }
-
-        private static int counter = 0;
-        private static readonly object lockObject = new object();
-        public static void Increment()
-        {
-            lock (lockObject)
-            {
-                counter++;
-            }
-        }
-
-        public static int messageCounter
-        {
-            get
-            {
-                lock (lockObject)
-                {
-                    return counter;
-                }
             }
         }
     }

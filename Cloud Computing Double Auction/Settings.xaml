@@ -7,284 +7,289 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Settings"
     Width="900"
-    Height="700"
+    Height="600"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
-        <TextBlock
-            Margin="20,10,40,601"
-            FontFamily="Segoe UI Semibold"
-            FontSize="40"
-            Foreground="Black"
-            TextAlignment="Center"
-            TextWrapping="Wrap"><Run Text="Settings" TextDecorations="Underline" /><Run Text=" Menu" TextDecorations="Underline" /></TextBlock>
-        <Rectangle
-            Width="187"
-            Height="112"
-            Margin="632,146,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Fill="#FFF4F4F5"
-            Stroke="LightGray" />
-        <Button
-            x:Name="btnBack"
-            Width="100"
-            Height="50"
-            Margin="20,20,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Click="BtnBack_Click"
-            Content="&lt;&lt;&lt;" />
-        <TextBlock
-            Width="536"
-            Height="25"
-            Margin="40,447,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Enter User " /><Run Text="Bid " /><Run Text="Quantities " /><Run Text="Manually" /><Run Text=" (i.e. 12 24 25 65 45):" /></TextBlock>
-        <TextBox
-            x:Name="txtUserQuantity"
-            Width="800"
-            Height="23"
-            Margin="40,472,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap" />
-        <TextBlock
-            Margin="40,500,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Enter User Bid" /><Run Text=" Prices Manually" /><Run Text=":" /></TextBlock>
-        <TextBox
-            x:Name="txtUserPrices"
-            Width="800"
-            Height="23"
-            Margin="40,525,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap" />
-        <TextBlock
-            Margin="40,553,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Enter Provider " /><Run Text="Bid " /><Run Text="Supply Manually:" /></TextBlock>
-        <TextBox
-            x:Name="txtProviderQuantity"
-            Width="797"
-            Height="23"
-            Margin="40,578,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap" />
-        <TextBlock
-            Margin="40,606,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Enter Provider" /><Run Text=" Bid" /><Run Text=" Prices Manually:" /></TextBlock>
-        <TextBox
-            x:Name="txtProviderPrices"
-            Width="797"
-            Height="23"
-            Margin="40,631,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap" />
-        <CheckBox
-            x:Name="chkUser"
-            Margin="668,185,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="User"
-            RenderTransformOrigin="0.75,1.041" />
-        <CheckBox
-            x:Name="chkProvider"
-            Margin="667,215,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Provider " />
-        <ComboBox
-            x:Name="cmbUsers"
-            Width="60"
-            Height="34"
-            Margin="209,141,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            RenderTransformOrigin="0.857,0.514" />
-        <ComboBox
-            x:Name="cmbProviders"
-            Width="60"
-            Height="34"
-            Margin="524,141,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top" />
-        <TextBlock
-            Width="170"
-            Height="22"
-            Margin="40,146,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text="Number of Users:"
-            TextWrapping="Wrap" />
-        <TextBlock
-            Width="194"
-            Height="22"
-            Margin="330,146,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Number of " /><Run Text="Providers" /></TextBlock>
-        <TextBlock
-            Width="172"
-            Margin="642,151,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="18"
-            TextWrapping="Wrap"><Run Text="Manual Entry Mode:" TextDecorations="Underline" /></TextBlock>
-        <ComboBox
-            x:Name="cmbMaxUserQuan"
-            Width="60"
-            Height="34"
-            Margin="209,231,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            RenderTransformOrigin="0.857,0.514" />
-        <ComboBox
-            x:Name="cmbMinUserPrice"
-            Width="60"
-            Height="34"
-            Margin="209,275,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top" />
-        <TextBlock
-            Width="170"
-            Height="22"
-            Margin="40,236,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text="Maximum User Quantity"
-            TextWrapping="Wrap" />
-        <ComboBox
-            x:Name="cmbMinUserQuan"
-            Width="60"
-            Height="34"
-            Margin="209,185,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            RenderTransformOrigin="0.857,0.514" />
-        <ComboBox
-            x:Name="cmbMaxUserPrice"
-            Width="60"
-            Height="34"
-            Margin="209,321,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top" />
-        <TextBlock
-            Width="170"
-            Height="24"
-            Margin="40,190,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text="Minimum User Quantity"
-            TextWrapping="Wrap" />
-        <TextBlock
-            Width="170"
-            Height="22"
-            Margin="40,326,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Maximum User " /><Run Text="Bid Price" /></TextBlock>
-        <TextBlock
-            Width="170"
-            Height="22"
-            Margin="40,280,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Minimum " /><Run Text="User " /><Run Text="Bid Price" /></TextBlock>
-        <ComboBox
-            x:Name="cmbMaxProvQuan"
-            Width="60"
-            Height="34"
-            Margin="524,231,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            RenderTransformOrigin="0.857,0.514" />
-        <ComboBox
-            x:Name="cmbMinProvPrice"
-            Width="60"
-            Height="34"
-            Margin="524,275,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top" />
-        <TextBlock
-            Width="194"
-            Height="22"
-            Margin="330,236,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Maximum " /><Run Text="Provider " /><Run Text="Quantity" /></TextBlock>
-        <ComboBox
-            x:Name="cmbMaxProvPrice"
-            Width="60"
-            Height="34"
-            Margin="524,321,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            RenderTransformOrigin="-0.717,0.588" />
-        <TextBlock
-            Width="194"
-            Height="24"
-            Margin="330,190,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Minimum " /><Run Text="Provider " /><Run Text="Quantity" /></TextBlock>
-        <TextBlock
-            Width="200"
-            Height="22"
-            Margin="330,326,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Maximum " /><Run Text="Provider " /><Run Text="Bid Price" /></TextBlock>
-        <TextBlock
-            Width="200"
-            Height="22"
-            Margin="330,280,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap"><Run Text="Minimum " /><Run Text="Provider " /><Run Text="Bid Price" /></TextBlock>
-        <TextBlock
-            Width="260"
-            Margin="40,95,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="26"
-            Foreground="#FF3C2AB4"
-            TextAlignment="Center"
-            TextWrapping="Wrap"><Run Text="User " TextDecorations="Underline" /><Run Text="Settings" TextDecorations="Underline" /></TextBlock>
-        <TextBlock
-            Width="260"
-            Margin="330,95,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="26"
-            Foreground="#FF3C2AB4"
-            TextAlignment="Center"
-            TextWrapping="Wrap"><Run Text="Provider " TextDecorations="Underline" /><Run Text="Settings" TextDecorations="Underline" /></TextBlock>
-        <ComboBox
-            x:Name="cmbMinProvQuan"
-            Width="60"
-            Height="34"
-            Margin="524,185,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top" />
-        <TextBlock
-            Width="797"
-            Margin="40,394,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="26"
-            Foreground="#FF3C2AB4"
-            TextAlignment="Center"
-            TextWrapping="Wrap"><Run Text="Manual Entry Mode Settings" TextDecorations="Underline" /></TextBlock>
-
+        <ScrollViewer Margin="0,0,0,1">
+            <Canvas Width="894" Height="700">
+                <TextBlock
+                    Canvas.Left="20"
+                    Canvas.Top="20"
+                    Width="820"
+                    FontFamily="Segoe UI Semibold"
+                    FontSize="40"
+                    Foreground="Black"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap"><Run Text="Settings" TextDecorations="Underline" /><Run Text=" Menu" TextDecorations="Underline" /></TextBlock>
+                <Rectangle
+                    Width="187"
+                    Height="112"
+                    Margin="632,146,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Fill="#FFF4F4F5"
+                    Stroke="LightGray" />
+                <Button
+                    x:Name="btnBack"
+                    Width="100"
+                    Height="50"
+                    Margin="20,20,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Click="BtnBack_Click"
+                    Content="&lt;&lt;&lt;" />
+                <TextBlock
+                    Width="536"
+                    Height="25"
+                    Margin="40,447,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap"><Run Text="Enter User " /><Run Text="Bid " /><Run Text="Quantities " /><Run Text="Manually" /><Run Text=" (i.e. 12 24 25 65 45):" /></TextBlock>
+                <TextBox
+                    x:Name="txtUserQuantity"
+                    Width="800"
+                    Height="23"
+                    Margin="40,472,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Margin="40,500,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap"><Run Text="Enter User Bid" /><Run Text=" Prices Manually" /><Run Text=":" /></TextBlock>
+                <TextBox
+                    x:Name="txtUserPrices"
+                    Width="800"
+                    Height="23"
+                    Margin="40,525,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Margin="40,553,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap"><Run Text="Enter Provider " /><Run Text="Bid " /><Run Text="Supply Manually:" /></TextBlock>
+                <TextBox
+                    x:Name="txtProviderQuantity"
+                    Width="797"
+                    Height="23"
+                    Margin="40,578,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Margin="40,606,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap"><Run Text="Enter Provider" /><Run Text=" Bid" /><Run Text=" Prices Manually:" /></TextBlock>
+                <TextBox
+                    x:Name="txtProviderPrices"
+                    Width="797"
+                    Height="23"
+                    Margin="40,631,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap" />
+                <CheckBox
+                    x:Name="chkUser"
+                    Margin="668,185,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Content="User"
+                    RenderTransformOrigin="0.75,1.041" />
+                <CheckBox
+                    x:Name="chkProvider"
+                    Margin="667,215,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Content="Provider " />
+                <ComboBox
+                    x:Name="cmbUsers"
+                    Width="60"
+                    Height="34"
+                    Margin="209,141,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    RenderTransformOrigin="0.857,0.514" />
+                <ComboBox
+                    x:Name="cmbProviders"
+                    Width="60"
+                    Height="34"
+                    Margin="524,141,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    Width="170"
+                    Height="22"
+                    Margin="40,146,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Text="Number of Users:"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Width="194"
+                    Height="22"
+                    Margin="330,146,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap"><Run Text="Number of " /><Run Text="Providers" /></TextBlock>
+                <TextBlock
+                    Width="172"
+                    Margin="642,151,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="18"
+                    TextWrapping="Wrap"><Run Text="Manual Entry Mode:" TextDecorations="Underline" /></TextBlock>
+                <ComboBox
+                    x:Name="cmbMaxUserQuan"
+                    Width="60"
+                    Height="34"
+                    Margin="209,231,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    RenderTransformOrigin="0.857,0.514" />
+                <ComboBox
+                    x:Name="cmbMinUserPrice"
+                    Width="60"
+                    Height="34"
+                    Margin="209,275,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    Width="170"
+                    Height="22"
+                    Margin="40,236,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Text="Maximum User Quantity"
+                    TextWrapping="Wrap" />
+                <ComboBox
+                    x:Name="cmbMinUserQuan"
+                    Width="60"
+                    Height="34"
+                    Margin="209,185,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    RenderTransformOrigin="0.857,0.514" />
+                <ComboBox
+                    x:Name="cmbMaxUserPrice"
+                    Width="60"
+                    Height="34"
+                    Margin="209,321,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    Width="170"
+                    Height="24"
+                    Margin="40,190,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Text="Minimum User Quantity"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Width="170"
+                    Height="22"
+                    Margin="40,326,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap"><Run Text="Maximum User " /><Run Text="Bid Price" /></TextBlock>
+                <TextBlock
+                    Width="170"
+                    Height="22"
+                    Margin="40,280,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap"><Run Text="Minimum " /><Run Text="User " /><Run Text="Bid Price" /></TextBlock>
+                <ComboBox
+                    x:Name="cmbMaxProvQuan"
+                    Width="60"
+                    Height="34"
+                    Margin="524,231,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    RenderTransformOrigin="0.857,0.514" />
+                <ComboBox
+                    x:Name="cmbMinProvPrice"
+                    Width="60"
+                    Height="34"
+                    Margin="524,275,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    Width="194"
+                    Height="22"
+                    Margin="330,236,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap"><Run Text="Maximum " /><Run Text="Provider " /><Run Text="Quantity" /></TextBlock>
+                <ComboBox
+                    x:Name="cmbMaxProvPrice"
+                    Width="60"
+                    Height="34"
+                    Margin="524,321,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    RenderTransformOrigin="-0.717,0.588" />
+                <TextBlock
+                    Width="194"
+                    Height="24"
+                    Margin="330,190,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap"><Run Text="Minimum " /><Run Text="Provider " /><Run Text="Quantity" /></TextBlock>
+                <TextBlock
+                    Width="200"
+                    Height="22"
+                    Margin="330,326,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap"><Run Text="Maximum " /><Run Text="Provider " /><Run Text="Bid Price" /></TextBlock>
+                <TextBlock
+                    Width="200"
+                    Height="22"
+                    Margin="330,280,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    TextWrapping="Wrap"><Run Text="Minimum " /><Run Text="Provider " /><Run Text="Bid Price" /></TextBlock>
+                <TextBlock
+                    Width="260"
+                    Margin="40,95,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="26"
+                    Foreground="#FF3C2AB4"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap"><Run Text="User " TextDecorations="Underline" /><Run Text="Settings" TextDecorations="Underline" /></TextBlock>
+                <TextBlock
+                    Width="260"
+                    Margin="330,95,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="26"
+                    Foreground="#FF3C2AB4"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap"><Run Text="Provider " TextDecorations="Underline" /><Run Text="Settings" TextDecorations="Underline" /></TextBlock>
+                <ComboBox
+                    x:Name="cmbMinProvQuan"
+                    Width="60"
+                    Height="34"
+                    Margin="524,185,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    Width="797"
+                    Margin="40,394,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="26"
+                    Foreground="#FF3C2AB4"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap"><Run Text="Manual Entry Mode Settings" TextDecorations="Underline" /></TextBlock>
+            </Canvas>
+        </ScrollViewer>
     </Grid>
 </Window>
