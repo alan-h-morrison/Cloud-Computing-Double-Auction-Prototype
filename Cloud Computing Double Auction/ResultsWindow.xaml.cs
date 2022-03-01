@@ -15,16 +15,13 @@ using System.Windows.Shapes;
 
 namespace Cloud_Computing_Double_Auction
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
     public partial class ResultsWindow : Window
     {
         public ResultsWindow(double time)
         {
             InitializeComponent();
 
-            // Display the time taken to run the MAS in milliseconds
+            // Display the time taken to run the auction in milliseconds
             lblTime.Text = $"{time}s";
 
             // Statistics from double auction are displayed in appropriate sections of the results window

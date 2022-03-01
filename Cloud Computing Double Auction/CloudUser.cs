@@ -27,6 +27,7 @@ namespace Cloud_Computing_Double_Auction
             won = "false";
     }
 
+        // A contructor for when demand quantity and price per unit are entered manually
         public CloudUser(int demandQuantity, int pricePerUnit)
         {
             demand = demandQuantity;
@@ -36,33 +37,38 @@ namespace Cloud_Computing_Double_Auction
             won = "false";
         }
 
+        // At the start of the MAS, users message the environment to inform them of demand quantity and price per unit
         public override void Setup()
         {
             Send("environment", $"user {demand} {bidPrice}");
         }
 
+        // Act() Method defines the actions a Cloud User agent takes in response to messages received from other agents
         public override void Act(Message message)
         {
             try
             {
+                // Prints message received to console
                 Console.WriteLine($"\t{message.Format()}");
+
+                // Parses the message into the action and any parameters received with the action
                 message.Parse(out string action, out string parameters);
 
                 switch (action)
                 {
+                    // Calls HandleEnd() method when informed by the auctioneer that the auction has concluded
                     case "end":
                         HandleEnd(parameters);
-                            break;
+                        break;
+
+                    // Calls HandleInform() method when the environment informs them of their statistics used to form the bid submitted to the auctioneer
                     case "inform":
                         HandleInform(parameters);
                         break;
 
+                    // Calls HandleWin() method when the user has won some quantity of VMs
                     case "won":
                         HandleWin(parameters);
-                        break;
-
-                    case "paid":
-                        HandlePayment(parameters);
                         break;
 
                     default:
@@ -75,6 +81,7 @@ namespace Cloud_Computing_Double_Auction
             }
         }
 
+        // Method is used to message environment of a user's statistics at the end of the auction
         private void HandleEnd(string info)
         {
             int utilityGained = bidPrice - pricePerUnit;
@@ -83,6 +90,7 @@ namespace Cloud_Computing_Double_Auction
             Stop();
         }
 
+        // Method is called to formulate a user's bid and submit it to the cloud auctioneer
         private void HandleInform(string info)
         {
             string[] values = info.Split(' ');
@@ -93,6 +101,7 @@ namespace Cloud_Computing_Double_Auction
             Send("auctioneer", $"bid user {demand} {bidPrice}");
         }
 
+        // Method is called when a user has won some amount of VMs from participating in the auction and sends the appropriate amount to pay for the amount received
         private void HandleWin(string info)
         {
             string[] values = info.Split(' ');
@@ -107,13 +116,7 @@ namespace Cloud_Computing_Double_Auction
             finalQuantity = finalQuantity + amount;
             totalPricePaid = totalPricePaid + totalPrice;
 
-            Send("auctioneer", $"pay {provider} {totalPrice} {amount}");
+            Send("auctioneer", $"pay {provider} {totalPricePaid} {amount}");
         }
-
-        private void HandlePayment(string str)
-        {
-            int payment = Convert.ToInt32(str);
-        }
-
     }
 }

@@ -13,11 +13,6 @@ namespace Cloud_Computing_Double_Auction
         public int ProviderPricePerUnit { get; set; }
         public int TotalTradeSurplus { get; set; }
 
-        public AuctionStatistics()
-        {
-
-        }
-
         public AuctionStatistics(int userPrice, int providerPrice, int surplus)
         {
             UserPricePerUnit = userPrice;

@@ -40,24 +40,30 @@ namespace Cloud_Computing_Double_Auction
             ListWinningProviders = new List<Participant>();
         }
 
+        // Act() Method defines the actions the Cloud Auctioneer agent takes in response to messages received from other agents
         public override void Act(Message message)
         {
+            // Prints message received to console
             Console.WriteLine($"\t{message.Format()}");
 
+            // Parses the message into the action and any parameters received with the action
             message.Parse(out string action, out string parameters);
 
             switch (action)
             {
-                case "user":
-                    HandleUser(message.Sender, parameters);
-                    break;
-
+                // Calls HandleProvider() method when a cloud provider messages to register their personal details
                 case "provider":
                     HandleProvider(message.Sender, parameters);
                     break;
 
+                // Calls HandleStatistics() method when a user/provider submits their statistics after the auction ends
                 case "statistics":
                     HandleStatistics(message.Sender, parameters);
+                    break;
+
+                // Calls HandleUser() method when a cloud user messages to receive their personal details
+                case "user":
+                    HandleUser(message.Sender, parameters);
                     break;
 
                 default:
@@ -65,20 +71,46 @@ namespace Cloud_Computing_Double_Auction
             }
         }
 
+        // The action the agent takes if no message is received during a turn
         public override void ActDefault()
         {
+            // If after a certain amount of turns takes place with no messages received and statisitcs have not been recieved
             if (--turnsToWait <= 0 && statReceived == true)
             {
                 Stop();
             }
         }
 
+        // Method is called when a provider messages to receive their personal details
+        private void HandleProvider(string provider, string info)
+        {
+            string[] values = info.Split(' ');
+
+            string providerID = provider;
+
+            int supply = Convert.ToInt32(values[0]);
+            int userPrice = Convert.ToInt32(values[1]);
+
+            // If their supply/price per unit has not been set already, randomly generate the values based on min/max values set for provider quantity and bid price
+            if (supply == 0 && userPrice == 0)
+            {
+                supply = rand.Next(minProvQuantity, maxProvQuantity);
+                userPrice = rand.Next(minProviderPrice, maxProviderPrice);
+            }
+
+            // Messages provider to inform them of their personal details
+            string providerContent = $"inform {supply} {userPrice}";
+            Send(providerID, providerContent);
+        }
+
+        // Method is called when the user, provider or the auctioneer messages their statisitcs after the end of the auction
         private void HandleStatistics(string sender, string info)
         {
             string[] values = info.Split(' ');
 
             if (sender.Contains("user"))
             {
+                // Reset turn to wait counter and sets the statistics received variable to true
                 turnsToWait = 5;
                 statReceived = true;
 
@@ -89,9 +121,11 @@ namespace Cloud_Computing_Double_Auction
                 int totalPaid = Convert.ToInt32(values[4]);
                 int utilityGained = Convert.ToInt32(values[5]);
 
+                // Adds all users into a list of participants
                 Participant user = new Participant(sender, demand, bid);
                 ListUserDetails.Add(user);
 
+                // Winning users are added to a list of participants
                 if (won == "true")
                 {
                     Participant winningUser = new Participant(sender, demand, bid, quantityReceived, totalPaid, utilityGained);
@@ -100,6 +134,7 @@ namespace Cloud_Computing_Double_Auction
             }
             else if (sender.Contains("provider"))
             {
+                // Reset turn to wait counter and sets the statistics received variable to true
                 turnsToWait = 5;
                 statReceived = true;
 
@@ -110,10 +145,12 @@ namespace Cloud_Computing_Double_Auction
                 int totalReceived = Convert.ToInt32(values[4]);
                 int utilityGained = Convert.ToInt32(values[5]);
 
+                // Adds all providers into a list of participants
                 Participant provider = new Participant(sender, supply, bid);
                 ListProvDetails.Add(provider);
 
-                if(won == "true")
+                // Winning providers are added to a list of participants
+                if (won == "true")
                 {
                     Participant winningProvider = new Participant(sender, supply, bid, quantityAllocated, totalReceived, utilityGained);
                     ListWinningProviders.Add(winningProvider);
@@ -129,6 +166,7 @@ namespace Cloud_Computing_Double_Auction
             }
         }
 
+        // Method is called when a user messages to receive their personal details
         private void HandleUser(string user, string info)
         {
             string[] values = info.Split(' ');
@@ -138,35 +176,16 @@ namespace Cloud_Computing_Double_Auction
             int demand = Convert.ToInt32(values[0]);
             int userPrice = Convert.ToInt32(values[1]);
 
-            if(demand == 0 && userPrice == 0)
+            // If their supply/price per unit has not been set already, randomly generate the values based on min/max values set for user quantity and bid price
+            if (demand == 0 && userPrice == 0)
             {
                 demand = rand.Next(minUserQuantity, maxUserQuantity);
                 userPrice = rand.Next(minUserPrice, maxUserPrice);
             }
 
-            string userContent = $"inform {demand} {userPrice}";
-
+            // Messages user to inform them of their personal details
+            string userContent = $"inform {demand} {userPrice}";      
             Send(userID, userContent);
-        }
-
-        private void HandleProvider(string provider, string info)
-        {
-            string[] values = info.Split(' ');
-
-            string providerID = provider;
-
-            int supply = Convert.ToInt32(values[0]);
-            int userPrice = Convert.ToInt32(values[1]);
-
-            if (supply == 0 && userPrice == 0)
-            {
-                supply = rand.Next(minProvQuantity, maxProvQuantity);
-                userPrice = rand.Next(minProviderPrice, maxProviderPrice);
-            }
-
-            string providerContent = $"inform {supply} {userPrice}";
-
-            Send(providerID, providerContent);
         }
     } 
 }
