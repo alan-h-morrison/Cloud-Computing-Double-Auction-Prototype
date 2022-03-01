@@ -10,24 +10,24 @@ namespace Cloud_Computing_Double_Auction
     public class CloudEnvironment : Agent
     {
         public static AuctionStatistics AuctionStats { get; set; }
-        public static List<Participant> ListUserDetails { get; set; }
         public static List<Participant> ListProvDetails { get; set; }
-        public static List<Participant> ListWinningUsers { get; set; }
+        public static List<Participant> ListUserDetails { get; set; }
         public static List<Participant> ListWinningProviders { get; set; }
-
-        private int minUserQuantity = Properties.Settings.Default.MinUserQuantity;
-        private int maxUserQuantity = Properties.Settings.Default.MaxUserQuantity + 1;
+        public static List<Participant> ListWinningUsers { get; set; }
 
         private int minUserPrice = Properties.Settings.Default.MinUserPrice;
         private int maxUserPrice = Properties.Settings.Default.MaxUserPrice + 1;
 
-        private int minProvQuantity = Properties.Settings.Default.MinProvQuantity;
-        private int maxProvQuantity = Properties.Settings.Default.MaxProvQuantity + 1;
+        private int minUserQuantity = Properties.Settings.Default.MinUserQuantity;
+        private int maxUserQuantity = Properties.Settings.Default.MaxUserQuantity + 1;
 
         private int minProviderPrice = Properties.Settings.Default.MinProvPrice;
         private int maxProviderPrice = Properties.Settings.Default.MaxProvPrice + 1;
 
-        public Random rand = new Random();
+        private int minProvQuantity = Properties.Settings.Default.MinProvQuantity;
+        private int maxProvQuantity = Properties.Settings.Default.MaxProvQuantity + 1;
+
+        private Random rand = new Random();
         int turnsToWait;
         bool statReceived;
 

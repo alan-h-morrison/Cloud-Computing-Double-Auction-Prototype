@@ -13,10 +13,10 @@
     mc:Ignorable="d">
     <Grid>
         <ScrollViewer Margin="0,0,0,1">
-            <Canvas Width="894" Height="1921">
+            <Canvas Width="894" Height="2071">
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1360"
+                    Canvas.Top="1440"
                     Width="662"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -66,7 +66,7 @@
 
                 <Rectangle
                     Canvas.Left="119"
-                    Canvas.Top="1450"
+                    Canvas.Top="1526"
                     Width="662"
                     Height="180"
                     Fill="#FFF4F4F5"
@@ -218,7 +218,7 @@
                 <DataGrid
                     x:Name="dgWinningProv"
                     Canvas.Left="119"
-                    Canvas.Top="1450"
+                    Canvas.Top="1526"
                     Width="Auto"
                     Height="Auto"
                     MaxHeight="180"
@@ -360,7 +360,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1411"
+                    Canvas.Top="1487"
                     Width="662"
                     Height="34"
                     FontSize="24"
@@ -385,7 +385,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1640"
+                    Canvas.Top="1716"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -441,7 +441,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1680"
+                    Canvas.Top="1756"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -473,7 +473,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1240"
+                    Canvas.Top="1320"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -489,7 +489,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1280"
+                    Canvas.Top="1360"
                     Height="21"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -506,7 +506,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1720"
+                    Canvas.Top="1876"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -522,7 +522,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1760"
+                    Canvas.Top="1916"
                     Height="21"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -558,7 +558,7 @@
                     TextWrapping="Wrap"><Run Text="Provider Bids" TextDecorations="Underline" /><LineBreak /></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1320"
+                    Canvas.Top="1400"
                     Width="662"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -573,7 +573,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1840"
+                    Canvas.Top="1996"
                     Width="514"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -589,7 +589,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1800"
+                    Canvas.Top="1956"
                     Width="662"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -616,6 +616,70 @@
                             x:Name="lblPercentWinning"
                             Foreground="Black"
                             Text="0.0%"
+                            TextWrapping="Wrap" />
+
+                    </InlineUIContainer></TextBlock>
+                <TextBlock
+                    Canvas.Left="119"
+                    Canvas.Top="1240"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="16"
+                    Foreground="Black"
+                    RenderTransformOrigin="0.524,-0.185"
+                    TextWrapping="Wrap"><Run Text="Total Amount of VMs Requested = " /><InlineUIContainer>
+                        <TextBlock
+                            x:Name="lblTotalRequested"
+                            Foreground="Black"
+                            Text="0"
+                            TextWrapping="Wrap" />
+
+                    </InlineUIContainer></TextBlock>
+                <TextBlock
+                    Canvas.Left="119"
+                    Canvas.Top="1280"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="16"
+                    Foreground="Black"
+                    RenderTransformOrigin="0.524,-0.185"
+                    TextWrapping="Wrap"><Run Text="Total Amount of VMs Received = " /><InlineUIContainer>
+                        <TextBlock
+                            x:Name="lblTotalReceived"
+                            Foreground="Black"
+                            Text="0"
+                            TextWrapping="Wrap" />
+
+                    </InlineUIContainer></TextBlock>
+                <TextBlock
+                    Canvas.Left="119"
+                    Canvas.Top="1796"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="16"
+                    Foreground="Black"
+                    RenderTransformOrigin="0.524,-0.185"
+                    TextWrapping="Wrap"><Run Text="Total Amount of VMs Offered = " /><InlineUIContainer>
+                        <TextBlock
+                            x:Name="lblTotalOffered"
+                            Foreground="Black"
+                            Text="0"
+                            TextWrapping="Wrap" />
+
+                    </InlineUIContainer></TextBlock>
+                <TextBlock
+                    Canvas.Left="119"
+                    Canvas.Top="1836"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="16"
+                    Foreground="Black"
+                    RenderTransformOrigin="0.524,-0.185"
+                    TextWrapping="Wrap"><Run Text="Total Amount of VMs Given = " /><InlineUIContainer>
+                        <TextBlock
+                            x:Name="lblTotalGiven"
+                            Foreground="Black"
+                            Text="0"
                             TextWrapping="Wrap" />
 
                     </InlineUIContainer></TextBlock>
