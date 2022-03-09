@@ -15,18 +15,6 @@ namespace Cloud_Computing_Double_Auction
         public static List<Participant> ListWinningProviders { get; set; }
         public static List<Participant> ListWinningUsers { get; set; }
 
-        private int minUserPrice = Properties.Settings.Default.MinUserPrice;
-        private int maxUserPrice = Properties.Settings.Default.MaxUserPrice + 1;
-
-        private int minUserQuantity = Properties.Settings.Default.MinUserQuantity;
-        private int maxUserQuantity = Properties.Settings.Default.MaxUserQuantity + 1;
-
-        private int minProviderPrice = Properties.Settings.Default.MinProvPrice;
-        private int maxProviderPrice = Properties.Settings.Default.MaxProvPrice + 1;
-
-        private int minProvQuantity = Properties.Settings.Default.MinProvQuantity;
-        private int maxProvQuantity = Properties.Settings.Default.MaxProvQuantity + 1;
-
         private Random rand = new Random();
         int turnsToWait;
         bool statReceived;
@@ -82,24 +70,29 @@ namespace Cloud_Computing_Double_Auction
         }
 
         // Method is called when a provider messages to receive their personal details
-        private void HandleProvider(string provider, string info)
+        private void HandleProvider(string sender, string info)
         {
             string[] values = info.Split(' ');
 
-            string providerID = provider;
+            string providerID = sender;
 
             int supply = Convert.ToInt32(values[0]);
-            int userPrice = Convert.ToInt32(values[1]);
+            int minProvQuantity = Properties.Settings.Default.MinProvQuantity;
+            int maxProvQuantity = Properties.Settings.Default.MaxProvQuantity + 1;
 
+            int providerPrice = Convert.ToInt32(values[1]);
+            int minProviderPrice = Properties.Settings.Default.MinProvPrice;
+            int maxProviderPrice = Properties.Settings.Default.MaxProvPrice + 1;
+           
             // If their supply/price per unit has not been set already, randomly generate the values based on min/max values set for provider quantity and bid price
-            if (supply == 0 && userPrice == 0)
+            if (supply == 0 && providerPrice == 0)
             {
                 supply = rand.Next(minProvQuantity, maxProvQuantity);
-                userPrice = rand.Next(minProviderPrice, maxProviderPrice);
+                providerPrice = rand.Next(minProviderPrice, maxProviderPrice);
             }
 
             // Messages provider to inform them of their personal details
-            string providerContent = $"inform {supply} {userPrice}";
+            string providerContent = $"inform {supply} {providerPrice}";
             Send(providerID, providerContent);
         }
 
@@ -167,14 +160,19 @@ namespace Cloud_Computing_Double_Auction
         }
 
         // Method is called when a user messages to receive their personal details
-        private void HandleUser(string user, string info)
+        private void HandleUser(string sender, string info)
         {
             string[] values = info.Split(' ');
 
-            string userID = user;
+            string userID = sender;
 
             int demand = Convert.ToInt32(values[0]);
+            int minUserQuantity = Properties.Settings.Default.MinUserQuantity;
+            int maxUserQuantity = Properties.Settings.Default.MaxUserQuantity + 1;
+
             int userPrice = Convert.ToInt32(values[1]);
+            int minUserPrice = Properties.Settings.Default.MinUserPrice;
+            int maxUserPrice = Properties.Settings.Default.MaxUserPrice + 1;
 
             // If their supply/price per unit has not been set already, randomly generate the values based on min/max values set for user quantity and bid price
             if (demand == 0 && userPrice == 0)

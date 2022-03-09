@@ -111,7 +111,7 @@ namespace Cloud_Computing_Double_Auction
 
             // Populates the min/max quantity range for user and provider comboboxes with numbers ranging from 5 to 50
             ObservableCollection<string> quantityRange = new ObservableCollection<string>();
-            for (int i = 5; i < 51; i++)
+            for (int i = 1; i < 51; i++)
             {
                 quantityRange.Add($"{i}");
             }    
@@ -189,7 +189,7 @@ namespace Cloud_Computing_Double_Auction
             Properties.Settings.Default.MinUserPrice = Convert.ToInt32(cmbMinUserPrice.SelectedItem);
             Properties.Settings.Default.MaxUserPrice = Convert.ToInt32(cmbMaxUserPrice.SelectedItem);
             Properties.Settings.Default.MinProvPrice = Convert.ToInt32(cmbMinProvPrice.SelectedItem);
-            Properties.Settings.Default.MaxProvPrice = Convert.ToInt32(cmbMaxProvQuan.SelectedItem);
+            Properties.Settings.Default.MaxProvPrice = Convert.ToInt32(cmbMaxProvPrice.SelectedItem);
         }
 
         // Validates the min-max range for a user bid quantities/prices

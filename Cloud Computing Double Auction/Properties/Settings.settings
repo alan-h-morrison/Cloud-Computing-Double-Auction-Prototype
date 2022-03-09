@@ -9,16 +9,16 @@
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="UserQuantities" Type="System.String" Scope="User">
-      <Value Profile="(Default)">8 2 3 1 8 7 5</Value>
+      <Value Profile="(Default)">13 9 8 11 14 14 6 9</Value>
     </Setting>
     <Setting Name="UserPrices" Type="System.String" Scope="User">
-      <Value Profile="(Default)">47 45 35 34 33 22 12</Value>
+      <Value Profile="(Default)">50 46 43 40 37 36 29 14</Value>
     </Setting>
     <Setting Name="ProviderQuantites" Type="System.String" Scope="User">
-      <Value Profile="(Default)">5 5 1 2 4 8 3</Value>
+      <Value Profile="(Default)">12 11 6 11 12 7 13 9</Value>
     </Setting>
     <Setting Name="ProviderPrices" Type="System.String" Scope="User">
-      <Value Profile="(Default)">15 17 20 22 25 30 49</Value>
+      <Value Profile="(Default)">10 23 26 26 33 35 46 50</Value>
     </Setting>
     <Setting Name="ManualUser" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -39,7 +39,7 @@
       <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="MinProvQuantity" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="MaxProvQuantity" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">15</Value>

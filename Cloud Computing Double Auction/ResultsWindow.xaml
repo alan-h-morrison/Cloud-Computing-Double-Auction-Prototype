@@ -400,9 +400,8 @@
 
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="-6"
                     Canvas.Top="120"
-                    Width="900"
+                    Width="894"
                     Height="47"
                     FontSize="36"
                     Foreground="#FF3C2AB4"

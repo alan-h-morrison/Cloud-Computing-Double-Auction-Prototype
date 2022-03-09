@@ -205,7 +205,7 @@ namespace Cloud_Computing_Double_Auction
                     Console.WriteLine($"\n[{Name}]: Removed Least Profitable User/Provider:- \n\t\tNo. of winning users = {winUserBids.Count} \n\t\tNo. of winning providers = {winProviderBids.Count}");
 
                     // User/provider bid quantities are adjusted in the event of oversupply or overdemand
-                    AltAdjustQuantities();
+                    QuantityAdjustment();
 
                     totalProviderQuantity = winProviderBids.Sum(provider => provider.BidQuantity);
                     totalUserQuantity = winUserBids.Sum(user => user.BidQuantity);
@@ -368,12 +368,14 @@ namespace Cloud_Computing_Double_Auction
         }
 
         // Method adjusts quantities for winning users or winning providers in the case of oversupply or overdemand
-        private void AltAdjustQuantities()
+        private void QuantityAdjustment()
         {
             int totalProviderQuantity = winProviderBids.Sum(provider => provider.BidQuantity);
             int totalUserQuantity = winUserBids.Sum(user => user.BidQuantity);
             int totalDiff = Math.Abs(totalUserQuantity - totalProviderQuantity);
             int infiniteCounter = 0;
+            int randomIndex = 0;
+            int randomParticipant = 0;
 
             Random rand = new Random();
             List<int> listNumbers = new List<int>();
@@ -399,14 +401,16 @@ namespace Cloud_Computing_Double_Auction
                     infiniteCounter++;
 
                     // Selects a random bid from winning user bids and removes it from a list of potential user bids which can be adjusted
-                    int randomUser = rand.Next(0, possibleUsers.Count);
-                    listNumbers.Add(possibleUsers[randomUser]);
-                    possibleUsers.RemoveAt(randomUser);
+                    randomIndex = rand.Next(0, possibleUsers.Count);
+                    randomParticipant = possibleUsers[randomIndex];
+
+                    listNumbers.Add(randomParticipant);
+                    possibleUsers.Remove(randomParticipant);
 
                     // If the winning user's bid quantity is above 1, the bid quantity is decremented and therefore the total difference is decremented
-                    if (winUserBids[randomUser].BidQuantity > 1)
+                    if (winUserBids[randomParticipant].BidQuantity > 1)
                     {
-                        winUserBids[randomUser].BidQuantity = winUserBids[randomUser].BidQuantity - 1;
+                        winUserBids[randomParticipant].BidQuantity = winUserBids[randomParticipant].BidQuantity - 1;
                         totalDiff--;
                         infiniteCounter = 0;
                     }
@@ -445,14 +449,16 @@ namespace Cloud_Computing_Double_Auction
                     infiniteCounter++;
 
                     // Creates a list of the winning providers which may be selected to adjust their quantity
-                    int randomProvider = rand.Next(0, possibleProviders.Count);
-                    listNumbers.Add(possibleProviders[randomProvider]);
-                    possibleProviders.RemoveAt(randomProvider);
+                    randomIndex = rand.Next(0, possibleProviders.Count);
+                    randomParticipant = possibleProviders[randomIndex];
+
+                    listNumbers.Add(randomParticipant);
+                    possibleProviders.Remove(randomParticipant);
 
                     // If the winning provider's bid quantity is above 1, the bid quantity is decremented and therefore the total difference is decremented
-                    if (winProviderBids[randomProvider].BidQuantity > 1)
+                    if (winProviderBids[randomParticipant].BidQuantity > 1)
                     {
-                        winProviderBids[randomProvider].BidQuantity = winProviderBids[randomProvider].BidQuantity - 1;
+                        winProviderBids[randomParticipant].BidQuantity = winProviderBids[randomParticipant].BidQuantity - 1;
                         infiniteCounter = 0;
                         totalDiff--;
                     }

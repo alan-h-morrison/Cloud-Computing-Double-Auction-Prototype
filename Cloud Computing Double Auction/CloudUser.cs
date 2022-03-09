@@ -15,7 +15,7 @@ namespace Cloud_Computing_Double_Auction
         private int bidPrice;
         private int finalQuantity;
         private int totalPricePaid;
-        private int pricePerUnit;
+        private int utilityGained;
         private string won;
 
         public CloudUser()
@@ -84,8 +84,6 @@ namespace Cloud_Computing_Double_Auction
         // Method is used to message environment of a user's statistics at the end of the auction
         private void HandleEnd(string info)
         {
-            int utilityGained = bidPrice - pricePerUnit;
-
             Send("environment", $"statistics {won} {demand} {bidPrice} {finalQuantity} {totalPricePaid} {utilityGained}");
             Stop();
         }
@@ -108,10 +106,9 @@ namespace Cloud_Computing_Double_Auction
 
             string provider = values[0];
             int amount = Convert.ToInt32(values[1]);
-            pricePerUnit = Convert.ToInt32(values[2]);
+            int totalPrice = amount * Convert.ToInt32(values[2]);
 
-            int totalPrice = amount * pricePerUnit;
-
+            utilityGained = bidPrice - Convert.ToInt32(values[2]);
             won = "true";
             finalQuantity = finalQuantity + amount;
             totalPricePaid = totalPricePaid + totalPrice;
