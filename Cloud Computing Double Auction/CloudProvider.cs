@@ -16,6 +16,7 @@ namespace Cloud_Computing_Double_Auction
         private int finalQuantity;
         private int totalPriceRecieved;
         private int utilityGained;
+        private int totalUtility;
         private string won;
 
         public CloudProvider()
@@ -24,6 +25,7 @@ namespace Cloud_Computing_Double_Auction
             bidPrice = 0;
             finalQuantity = 0;
             totalPriceRecieved = 0;
+            totalUtility = 0;
             won = "false";
         }
 
@@ -34,6 +36,7 @@ namespace Cloud_Computing_Double_Auction
             bidPrice = pricePerUnit;
             finalQuantity = 0;
             totalPriceRecieved = 0;
+            totalUtility = 0;
             won = "false";
         }
 
@@ -95,7 +98,9 @@ namespace Cloud_Computing_Double_Auction
         // Method is used to message environment of a provider's statistics at the end of the auction
         private void HandleEnd(string info)
         {
-            Send("environment", $"statistics {won} {supply} {bidPrice} {finalQuantity} {totalPriceRecieved} {utilityGained}");
+            totalUtility = finalQuantity * utilityGained;
+
+            Send("environment", $"statistics {won} {supply} {bidPrice} {finalQuantity} {totalPriceRecieved} {utilityGained} {totalUtility}");
             Stop();
         }
 

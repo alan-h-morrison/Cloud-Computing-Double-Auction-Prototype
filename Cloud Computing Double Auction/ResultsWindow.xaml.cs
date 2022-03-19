@@ -87,7 +87,7 @@ namespace Cloud_Computing_Double_Auction
                 {
                     totalRequested = totalRequested + user.Quantity;
                     totalReceived = totalReceived + user.FinalQuantity;
-                    totalUserUtility = totalUserUtility + user.Utility;
+                    totalUserUtility = totalUserUtility + user.TotalUtility;
                     totalUserQuantity = totalUserQuantity + user.Quantity;
                     totalUserFinalQuantity = totalUserFinalQuantity + user.FinalQuantity;
                 }
@@ -123,7 +123,7 @@ namespace Cloud_Computing_Double_Auction
                 {
                     totalOffered = totalOffered + provider.Quantity;
                     totalGiven = totalGiven + provider.FinalQuantity;
-                    totalProvUtilit = totalProvUtilit + provider.Utility;
+                    totalProvUtilit = totalProvUtilit + provider.TotalUtility;
                     totalProvQuantity = totalProvQuantity + provider.Quantity;
                     totalProvFinalQuantity = totalProvFinalQuantity + provider.FinalQuantity;                
                 }

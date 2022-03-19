@@ -113,6 +113,7 @@ namespace Cloud_Computing_Double_Auction
                 int quantityReceived = Convert.ToInt32(values[3]);
                 int totalPaid = Convert.ToInt32(values[4]);
                 int utilityGained = Convert.ToInt32(values[5]);
+                int totalUtility = Convert.ToInt32(values[6]);
 
                 // Adds all users into a list of participants
                 Participant user = new Participant(sender, demand, bid);
@@ -121,7 +122,7 @@ namespace Cloud_Computing_Double_Auction
                 // Winning users are added to a list of participants
                 if (won == "true")
                 {
-                    Participant winningUser = new Participant(sender, demand, bid, quantityReceived, totalPaid, utilityGained);
+                    Participant winningUser = new Participant(sender, demand, bid, quantityReceived, totalPaid, utilityGained, totalUtility);
                     ListWinningUsers.Add(winningUser);
                 }
             }
@@ -137,6 +138,7 @@ namespace Cloud_Computing_Double_Auction
                 int quantityAllocated = Convert.ToInt32(values[3]);
                 int totalReceived = Convert.ToInt32(values[4]);
                 int utilityGained = Convert.ToInt32(values[5]);
+                int totalUtility = Convert.ToInt32(values[6]);
 
                 // Adds all providers into a list of participants
                 Participant provider = new Participant(sender, supply, bid);
@@ -145,7 +147,7 @@ namespace Cloud_Computing_Double_Auction
                 // Winning providers are added to a list of participants
                 if (won == "true")
                 {
-                    Participant winningProvider = new Participant(sender, supply, bid, quantityAllocated, totalReceived, utilityGained);
+                    Participant winningProvider = new Participant(sender, supply, bid, quantityAllocated, totalReceived, utilityGained, totalUtility);
                     ListWinningProviders.Add(winningProvider);
                 }
             }

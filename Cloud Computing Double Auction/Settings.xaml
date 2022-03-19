@@ -45,7 +45,7 @@
                     Margin="40,447,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    TextWrapping="Wrap"><Run Text="Enter User " /><Run Text="Bid " /><Run Text="Quantities " /><Run Text="Manually" /><Run Text=" (i.e. 12 24 25 65 45):" /></TextBlock>
+                    TextWrapping="Wrap"><Run Text="Enter User " /><Run Text="Bid " /><Run Text="Quantities " /><Run Text="Manually" /><Run Text=":" /></TextBlock>
                 <TextBox
                     x:Name="txtUserQuantity"
                     Width="800"

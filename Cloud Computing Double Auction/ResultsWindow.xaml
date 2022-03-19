@@ -12,10 +12,10 @@
     mc:Ignorable="d">
     <Grid>
         <ScrollViewer Margin="0,0,0,1">
-            <Canvas Width="894" Height="2071">
+            <Canvas Width="894" Height="2100">
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1440"
+                    Canvas.Top="1460"
                     Width="662"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -56,18 +56,18 @@
                     Stroke="LightGray" />
 
                 <Rectangle
-                    Canvas.Left="119"
-                    Canvas.Top="970"
-                    Width="663"
-                    Height="180"
+                    Canvas.Left="91"
+                    Canvas.Top="965"
+                    Width="712"
+                    Height="200"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
 
                 <Rectangle
-                    Canvas.Left="119"
-                    Canvas.Top="1526"
-                    Width="662"
-                    Height="180"
+                    Canvas.Left="91"
+                    Canvas.Top="1555"
+                    Width="711"
+                    Height="200"
                     Fill="#FFF4F4F5"
                     Stroke="LightGray" />
 
@@ -164,11 +164,11 @@
 
                 <DataGrid
                     x:Name="dgWinningUsers"
-                    Canvas.Left="119"
-                    Canvas.Top="970"
+                    Canvas.Left="91"
+                    Canvas.Top="965"
                     Width="Auto"
                     Height="Auto"
-                    MaxHeight="180"
+                    MaxHeight="200"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     AutoGenerateColumns="False"
@@ -195,32 +195,36 @@
                             Binding="{Binding BidPrice}"
                             Header="Bid Price" />
                         <DataGridTextColumn
-                            Width="130"
+                            Width="100"
                             Binding="{Binding Quantity}"
-                            Header="Demand Quantity" />
+                            Header="Demand&#x0a;Quantity" />
                         <DataGridTextColumn
-                            Width="110"
+                            Width="100"
                             Binding="{Binding FinalQuantity}"
-                            Header="Final Quantity" />
+                            Header="Final&#x0a;Quantity" />
                         <DataGridTextColumn
-                            Width="110"
+                            Width="100"
                             Binding="{Binding TotalPrice}"
-                            Header="Price Paid" />
+                            Header="Total &#x0a;Price Paid" />
                         <DataGridTextColumn
                             Width="110"
                             Binding="{Binding Utility}"
-                            Header="Utility Gained" />
+                            Header="Utility Gained&#x0a;(Per Unit)" />
+                        <DataGridTextColumn
+                            Width="100"
+                            Binding="{Binding TotalUtility}"
+                            Header="Total Utility&#x0a;Gained" />
                     </DataGrid.Columns>
 
                 </DataGrid>
 
                 <DataGrid
                     x:Name="dgWinningProv"
-                    Canvas.Left="119"
-                    Canvas.Top="1526"
+                    Canvas.Left="91"
+                    Canvas.Top="1555"
                     Width="Auto"
                     Height="Auto"
-                    MaxHeight="180"
+                    MaxHeight="200"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     AutoGenerateColumns="False"
@@ -239,29 +243,33 @@
 
                     <DataGrid.Columns>
                         <DataGridTextColumn
-                            MinWidth="100"
+                            Width="100"
                             Binding="{Binding ID}"
                             Header="Provider ID" />
                         <DataGridTextColumn
-                            MinWidth="100"
+                            Width="100"
                             Binding="{Binding BidPrice}"
                             Header="Bid Price" />
                         <DataGridTextColumn
-                            MinWidth="130"
+                            Width="100"
                             Binding="{Binding Quantity}"
-                            Header="Supply Quantity" />
+                            Header="Supply&#x0a;Quantity" />
                         <DataGridTextColumn
-                            MinWidth="110"
+                            Width="100"
                             Binding="{Binding FinalQuantity}"
-                            Header="Final Quantity" />
+                            Header="Final&#x0a;Quantity" />
                         <DataGridTextColumn
-                            MinWidth="110"
+                            Width="100"
                             Binding="{Binding TotalPrice}"
-                            Header="Price Received" />
+                            Header="Total Price&#x0a;Received" />
                         <DataGridTextColumn
-                            MinWidth="110"
+                            Width="110"
                             Binding="{Binding Utility}"
-                            Header="Utility Gained" />
+                            Header="Utility Gained&#x0a;(Per Unit)" />
+                        <DataGridTextColumn
+                            Width="100"
+                            Binding="{Binding TotalUtility}"
+                            Header="Total Utility&#x0a;Gained" />
                     </DataGrid.Columns>
 
                 </DataGrid>
@@ -283,9 +291,9 @@
                     TextWrapping="Wrap"><Run Text="Initial Participant Bid" TextDecorations="Underline" /><Run Text=" Statistics" TextDecorations="Underline" /><LineBreak /></TextBlock>
 
                 <TextBlock
-                    Canvas.Left="119"
-                    Canvas.Top="931"
-                    Width="663"
+                    Canvas.Left="90"
+                    Canvas.Top="926"
+                    Width="712"
                     Height="34"
                     FontSize="24"
                     Foreground="Black"
@@ -358,9 +366,9 @@
                             TextWrapping="Wrap" />
                     </InlineUIContainer></TextBlock>
                 <TextBlock
-                    Canvas.Left="119"
-                    Canvas.Top="1487"
-                    Width="662"
+                    Canvas.Left="92"
+                    Canvas.Top="1516"
+                    Width="710"
                     Height="34"
                     FontSize="24"
                     Foreground="Black"
@@ -368,7 +376,7 @@
                     TextWrapping="Wrap"><Run Text="Winning " TextDecorations="Underline" /><Run Text="Providers" TextDecorations="Underline" /><LineBreak /></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1160"
+                    Canvas.Top="1180"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -384,7 +392,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1716"
+                    Canvas.Top="1770"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -439,7 +447,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1756"
+                    Canvas.Top="1810"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -455,7 +463,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1200"
+                    Canvas.Top="1220"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -471,7 +479,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1320"
+                    Canvas.Top="1340"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -487,7 +495,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1360"
+                    Canvas.Top="1380"
                     Height="21"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -504,7 +512,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1876"
+                    Canvas.Top="1930"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -520,7 +528,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1916"
+                    Canvas.Top="1970"
                     Height="21"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -556,7 +564,7 @@
                     TextWrapping="Wrap"><Run Text="Provider Bids" TextDecorations="Underline" /><LineBreak /></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1400"
+                    Canvas.Top="1420"
                     Width="662"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -571,7 +579,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1996"
+                    Canvas.Top="2050"
                     Width="514"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -587,7 +595,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1956"
+                    Canvas.Top="2010"
                     Width="662"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -619,7 +627,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1240"
+                    Canvas.Top="1260"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -635,7 +643,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1280"
+                    Canvas.Top="1300"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -651,7 +659,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1796"
+                    Canvas.Top="1850"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"
@@ -667,7 +675,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="119"
-                    Canvas.Top="1836"
+                    Canvas.Top="1890"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="16"

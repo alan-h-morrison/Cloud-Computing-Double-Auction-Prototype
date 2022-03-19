@@ -14,6 +14,7 @@ namespace Cloud_Computing_Double_Auction
         public int FinalQuantity { get; set; }
         public int TotalPrice { get; set; }
         public int Utility { get; set; }
+        public int TotalUtility { get; set; }
 
         public Participant(string id, int demand, int bidPrice)
         {
@@ -22,7 +23,7 @@ namespace Cloud_Computing_Double_Auction
             BidPrice = bidPrice;
         }
 
-        public Participant(string id, int demand, int bidPrice, int finalQuant, int totalPaid, int utility)
+        public Participant(string id, int demand, int bidPrice, int finalQuant, int totalPaid, int utility, int totalUtility)
         {
             ID = id;
             Quantity = demand;
@@ -30,6 +31,7 @@ namespace Cloud_Computing_Double_Auction
             FinalQuantity = finalQuant;
             TotalPrice = totalPaid;
             Utility = utility;
+            TotalUtility = totalUtility;
         }
     }
 }
