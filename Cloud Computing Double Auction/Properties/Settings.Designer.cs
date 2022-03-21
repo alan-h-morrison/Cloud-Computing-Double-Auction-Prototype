@@ -49,7 +49,7 @@ namespace Cloud_Computing_Double_Auction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("13 9 8 11 14 14 6 9")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1 6 1 9 10 5 3 9 7 12")]
         public string UserQuantities {
             get {
                 return ((string)(this["UserQuantities"]));
@@ -61,7 +61,7 @@ namespace Cloud_Computing_Double_Auction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50 46 43 40 37 36 29 14")]
+        [global::System.Configuration.DefaultSettingValueAttribute("34 13 43 45 42 28 41 26 20 32")]
         public string UserPrices {
             get {
                 return ((string)(this["UserPrices"]));
@@ -73,7 +73,7 @@ namespace Cloud_Computing_Double_Auction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12 11 6 11 12 7 13 9")]
+        [global::System.Configuration.DefaultSettingValueAttribute("11 7 11 12 7 8 6 11 3 8")]
         public string ProviderQuantites {
             get {
                 return ((string)(this["ProviderQuantites"]));
@@ -85,7 +85,7 @@ namespace Cloud_Computing_Double_Auction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10 23 26 26 33 35 46 50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("24 23 46 44 12 36 14 27 42 31")]
         public string ProviderPrices {
             get {
                 return ((string)(this["ProviderPrices"]));

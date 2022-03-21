@@ -33,6 +33,12 @@ namespace Cloud_Computing_Double_Auction
         private int userQuantityCounter;
         private int providerQuanityCounter;
 
+        private string winCondition;
+        private string winReason;
+
+        private string adjustCondition;
+        private string adjustReason;
+
         public CloudAuctioneer()
         {
             userBids = new List<Bid>();
@@ -176,7 +182,8 @@ namespace Cloud_Computing_Double_Auction
             int userBidPrice = userBids[winningUsers].BidPrice;
             int providerBidPrice = providerBids[winningProviders].BidPrice;
             int tradeSurplus = Math.Min(totalUserQuantity, totalProviderQuantity) * (userBidPrice - providerBidPrice);
-            Send("environment", $"statistics {userBidPrice} {providerBidPrice} {tradeSurplus}");
+
+            Send("environment", $"statistics {userBidPrice} {providerBidPrice} {tradeSurplus} {winCondition} {winReason} {adjustCondition} {adjustReason}");
 
             // The auctioneer stops operating
             Stop();
@@ -273,6 +280,8 @@ namespace Cloud_Computing_Double_Auction
                             winningUsers = i;
                             winningProviders = j;
 
+                            winCondition = "First Condition";
+
                             Console.WriteLine($"\n[{Name}]: First Condition:- \n\t\tNo. of winning users = {i + 1} \n\t\tNo. of winning providers = {j + 1}");
                             return;
                         }
@@ -280,6 +289,8 @@ namespace Cloud_Computing_Double_Auction
                         {
                             winningUsers = i;
                             winningProviders = j;
+
+                            winCondition = "Second Condition";
 
                             Console.WriteLine($"\n[{Name}]: Second Condition:- \n\t\tNo. of winning users = {i + 1} \n\t\tNo. of winning providers = {j + 1}");
                             return;
@@ -303,6 +314,7 @@ namespace Cloud_Computing_Double_Auction
 
             if ((userBids[i].BidPrice >= providerBids[j].BidPrice) && (providerBids[j].BidPrice >= nextUserPrice))
             {
+                winReason = $"({userBids[i].BidPrice} ≥ {providerBids[j].BidPrice} ≥ {nextUserPrice})";
                 return true;
             }
             else
@@ -321,6 +333,7 @@ namespace Cloud_Computing_Double_Auction
 
             if (previousProviderQuantity <= totalUserQuantity && totalUserQuantity <= totalProviderQuantity)
             {
+                winReason = winReason + $" && ({totalProviderQuantity} ≥ {totalUserQuantity} ≥ {previousProviderQuantity})";
                 return true;
             }
             else
@@ -341,6 +354,7 @@ namespace Cloud_Computing_Double_Auction
 
             if (nextProviderPrice >= userBids[i].BidPrice && userBids[i].BidPrice >= providerBids[j].BidPrice)
             {
+                winReason = $"({nextProviderPrice} ≥ {userBids[i].BidPrice} ≥ {providerBids[j].BidPrice})";
                 return true;
             }
             else
@@ -359,6 +373,7 @@ namespace Cloud_Computing_Double_Auction
 
             if (previousUserQuantity <= totalProviderQuantity && totalProviderQuantity <= totalUserQuantity)
             {
+                winReason = winReason + $" && ({totalUserQuantity} ≥ {totalProviderQuantity} ≥ {previousUserQuantity})";
                 return true;
             }
             else
@@ -387,6 +402,9 @@ namespace Cloud_Computing_Double_Auction
             if (totalUserQuantity > totalProviderQuantity)
             {
                 Console.WriteLine($"\n[{Name}]: Overdemand Has Occured:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
+                adjustCondition = "Overdemand";
+                adjustReason = $"{totalUserQuantity} > {totalProviderQuantity}";
+
 
                 // The difference between total user quantity requested and total provider quantity offered is the overdemand which must be resolved
                 totalDiff = totalUserQuantity - totalProviderQuantity;
@@ -436,6 +454,8 @@ namespace Cloud_Computing_Double_Auction
             else if (totalUserQuantity < totalProviderQuantity)
             {
                 Console.WriteLine($"\n[{Name}]: Oversupply Has Occured:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
+                adjustCondition = "Overdemand";
+                adjustReason = $"{totalProviderQuantity} > {totalUserQuantity}";
 
                 // The difference between total provider quantity offered and total user quantity requested is the oversupply which must be resolved
                 totalDiff = totalProviderQuantity - totalUserQuantity;
@@ -481,6 +501,9 @@ namespace Cloud_Computing_Double_Auction
             }
             Console.WriteLine($"\n[{Name}]: No Difference Between Demand and Supply:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
             Console.WriteLine($"\n[{Name}]: No Reallocation");
+
+            adjustCondition = "No Quantity Adjustment";
+            adjustReason = $"{totalProviderQuantity} = {totalUserQuantity}";
         }
 
         // Method tells providers how they should allocate their VMs to users

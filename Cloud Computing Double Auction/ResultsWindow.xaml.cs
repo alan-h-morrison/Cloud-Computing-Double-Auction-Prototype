@@ -76,6 +76,12 @@ namespace Cloud_Computing_Double_Auction
                 lblUserUnitPrice.Text = CloudEnvironment.AuctionStats.UserPricePerUnit.ToString();
                 lblProvUnitPrice.Text = CloudEnvironment.AuctionStats.ProviderPricePerUnit.ToString();
 
+                test1.Text = CloudEnvironment.AuctionStats.WinningCondition;
+                test2.Text = CloudEnvironment.AuctionStats.WinningReason;
+                test3.Text = CloudEnvironment.AuctionStats.AdjustmentCondition;
+                test4.Text = CloudEnvironment.AuctionStats.AdjustmentReason;
+
+
                 double totalUserUtility = 0;
                 double totalUserQuantity = 0;
                 double totalUserFinalQuantity = 0;

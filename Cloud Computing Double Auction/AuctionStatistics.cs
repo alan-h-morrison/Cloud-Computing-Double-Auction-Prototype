@@ -12,13 +12,20 @@ namespace Cloud_Computing_Double_Auction
         public int UserPricePerUnit { get; set; }
         public int ProviderPricePerUnit { get; set; }
         public int TotalTradeSurplus { get; set; }
+        public string WinningCondition { get; set; }
+        public string WinningReason { get; set; }
+        public string AdjustmentCondition { get; set; }
+        public string AdjustmentReason { get; set; }
 
-        public AuctionStatistics(int userPrice, int providerPrice, int surplus)
+        public AuctionStatistics(int userPrice, int providerPrice, int surplus, string winCondition, string winReason, string adjustCondition, string adjustReason)
         {
             UserPricePerUnit = userPrice;
             ProviderPricePerUnit = providerPrice;
             TotalTradeSurplus = surplus;
+            WinningCondition = winCondition;
+            WinningReason = winReason;
+            AdjustmentCondition = adjustCondition;
+            AdjustmentReason = adjustReason;
         }
-
     }
 }

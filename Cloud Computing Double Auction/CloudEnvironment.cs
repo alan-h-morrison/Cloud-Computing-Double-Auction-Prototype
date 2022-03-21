@@ -156,8 +156,13 @@ namespace Cloud_Computing_Double_Auction
                 int userPricePerUnit = Convert.ToInt32(values[0]);
                 int providerPricePerUnit = Convert.ToInt32(values[1]);
                 int tradeSurplus = Convert.ToInt32(values[2]);
+                string winCondition = $"{values[3]} {values[4]}";
+                string winReason = $"{values[5]} {values[6]} {values[7]} {values[8]} {values[9]} {values[10]} {values[11]} {values[12]} {values[13]} {values[14]} {values[15]}";
+                string adjustCondition = $"{values[16]}";
+                string adjustReason = $" {values[17]} {values[18]} {values[19]}";
 
-                AuctionStats = new AuctionStatistics(userPricePerUnit, providerPricePerUnit, tradeSurplus);
+
+                AuctionStats = new AuctionStatistics(userPricePerUnit, providerPricePerUnit, tradeSurplus, winCondition, winReason, adjustCondition, adjustReason);
             }
         }
 
