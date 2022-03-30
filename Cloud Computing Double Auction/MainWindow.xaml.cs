@@ -21,11 +21,9 @@ namespace Cloud_Computing_Double_Auction
     /// </summary>
     public partial class MainWindow : Window
     {
-        // Number of cloud users and providers participating in the auction
-        private int numUsers = Properties.Settings.Default.NumUsers;
+        private double elapsedTime;
         private int numProviders = Properties.Settings.Default.NumProviders;
-
-        public double elapsedTime;
+        private int numUsers = Properties.Settings.Default.NumUsers;
 
         public MainWindow()
         { 
@@ -119,7 +117,7 @@ namespace Cloud_Computing_Double_Auction
         }
 
         // Creates the user agents with bid quantites and prices set manually by the user in the settings menu
-        public void UserManualGeneration(EnvironmentMas environment, int[] quantities, int[] prices)
+        private void UserManualGeneration(EnvironmentMas environment, int[] quantities, int[] prices)
         {
             for (int i = 0; i < numUsers; i++)
             {
@@ -129,7 +127,7 @@ namespace Cloud_Computing_Double_Auction
         }
 
         // Creates the user agents with bid quantites and prices set manually by the user in the settings menu
-        public void ProviderManualGeneration(EnvironmentMas environment, int[] quantities, int[] prices)
+        private void ProviderManualGeneration(EnvironmentMas environment, int[] quantities, int[] prices)
         {
             for (int i = 0; i < numProviders; i++)
             {
@@ -139,7 +137,7 @@ namespace Cloud_Computing_Double_Auction
         }
 
         // Method ensures that user bids automatically generate random values based upon the minimum and maximum values set in the settings menu
-        public void UserAutoGeneration(EnvironmentMas enviroment)
+        private void UserAutoGeneration(EnvironmentMas enviroment)
         {
             for (int i = 0; i < numUsers; i++)
             {
@@ -150,7 +148,7 @@ namespace Cloud_Computing_Double_Auction
         }
 
         // Method ensures that provider bids automatically generate random values based upon the minimum and maximum values set in the settings menu
-        public void ProviderAutoGeneration(EnvironmentMas environment)
+        private void ProviderAutoGeneration(EnvironmentMas environment)
         {
             for (int i = 0; i < numProviders; i++)
             {

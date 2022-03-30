@@ -21,11 +21,11 @@ namespace Cloud_Computing_Double_Auction
     /// </summary>
     public partial class Settings : Window
     {
-        private int[] userQuantites;
-        private int[] userPrices;
-
         private int[] providerQuantities;
         private int[] providerPrices;
+
+        private int[] userQuantites;
+        private int[] userPrices;
 
         public Settings()
         {
@@ -98,7 +98,7 @@ namespace Cloud_Computing_Double_Auction
 
             // Populates the number of user and provider comboboxes with numbers ranging from 5 to 100
             ObservableCollection<string> participantNum = new ObservableCollection<string>();
-            for (int i = 5; i < 101; i++)
+            for (int i = 5; i < 201; i++)
             {
                 participantNum.Add($"{i}");
             }
@@ -111,7 +111,7 @@ namespace Cloud_Computing_Double_Auction
 
             // Populates the min/max quantity range for user and provider comboboxes with numbers ranging from 5 to 50
             ObservableCollection<string> quantityRange = new ObservableCollection<string>();
-            for (int i = 1; i < 51; i++)
+            for (int i = 1; i < 101; i++)
             {
                 quantityRange.Add($"{i}");
             }    
@@ -128,7 +128,7 @@ namespace Cloud_Computing_Double_Auction
 
             // Populates the min/max bid price range for user and provider comboboxes with numbers ranging from 10 to 150
             ObservableCollection<string> priceRange = new ObservableCollection<string>();
-            for (int i = 10; i < 150; i++)
+            for (int i = 10; i < 201; i++)
             {
                 priceRange.Add($"{i}");
             }       
@@ -196,13 +196,13 @@ namespace Cloud_Computing_Double_Auction
         private void ValidateUserRanges()
         {
             // Throws an argument exception if the minimum bid quantity is larger than the maximum bid 
-            if (!(Convert.ToInt32(cmbMinUserQuan.SelectedItem) < Convert.ToInt32(cmbMaxUserQuan.SelectedItem)))
+            if (Convert.ToInt32(cmbMinUserQuan.SelectedItem) > Convert.ToInt32(cmbMaxUserQuan.SelectedItem))
             {
                 throw new ArgumentException("The minimum amount of quantity a given user can have must be lower than the maximum amount of quantity a user can have");
             }
 
             // Throws an argument exception if the minimum bid price is larger than the maximum bid price
-            if (!(Convert.ToInt32(cmbMinUserPrice.SelectedItem) < Convert.ToInt32(cmbMaxUserPrice.SelectedItem)))
+            if (Convert.ToInt32(cmbMinUserPrice.SelectedItem) > Convert.ToInt32(cmbMaxUserPrice.SelectedItem))
             {
                 throw new ArgumentException("The minimum bid price for any given user can have must be lower than the maximum bid");
             }
@@ -227,7 +227,6 @@ namespace Cloud_Computing_Double_Auction
         // Validates the manual entry of bid quantites/prices for users
         private void ValidateUserFields()
         {
-            txtUserQuantity.Text = txtUserQuantity.Text.Trim();
             txtUserPrices.Text = txtUserPrices.Text.Trim();
 
             // If the either field are empty, throw an arugment exception
@@ -236,9 +235,6 @@ namespace Cloud_Computing_Double_Auction
                 // Regex to identify that user quantities are only numbers/spaces
                 string usrQuantityRegexSpaces = "[0-9 ]+";
 
-                // Regex to idenitfy that user quantities are numbers from 1 to 100
-                string usrQuantityRegexNum = "^[1-9][0-9]?$|^100";
-
                 // Checks all of the user quantities entered manually are only numbers from 1 to 100 and white spaces otherwise, throws an argument exception
                 if (Regex.IsMatch(txtUserQuantity.Text, usrQuantityRegexSpaces))
                 {  
@@ -246,15 +242,29 @@ namespace Cloud_Computing_Double_Auction
 
                     foreach(string item in strUserQuantites)
                     {
-                        string entry = item.Trim();
+                        try
+                        {
+                            string entry = item.Trim();
+                            int num = Convert.ToInt32(entry);
 
-                        if(!(Regex.IsMatch(entry, usrQuantityRegexNum)))
+                            if (num < 1 || num > 100)
+                            {
+                                throw new ArgumentException("User Quantities is not valid:- This field can only contain numbers and spaces and quantities must range from 1 to 100");
+                            }
+                        }
+                        catch (FormatException)
                         {
                             throw new ArgumentException("User Quantities is not valid:- This field can only contain numbers and spaces and quantities must range from 1 to 100");
                         }
+
                     }
                     // Converts the user quantities text box into an int array
                     userQuantites = Array.ConvertAll(strUserQuantites, s => int.Parse(s));
+
+                    if(userQuantites.Count() < 5)
+                    {
+                        throw new ArgumentException($"There must be at least 5 cloud users in the auction");
+                    }
                 }
                 else
                 {
@@ -264,9 +274,6 @@ namespace Cloud_Computing_Double_Auction
                 // Regex to identify that user prices are only numbers/spaces
                 string usrPricesRegexSpaces = "[0-9 ]+";
 
-                // Regex to idenitfy that user prices are numbers from 1 to 100
-                string usrPricesRegexNum = "^[1-9][0-9]?$|^100";
-
                 // Checks all of the user prices entered manually are only numbers from 1 to 100 and white spaces otherwise, throws an argument exception
                 if ((Regex.IsMatch(txtUserPrices.Text, usrPricesRegexSpaces)))
                 {
@@ -274,16 +281,29 @@ namespace Cloud_Computing_Double_Auction
 
                     foreach (string item in strUserPrices)
                     {
-                        string entry = item.Trim();
-
-                        if (!(Regex.IsMatch(entry, usrPricesRegexNum)))
+                        try
                         {
-                            throw new ArgumentException("User Prices is not valid:- This field can only contain numbers and spaces and prices must range from 1 to 100");
+                            string entry = item.Trim();
+                            int num = Convert.ToInt32(entry);
+
+                            if (num < 10 || num > 200)
+                            {
+                                throw new ArgumentException("User Prices is not valid:- This field can only contain numbers and spaces and quantities must range from 10 to 200");
+                            }
+                        }
+                        catch (FormatException)
+                        {
+                            throw new ArgumentException("User Prices is not valid:- This field can only contain numbers and spaces and quantities must range from 10 to 200");
                         }
                     }
 
                     // Converts the user prices text box into an int array
                     userPrices = Array.ConvertAll(strUserPrices, s => int.Parse(s));
+
+                    if (userPrices.Count() < 5)
+                    {
+                        throw new ArgumentException($"There must be at least 5 cloud users in the auction");
+                    }
                 }
                 else
                 {
@@ -309,14 +329,14 @@ namespace Cloud_Computing_Double_Auction
 
         private void ValidateProviderFields()
         {
+            txtProviderQuantity.Text = txtProviderQuantity.Text.Trim();
+            txtProviderPrices.Text = txtProviderPrices.Text.Trim();
+
             // If the either field are empty, throw an arugment exception
             if (!(String.IsNullOrWhiteSpace(txtProviderQuantity.Text)) && !((String.IsNullOrWhiteSpace(txtProviderPrices.Text))))
             {
                 // Regex to identify that provider quantities are only numbers/spaces
                 string proQuantityRegexSpaces = "[0-9 ]+";
-
-                // Regex to idenitfy that provider quantities are numbers from 1 to 100
-                string proQuantityRegexNum = "^[1-9][0-9]?$|^100";
 
                 // Checks all of the provider quantities entered manually are only numbers from 1 to 100 and white spaces otherwise, throws an argument exception
                 if ((Regex.IsMatch(txtProviderQuantity.Text, proQuantityRegexSpaces)))
@@ -325,15 +345,28 @@ namespace Cloud_Computing_Double_Auction
 
                     foreach (string item in strProviderQuantities)
                     {
-                        string entry = item.Trim();
+                        try
+                        {
+                            string entry = item.Trim();
+                            int num = Convert.ToInt32(entry);
 
-                        if (!(Regex.IsMatch(entry, proQuantityRegexNum)))
+                            if (num < 1 || num > 100)
+                            {
+                                throw new ArgumentException("Provider Quantities is not valid:- This field can only contain numbers and spaces and quantities must range from 1 to 100");
+                            }
+                        }
+                        catch (FormatException)
                         {
                             throw new ArgumentException("Provider Quantities is not valid:- This field can only contain numbers and spaces and quantities must range from 1 to 100");
-                        }
+                        }                        
                     }
                     // Converts the provider quantities text box into an int array
                     providerQuantities = Array.ConvertAll(strProviderQuantities, s => int.Parse(s));
+
+                    if (providerQuantities.Count() < 5)
+                    {
+                        throw new ArgumentException($"There must be at least 5 cloud providers in the auction");
+                    }
                 }
                 else
                 {
@@ -343,9 +376,6 @@ namespace Cloud_Computing_Double_Auction
                 // Regex to identify that provider prices are only numbers/spaces
                 string proPricesRegexSpaces = "[0-9 ]+";
 
-                // Regex to idenitfy that provider prices are numbers from 1 to 100
-                string proPricesRegexNum = "^[1-9][0-9]?$|^100";
-
                 // Checks all of the provider prices entered manually are only numbers from 1 to 100 and white spaces otherwise, throws an argument exception
                 if ((Regex.IsMatch(txtProviderPrices.Text, proPricesRegexSpaces)))
                 {
@@ -353,19 +383,32 @@ namespace Cloud_Computing_Double_Auction
 
                     foreach (string item in strProviderPrices)
                     {
-                        string entry = item.Trim();
-
-                        if (!(Regex.IsMatch(entry, proPricesRegexNum)))
+                        try
                         {
-                            throw new ArgumentException("Provider Prices is not valid:- This field can only contain numbers and spaces and prices must range from 1 to 100");
+                            string entry = item.Trim();
+                            int num = Convert.ToInt32(entry);
+
+                            if (num < 10 || num > 200)
+                            {
+                                throw new ArgumentException("Provider Prices is not valid:- This field can only contain numbers and spaces and prices must range from 10 to 200");
+                            }
+                        }
+                        catch (FormatException)
+                        {
+                            throw new ArgumentException("Provider Prices is not valid:- This field can only contain numbers and spaces and prices must range from 10 to 200");
                         }
                     }
                     // Converts the provider prices text box into an int array
                     providerPrices = Array.ConvertAll(strProviderPrices, s => int.Parse(s));
+
+                    if (providerPrices.Count() < 5)
+                    {
+                        throw new ArgumentException($"There must be at least 5 cloud providers in the auction");
+                    }
                 }
                 else
                 {
-                    throw new ArgumentException("Provider Prices is not valid:- This field can only contain numbers and spaces and prices must range from 1 to 100");
+                    throw new ArgumentException("Provider Prices is not valid:- This field can only contain numbers and spaces and prices must range from 10 to 200");
                 }
 
                 // The numbers of entries in provider quantities field must be equal to the number of entries in provider prices field

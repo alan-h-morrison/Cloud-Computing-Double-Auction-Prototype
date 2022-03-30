@@ -9,14 +9,16 @@ namespace Cloud_Computing_Double_Auction
 {
     public class CloudProvider : Agent
     {
-        private Random rand = new Random();
 
-        private int supply;
         private int bidPrice;
         private int finalQuantity;
+        private int supply;
         private int totalPriceRecieved;
-        private int utilityGained;
         private int totalUtility;
+        private int utilityGained;
+
+        private Random rand = new Random();
+
         private string won;
 
         public CloudProvider()

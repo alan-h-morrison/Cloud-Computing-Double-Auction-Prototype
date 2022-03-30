@@ -9,9 +9,9 @@ namespace Cloud_Computing_Double_Auction
     public class Participant
     {
         public string ID { get; set; }
-        public int Quantity { get; set; }
         public int BidPrice { get; set; }
         public int FinalQuantity { get; set; }
+        public int Quantity { get; set; }
         public int TotalPrice { get; set; }
         public int Utility { get; set; }
         public int TotalUtility { get; set; }

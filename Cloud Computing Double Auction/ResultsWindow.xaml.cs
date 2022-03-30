@@ -29,7 +29,15 @@ namespace Cloud_Computing_Double_Auction
 
         }
 
-        public void DisplayStatistics()    
+        // The button "<<<" returns a user back to the main window
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainMenu = new MainWindow();
+            mainMenu.Show();
+            this.Close();
+        }
+
+        private void DisplayStatistics()    
         {
             // From the cloud environment, store list for all of the user/provider bids and data about the winning users/providers
             var userData = CloudEnvironment.ListUserDetails;
@@ -175,14 +183,6 @@ namespace Cloud_Computing_Double_Auction
 
             // The data grid source is set to this observable collection containing the list of participants
             dataGrid.ItemsSource = listParticpants;
-        }
-
-        // The button "<<<" returns a user back to the main window
-        private void BtnBack_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainMenu = new MainWindow();
-            mainMenu.Show();
-            this.Close();
-        }
+        } 
     }
 }

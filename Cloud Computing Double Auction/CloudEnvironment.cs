@@ -15,9 +15,9 @@ namespace Cloud_Computing_Double_Auction
         public static List<Participant> ListWinningProviders { get; set; }
         public static List<Participant> ListWinningUsers { get; set; }
 
+        private int turnsToWait;
+        private bool statReceived;
         private Random rand = new Random();
-        int turnsToWait;
-        bool statReceived;
 
         public CloudEnvironment()
         {
@@ -159,10 +159,21 @@ namespace Cloud_Computing_Double_Auction
                 string winCondition = $"{values[3]} {values[4]}";
                 string winReason = $"{values[5]} {values[6]} {values[7]} {values[8]} {values[9]} {values[10]} {values[11]} {values[12]} {values[13]} {values[14]} {values[15]}";
                 string adjustCondition = $"{values[16]}";
-                string adjustReason = $" {values[17]} {values[18]} {values[19]}";
 
+                if (adjustCondition == "Oversupply" || adjustCondition == "Overdemand")
+                {
+                    string adjustReason = $"{values[17]} {values[18]} {values[19]}";
 
-                AuctionStats = new AuctionStatistics(userPricePerUnit, providerPricePerUnit, tradeSurplus, winCondition, winReason, adjustCondition, adjustReason);
+                    AuctionStats = new AuctionStatistics(userPricePerUnit, providerPricePerUnit, tradeSurplus, winCondition, winReason, adjustCondition, adjustReason);
+                }
+                else
+                {
+                    adjustCondition = $"{values[16]} {values[17]}";
+                    string adjustReason = $" {values[18]} {values[19]} {values[20]}";
+
+                    AuctionStats = new AuctionStatistics(userPricePerUnit, providerPricePerUnit, tradeSurplus, winCondition, winReason, adjustCondition, adjustReason);
+                }
+
             }
         }
 

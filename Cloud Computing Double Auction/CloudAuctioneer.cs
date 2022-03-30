@@ -101,7 +101,7 @@ namespace Cloud_Computing_Double_Auction
 
         // Method is called when a user/provider submits a bid
         // Bids are added to either a list of provider bids or a list of user bids
-        public void HandleBid(string sender, string info)
+        private void HandleBid(string sender, string info)
         {
             string[] values = info.Split(' ');
 
@@ -502,8 +502,8 @@ namespace Cloud_Computing_Double_Auction
             Console.WriteLine($"\n[{Name}]: No Difference Between Demand and Supply:- \n\t\tTotal User Quantity = {totalUserQuantity} \n\t\tTotal Provider Quantity = {totalProviderQuantity}");
             Console.WriteLine($"\n[{Name}]: No Reallocation");
 
-            adjustCondition = "No Quantity Adjustment";
-            adjustReason = $"{totalProviderQuantity} = {totalUserQuantity}";
+            adjustCondition = "No Adjustment";
+            adjustReason = $"{totalProviderQuantity} == {totalUserQuantity}";
         }
 
         // Method tells providers how they should allocate their VMs to users
