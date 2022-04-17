@@ -202,7 +202,7 @@
                     TextWrapping="Wrap"><Run Text="Results Menu" TextDecorations="Underline" /></TextBlock>
                 <Rectangle
                     Canvas.Left="91"
-                    Canvas.Top="214"
+                    Canvas.Top="201"
                     Width="332"
                     Height="325"
                     Fill="#FFF4F4F5"
@@ -210,7 +210,7 @@
 
                 <Rectangle
                     Canvas.Left="498"
-                    Canvas.Top="214"
+                    Canvas.Top="201"
                     Canvas.Right="63"
                     Width="332"
                     Height="325"
@@ -246,7 +246,7 @@
                 <DataGrid
                     x:Name="dgInitUserData"
                     Canvas.Left="91"
-                    Canvas.Top="214"
+                    Canvas.Top="201"
                     Width="Auto"
                     Height="Auto"
                     MaxHeight="330"
@@ -286,7 +286,7 @@
                 <DataGrid
                     x:Name="dgInitProvData"
                     Canvas.Left="498"
-                    Canvas.Top="214"
+                    Canvas.Top="201"
                     Canvas.Right="63"
                     Width="Auto"
                     Height="Auto"
@@ -444,7 +444,7 @@
                     TextAlignment="Center"
                     TextWrapping="Wrap"><Run Text="Double Auction " TextDecorations="Underline" /><Run Text="Results" TextDecorations="Underline" /><LineBreak /><LineBreak /><Run Text="" TextDecorations="Underline" /></TextBlock>
                 <TextBlock
-                    Canvas.Top="110"
+                    Canvas.Top="97"
                     Width="894"
                     Height="47"
                     FontSize="36"
@@ -479,7 +479,7 @@
 
                 <TextBlock
                     Canvas.Left="91"
-                    Canvas.Top="547"
+                    Canvas.Top="534"
                     Width="323"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -496,7 +496,7 @@
 
                 <TextBlock
                     Canvas.Left="498"
-                    Canvas.Top="547"
+                    Canvas.Top="534"
                     Width="332"
                     Height="21"
                     HorizontalAlignment="Left"
@@ -600,7 +600,7 @@
                     </InlineUIContainer></TextBlock>
                 <TextBlock
                     Canvas.Left="91"
-                    Canvas.Top="175"
+                    Canvas.Top="162"
                     Width="332"
                     Height="34"
                     FontSize="24"
@@ -609,7 +609,7 @@
                     TextWrapping="Wrap"><Run Text="User Bids" TextDecorations="Underline" /></TextBlock>
                 <TextBlock
                     Canvas.Left="498"
-                    Canvas.Top="175"
+                    Canvas.Top="162"
                     Canvas.Right="63"
                     Width="332"
                     Height="34"

@@ -73,6 +73,7 @@
     <Compile Include="CloudProvider.cs" />
     <Compile Include="CloudUser.cs" />
     <Compile Include="Participant.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>

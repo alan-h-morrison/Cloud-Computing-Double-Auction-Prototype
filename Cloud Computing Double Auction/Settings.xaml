@@ -40,12 +40,13 @@
                     Click="BtnBack_Click"
                     Content="Back" />
                 <TextBlock
-                    Width="536"
+                    Canvas.Left="40"
+                    Canvas.Top="447"
+                    Width="800"
                     Height="25"
-                    Margin="40,447,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    TextWrapping="Wrap"><Run Text="Enter User " /><Run Text="Bid " /><Run Text="Quantities " /><Run Text="Manually" /><Run Text=":" /></TextBlock>
+                    TextWrapping="Wrap"><Run Text="Enter User " /><Run Text="Bid " /><Run Text="Quantities " /><Run Text="Manually" /><Run Text=" (e.g. 3 12 10 7 5 3 6 9)" /><Run Text=":" /></TextBlock>
                 <TextBox
                     x:Name="txtUserQuantity"
                     Width="800"
@@ -55,10 +56,12 @@
                     VerticalAlignment="Top"
                     TextWrapping="Wrap" />
                 <TextBlock
-                    Margin="40,500,0,0"
+                    Canvas.Left="40"
+                    Canvas.Top="500"
+                    Width="800"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    TextWrapping="Wrap"><Run Text="Enter User Bid" /><Run Text=" Prices Manually" /><Run Text=":" /></TextBlock>
+                    TextWrapping="Wrap"><Run Text="Enter User Bid" /><Run Text=" Prices Manually" /><Run Text=" (e.g. 54 32 23 35 31 43 12 39)" /><Run Text=":" /></TextBlock>
                 <TextBox
                     x:Name="txtUserPrices"
                     Width="800"
@@ -68,10 +71,12 @@
                     VerticalAlignment="Top"
                     TextWrapping="Wrap" />
                 <TextBlock
-                    Margin="40,553,0,0"
+                    Canvas.Left="40"
+                    Canvas.Top="553"
+                    Width="797"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    TextWrapping="Wrap"><Run Text="Enter Provider " /><Run Text="Bid " /><Run Text="Supply Manually:" /></TextBlock>
+                    TextWrapping="Wrap"><Run Text="Enter Provider " /><Run Text="Bid " /><Run Text="Supply Manually" /><Run Text=" (e.g. 3 4 5 8 2 10 12 15)" /><Run Text=":" /></TextBlock>
                 <TextBox
                     x:Name="txtProviderQuantity"
                     Width="797"
@@ -81,10 +86,12 @@
                     VerticalAlignment="Top"
                     TextWrapping="Wrap" />
                 <TextBlock
-                    Margin="40,606,0,0"
+                    Canvas.Left="40"
+                    Canvas.Top="606"
+                    Width="800"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    TextWrapping="Wrap"><Run Text="Enter Provider" /><Run Text=" Bid" /><Run Text=" Prices Manually:" /></TextBlock>
+                    TextWrapping="Wrap"><Run Text="Enter Provider" /><Run Text=" Bid" /><Run Text=" Prices Manually" /><Run Text=" (e.g." /><Run Text=" " /><Run Text="43 32 31 51 23 28 17 37)" /><Run Text=":" /></TextBlock>
                 <TextBox
                     x:Name="txtProviderPrices"
                     Width="797"
