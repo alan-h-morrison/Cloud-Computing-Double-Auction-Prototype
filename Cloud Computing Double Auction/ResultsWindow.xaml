@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:Cloud_Computing_Double_Auction"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Width="900"
-    Height="600"
+    Height="2000"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -753,7 +753,7 @@
                     FontSize="24"
                     Foreground="Black"
                     TextAlignment="Left"
-                    TextWrapping="Wrap"><Run Text="Winner Determination Details" TextDecorations="Underline" /></TextBlock>
+                    TextWrapping="Wrap"><Run Text="Winner " TextDecorations="Underline"/><Run Text="&amp; Price " TextDecorations="Underline"/><Run Text="Determination Details" TextDecorations="Underline"/></TextBlock>
                 <TextBlock
                     Canvas.Left="92"
                     Canvas.Top="1100"
